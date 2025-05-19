@@ -10,34 +10,73 @@
         <style>
          body {
            font-family: 'Comic Neue', cursive, sans-serif;
+           font-size: x-large;
           }
           a {
             color: yellowgreen;
+          }
+          .title {
+            text-align: center;
+            font-size: 500%;
+            color: yellowgreen;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-image: url(./img/cow.gif);
+            background-size: contain;
+            background-position: center;
+            padding-top: 250px;
+            margin-top: -10px;
+          }
+          footer {
+            opacity: 0.75;
+            text-align: center;
+          }
+          .images {
+            width: 150%;
+            margin-top: -50px;
+          }
+          td {
+            padding-right: 50px;
+            object-fit: cover;
           }
         </style>
 </head>
 
 <body>
     <header>
-        <h1>Hello, Ma!</h1>
-        <div id="images">
+        <h1 class="title">Hello, Ma!</h1>
+        <div class="images">
             <a href="https://www.youtube.com/watch?v=izGwDsrQ1eQ&pp=ygUQY2FyZWxlc3Mgd2hpc3Blcg%3D%3D" target="_blank"><img src="img/ma.jpg" alt="Ma sleeping." style="width: 10%;"></a>
             <a href="https://www.youtube.com/watch?v=92ydUdqWE1g&pp=ygUPdHVuYWsgdHVuYWsgdHVu" target="_blank"><img src="img/ma-meme.jpg" alt="Ma and Adidas." style="width: 10%;"></a>
         </div>
     </header>
     <section class="cool">
-        <h2>Cool Stuff</h2>
-        <ul>
-            <li>
-                <a href="./page/cowabunga.html" target="_blank">Cowabunga</a>
-            </li>
-            <li>
-                <a href="./vid/brightfuture.mp4" target="_blank"><em>"Bright Future"</em></a>
-            </li>
-            <li>
-                <a href="./img/art.jpg" target="_blank">School Art Class Be Like</a>
-            </li>
-        </ul>
+        <h2>Ma's Gallary (Cool Stuff)</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <video controls><source src="./vid/brightfuture.mp4">Your broswer can't play this video. In other words, your browser sucks.</video>
+                    </td>
+                    <td>
+                        <img src="./img/cock.jpg" style="width: 101%;" alt="How to Eat Cock: Mouth-Watering Chicken Recipes by Cosima Hussey">
+                    </td>
+                    <td>
+                        <img src="./img/happynewyear.jpg" style="width: 105%" alt='Person holding a lighter near a gas tank with "Happy New Year" tes and fireworks overlay.'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="./vid/brightfuture.mp4" target="_blank"><em>"Bright Future"</em></a>
+                    </td>
+                    <td>
+                        <a href="./img/cock.jpg" target="_blank"><em>"Mouth-watering experience"</em></a>
+                    </td>
+                    <td>
+                        <a href="./img/happynewyear.jpg" target="_blank">Happy New Year!</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </section>
     <section class="faq">
         <h2>Frequently Asked Questions</h2>
