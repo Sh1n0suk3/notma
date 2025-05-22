@@ -1,110 +1,172 @@
 <!DOCTYPE html>
 <!-- HTML Nerds? Add me on Discord "sh1n0suk3" -->
 <html lang="en">
-
-<head>
+  <head>
     <title>Hello, Ma!</title>
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Comic+Neue:400,700&display=swap" rel="stylesheet">
-        <style>
-         body {
-           font-family: 'Comic Neue', cursive, sans-serif;
-           font-size: x-large;
-          }
-          a {
-            color: yellowgreen;
-          }
-.title {
-  background-image: url(./img/cow.gif);
-  background-size: contain;
-  background-position: center;
-  height: 300px;
-  line-height: 400px;
-  text-align: center;
-  font-size: 500%;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  color: yellowgreen;
-  margin-top: -1%;
-}
-          footer {
-            opacity: 0.75;
-            text-align: center;
-          }
-          .images {
-          width: 100%;
-          }
-          td {
-            padding-right: 50px;
-            object-fit: cover;
-          }
-          .responsive-media {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            display: block;
-          }
+    <style>
+      * {
+        box-sizing: border-box;
+      }
 
-        </style>
-</head>
+      body {
+        font-family: 'Comic Neue', cursive, sans-serif;
+        font-size: x-large;
+      }
 
-<body>
+      a {
+        color: yellowgreen;
+      }
+
+      .title {
+        background-image: url(./img/cow.gif);
+        background-size: contain;
+        background-position: center;
+        height: 300px;
+        line-height: 400px;
+        text-align: center;
+        font-size: 500%;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        color: yellowgreen;
+        margin: 0 0 25px 0;
+      }
+
+      footer {
+        opacity: 0.75;
+        text-align: center;
+      }
+
+      .images {
+        width: 100%;
+      }
+
+      table tbody tr td {
+        table-layout: fixed;
+        margin: 0;
+        padding: 0;
+        object-fit: cover;
+        overflow: scroll;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        border-collapse: collapse;
+      }
+
+      table td {
+        width: 0%;
+      }
+
+      .responsive-media {
+        width: 61%;
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+        display: block;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
     <header>
-        <h1 class="title">Hello, Ma!</h1>
-        <div class="images" id="images">
-            <a href="https://www.youtube.com/watch?v=izGwDsrQ1eQ&pp=ygUQY2FyZWxlc3Mgd2hpc3Blcg%3D%3D" target="_blank"><img src="img/ma.jpg" alt="Ma sleeping." style="width: 14%;"></a>
-            <a href="https://www.youtube.com/watch?v=92ydUdqWE1g&pp=ygUPdHVuYWsgdHVuYWsgdHVu" target="_blank"><img src="img/ma-meme.jpg" alt="Ma and Adidas." style="width: 16%;"></a>
-        </div>
+      <h1 class="title">Hello, Ma!</h1>
+      <div class="images" id="images">
+        <a href="https://www.youtube.com/watch?v=izGwDsrQ1eQ&pp=ygUQY2FyZWxlc3Mgd2hpc3Blcg%3D%3D" target="_blank">
+          <img src="img/ma.jpg" alt="Ma sleeping." style="width: 14%;">
+        </a>
+        <a href="https://www.youtube.com/watch?v=92ydUdqWE1g&pp=ygUPdHVuYWsgdHVuYWsgdHVu" target="_blank">
+          <img src="img/ma-meme.jpg" alt="Ma and Adidas." style="width: 16%;">
+        </a>
+      </div>
     </header>
     <section class="cool">
-        <h2>Ma's Gallary (Cool Stuff)</h2>
-        <table>
-            <tbody>
-                <tr>
-                    <td>
-                        <video class="responsive-media" controls><source src="./vid/brightfuture.mp4">Your broswer can't play this video. In other words, your browser sucks.</video>
-                    </td>
-                    <td>
-                        <img class="responsive-media" src="./img/cock.jpg" alt="How to Eat Cock: Mouth-Watering Chicken Recipes by Cosima Hussey">
-                    </td>
-                    <td>
-                        <img class="responsive-media" src="./img/happynewyear.jpg" alt='Person holding a lighter near a gas tank with "Happy New Year" tes and fireworks overlay.'>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="./vid/brightfuture.mp4" target="_blank"><em>"Bright Future"</em></a>
-                    </td>
-                    <td>
-                        <a href="./img/cock.jpg" target="_blank"><em>"Mouth-watering experience"</em></a>
-                    </td>
-                    <td>
-                        <a href="./img/happynewyear.jpg" target="_blank">Happy New Year!</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+      <h2>Ma's Gallary (<em> Cool Stuff </em>)</h2>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <video class="responsive-media" controls>
+                <source src="./vid/brightfuture.mp4">Your browser can't play this video. In other words, your browser sucks.
+              </video>
+            </td>
+            <td>
+              <img class="responsive-media" src="./img/cock.jpg" alt="How to Eat Cock: Mouth-Watering Chicken Recipes by Cosima Hussey" style="width: 54%;">
+            </td>
+            <td>
+              <img class="responsive-media" src="./img/happynewyear.jpg" alt='Person holding a lighter near a gas tank with "Happy New Year" text and fireworks overlay.' style="width: 100%;">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="./vid/brightfuture.mp4" target="_blank">
+                <em>"Bright Future"</em>
+              </a>
+            </td>
+            <td>
+              <a href="./img/cock.jpg" target="_blank">
+                <em>"Mouth-watering experience"</em>
+              </a>
+            </td>
+            <td>
+              <a href="./img/happynewyear.jpg" target="_blank">Happy New Year!</a>
+            </td>
+          </tr>
+          <tr>
+          <td>
+              
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+          </tr>
+          <tr>
+            <td>
+              
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </section>
     <section class="faq">
-        <h2>Frequently Asked Questions</h2>
-        <div>
-            <h3>Are you <strong>Ma</strong>?</h3>
-            <p>Maybe.</p>
-        </div>
-        <div>
-            <h3>Why are you <em>gay</em>?</h3>
-            <p>What? hmmm, yes and no.</p>
-            <a href="https://www.youtube.com/watch?v=HEXWRTEbj1I" target="_blank"><img class="responsive-media" src="img/gay.jpg" alt="Why aren't you gay?" style="width: 15%;"></a>
-        </div>
-        <div>
-            <h3>What should I do if I found someone doing sussy gay Ma activities?</h3>
-            <p>You should report them to meme police.</p>
-            <img class="responsive-media" src="img/gaypolice.jpg" alt="Please call meme police if you found someone doing sussy Ma activities." style="width: 15%;">
-        </div>
+      <h2>Frequently Asked Questions</h2>
+      <div>
+        <h3>Are you <strong>Ma</strong>? </h3>
+        <p>Maybe.</p>
+      </div>
+      <div>
+        <h3>Why are you <em>gay</em>? </h3>
+        <p>What? hmmm, yes and no.</p>
+        <a href="https://www.youtube.com/watch?v=HEXWRTEbj1I" target="_blank">
+          <img class="responsive-media" src="img/gay.jpg" alt="Why aren't you gay?" style="width: 20%;">
+        </a>
+      </div>
+      <div>
+        <h3>Why Singha Drinking Water?</h3>
+        <p>Because that's what I have. And now, Purra.</p>
+        <a href="https://www.youtube.com/watch?v=HEXWRTEbj1I" target="_blank">
+          <img class="responsive-media" src="img/purra.jpg" alt="Why aren't you gay?" style="width: 10%;">
+        </a>
+      </div>
+      <div>
+        <h3>What should I do if I found someone doing sussy gay Ma activities?</h3>
+        <p>You should report them to meme police.</p>
+        <img class="responsive-media" src="img/gaypolice.jpg" alt="Please call meme police if you found someone doing sussy Ma activities." style="width: 15%;">
+      </div>
     </section>
     <footer>
-        <h6><em>Copyright Ma 2025. Unauthorized use of the two images found <a href="#images">here</a> will result in sussy Ma activities.</em></h6>
+      <h6>
+        <em>Copyright Ma 2025. Unauthorized use of the two images found <a href="#images">here</a> will result in sussy Ma activities. </em>
+      </h6>
     </footer>
-</body>
-
+  </body>
 </html>
