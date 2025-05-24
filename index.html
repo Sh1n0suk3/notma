@@ -9,6 +9,10 @@
     <link href="https://fonts.googleapis.com/css?family=Comic+Neue:400,700&display=swap" rel="stylesheet">
     <style>
 
+      * {
+        overflow: scroll;
+      }
+      
       body {
         font-family: 'Comic Neue', cursive, sans-serif;
         font-size: x-large;
@@ -40,11 +44,10 @@
         width: 100%;
       }
 
-      table tbody tr td {
-        table-layout: fixed;
-        padding: 8px;
-        width: 0%;
-        max-width: 400px;
+      table, tbody, tr, td, {
+        table-layout: auto;
+        padding: auto;
+        width: auto;
         object-fit: cover;
       }
 
