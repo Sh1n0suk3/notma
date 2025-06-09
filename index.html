@@ -15,8 +15,6 @@
     <style>
       * {
         box-sizing: border-box;
-        background-color: #F5F5F5;
-        margin: 0 0.5vw 0.5vw;
       }
 
       p span {
@@ -26,6 +24,8 @@
       body {
         font-family: 'Comic Neue', cursive, sans-serif;
         font-size: x-large;
+        background-color: #F5F5F5;
+        margin: 0 0.5vw 0.5vw;
       }
 
       a {
@@ -81,16 +81,53 @@
       .nerdyma {
         opacity: 0.5;
       }
+
+      /* --- Style for the Geo-Warning Banner --- */
+      #geo-warning-banner {
+        display: block;
+        background-color: #ffeb3b;
+        color: #333;
+        text-align: center;
+        padding: 15px;
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        font-size: medium;
+        margin: 0;
+      }
+
+      #geo-warning-banner .warning-content {
+        background-color: transparent;
+        margin: 0;
+      }
+
+      #geo-warning-banner p {
+        margin: 0 0 10px 0;
+        background-color: transparent;
+      }
+
+      #geo-warning-banner button {
+        background-color: #fff;
+        color: #333;
+        border: 1px solid #333;
+        padding: 5px 15px;
+        cursor: pointer;
+        font-family: 'Comic Neue', cursive, sans-serif;
+        font-size: small;
+      }
     </style>
   </head>
   <body>
     <header>
       <h1 class="title">Hello, Ma!</h1>
       <div id="images">
-        <a href="https://www.youtube.com/watch?v=izGwDsrQ1eQ&pp=ygUQY2FyZWxlc3Mgd2hpc3Blcg%3D%3D" target="_blank">
+        <a href="https://www.youtube.com/watch?v=izGwDsrQ1eQ&pp=ygUQY2FyZWxlc3Mgd2hpc3Blcg%3D%3D" target="_blank" rel="noopener noreferrer">
           <img class="images" src="img/ma.jpg" alt="Ma sleeping." style="width: 14%;">
         </a>
-        <a href="https://www.youtube.com/watch?v=92ydUdqWE1g&pp=ygUPdHVuYWsgdHVuYWsgdHVu" target="_blank">
+        <a href="https://www.youtube.com/watch?v=92ydUdqWE1g&pp=ygUPdHVuYWsgdHVuYWsgdHVu" target="_blank" rel="noopener noreferrer">
           <img class="images" src="img/ma-meme.jpg" alt="Ma and Adidas." style="width: 16%;">
         </a>
         <div class="intro">
@@ -110,83 +147,49 @@
               <video id="truly-bright-future" class="responsive-media" controls style="width: 20%;">
                 <source src="./vid/brightfuture.mp4">Your browser can't play this video. In other words, your browser sucks.
               </video>
+              <a class="caption" href="./vid/brightfuture.mp4" target="_blank" rel="noopener noreferrer"><em>"Bright Future"</em></a>
             </td>
-            <tr>
-            <td colspan="3">
-              <a class="caption" href="./vid/brightfuture.mp4" target="_blank">
-                <em>"Bright Future"</em>
-              </a>
-            </td>
-            </tr>
           </tr>
           <tr>
             <td>
               <img class="responsive-media" src="./img/duck.jpg" alt="What's your SILLY duck name? First name: credit card number. Middle name: expiration month/year. Last name: The three wacky numbers on the back." style="width: 60%;">
+              <a class="caption" href="./img/duck.jpg" target="_blank" rel="noopener noreferrer"><em>"That's an interesting duck name."</em></a>
             </td>
             <td>
               <img class="responsive-media" src="./img/cock.jpg" alt="How to Eat Cock: Mouth-Watering Chicken Recipes by Cosima Hussey" style="width: 37%;">
+              <a class="caption" href="./img/cock.jpg" target="_blank" rel="noopener noreferrer"><em>"Mouth-watering experience"</em></a>
             </td>
             <td>
               <img class="responsive-media" src="./img/happynewyear.jpg" alt='Person holding a lighter near a gas tank with "Happy New Year" text and fireworks overlay.' style="width: 100%;">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a class="caption" href="./img/duck.jpg" target="_blank">
-                <em>"That's an interesting duck name."</em>
-              </a>
-            </td>
-            <td>
-              <a class="caption" href="./img/cock.jpg" target="_blank">
-                <em>"Mouth-watering experience"</em>
-              </a>
-            </td>
-            <td>
-              <a class="caption" href="./img/happynewyear.jpg" target="_blank">Happy New Year!</a>
+              <a class="caption" href="./img/happynewyear.jpg" target="_blank" rel="noopener noreferrer">Happy New Year!</a>
             </td>
           </tr>
           <tr>
           <td>
               <img class="responsive-media" src="./img/study.jpg" alt="When you are dead and then you don't realize that you don't have time to be dead because you have to study." style="width: 80%;">
+              <a class="caption" href="./img/study.jpg" target="_blank" rel="noopener noreferrer">Time management skill issue.</a>
             </td>
             <td>
               <img class="responsive-media" src="./img/screenshot.jpg" alt="A man taking a photo of a screen." style="width: 53%;">
+              <a class="caption" href="./img/screenshot.jpg" target="_blank" rel="noopener noreferrer">Dunno that PrintScreen exists.</a>
             </td>
             <td>
               <img class="responsive-media" src="./img/mango.jpg" alt="Woman stand, woman go. Man stand, mango!" style="width: 90%;">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a class="caption" href="./img/study.jpg" target="_blank">Time management skill issue.</a>
-            </td>
-            <td>
-              <a class="caption" href="./img/screenshot.jpg" target="_blank">Dunno that PrintScreen exists.</a>
-            </td>
-            <td>
-              <a class="caption" href="./img/mango.jpg" target="_blank">Mango.</a>
+              <a class="caption" href="./img/mango.jpg" target="_blank" rel="noopener noreferrer">Mango.</a>
             </td>
           </tr>
           <tr>
             <td>
               <img class="responsive-media" src="./img/soviet.jpg" alt="UNO Reverse card but it's soviet flag instead." style="width: 60%;">
+              <a class="caption" href="./img/soviet.jpg" target="_blank" rel="noopener noreferrer">Self-explanation.</a>
             </td>
             <td>
               <img class="responsive-media" src="./img/colgate.jpg" alt="A before and after image of a shark using Colgate Herbal toothpaste (from dirty to super clean)" style="width: 33%;">
+              <a class="caption" href="./img/colgate.jpg" target="_blank" rel="noopener noreferrer">Maybe Colgate is better.</a>
             </td>
             <td>
               <img class="responsive-media" src="./img/destroy.jpg" alt="Give a man nothing, and he will create a paradise. Give a man everything, and he will turn it to ruin." style="width: 100%;">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a class="caption" href="./img/soviet.jpg" target="_blank">Self-explanation.</a>
-            </td>
-            <td>
-              <a class="caption" href="./img/colgate.jpg" target="_blank">Maybe Colgate is better.</a>
-            </td>
-            <td>
-              <a class="caption" href="./img/destroy.jpg" target="_blank">Never give a person everything.</a>
+              <a class="caption" href="./img/destroy.jpg" target="_blank" rel="noopener noreferrer">Never give a person everything.</a>
             </td>
           </tr>
           <tr>
@@ -208,7 +211,7 @@
       <div>
         <h3>Why are you <em>gay</em>? </h3>
         <p>What? hmmm, yes and no.</p>
-        <a href="https://www.youtube.com/watch?v=HEXWRTEbj1I" target="_blank">
+        <a href="https://www.youtube.com/watch?v=HEXWRTEbj1I" target="_blank" rel="noopener noreferrer">
           <img class="faq-img" src="img/gay.jpg" alt="Why aren't you gay?" style="width: 20%;">
         </a>
       </div>
