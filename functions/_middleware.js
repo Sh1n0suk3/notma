@@ -1,11 +1,15 @@
 /**
  * The HTML for the warning banner.
+ * You can customize the message here.
  */
 const HTML_BANNER = `
   <div id="geo-warning-banner">
     <div class="warning-content">
       <p><strong>Heads up, visitor from Ireland!</strong> If you were looking for a transport site (like the MTA or NTA), you've taken a wonderfully weird detour. This is not a transportation website.</p>
-      <button onclick="this.parentElement.parentElement.style.display='none'">Got it, thanks!</button>
+      <div class="button-container">
+        <a href="https://www.transportforireland.ie/" target="_blank" rel="noopener noreferrer" class="redirect-button">Go to Transport for Ireland</a>
+        <button onclick="this.parentElement.parentElement.parentElement.style.display='none'">Got it, thanks!</button>
+      </div>
     </div>
   </div>
 `;
