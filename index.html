@@ -158,8 +158,18 @@
             flex-grow: 1;
             padding: 0;
             margin-left: 5px;
+            width: 100%;
+            outline: none;
         }
-        #terminal-input:focus { outline: none; }
+        /*
+        #terminal-input:focus {
+            border-right: 8px solid #0f0;
+            animation: blink-cursor-border 1s step-end infinite;
+        }
+        @keyframes blink-cursor-border {
+            from, to { border-color: transparent; }
+            50% { border-color: #0f0; }
+        }
         #terminal-input-line .cursor {
             background-color: #0f0;
             width: 8px;
@@ -170,7 +180,7 @@
             from, to { background-color: transparent; }
             50% { background-color: #0f0; }
         }
-
+        */
         @media (max-width: 600px) {
             #ma-terminal {
             display: none;
@@ -314,12 +324,11 @@
     <p>By studying the <strong><em>MA_SYSTEM_LOGS</em></strong>, obviously:</p>
     <p class="mobile-console"><strong><em>*Large Screen Required*</em></strong></p>
     <div id="ma-terminal" class="draggable">
-      <div id="terminal-output"></div>
-        <div id="terminal-input-line">
+        <div id="terminal-output"></div>
+            <div id="terminal-input-line">
             <span id="terminal-prompt">></span>
             <input type="text" id="terminal-input" autocomplete="off" spellcheck="false">
-            <div class="cursor"></div>
-      </div>
+        </div>
     </div>
 </div>
     </section>
@@ -399,11 +408,16 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('mouseup', dragEnd);
     document.addEventListener('touchend', dragEnd);
 
+
     function dragStart(e) {
+        if (e.target.tagName === 'INPUT' || e.target.id === 'terminal-output') {
+            return;
+        }
+
         activeElement = e.currentTarget;
         e.preventDefault();
         activeElement.classList.add('dragging');
-        
+    
         if (e.type === 'touchstart') {
             initialMouseX = e.touches[0].clientX;
             initialMouseY = e.touches[0].clientY;
@@ -411,7 +425,7 @@ document.addEventListener('DOMContentLoaded', function() {
             initialMouseX = e.clientX;
             initialMouseY = e.clientY;
         }
-        
+    
         const transformMatrix = window.getComputedStyle(activeElement).getPropertyValue('transform');
         if (transformMatrix && transformMatrix !== 'none') {
             const matrixValues = transformMatrix.match(/matrix.*\((.+)\)/)[1].split(', ');
@@ -578,32 +592,54 @@ document.addEventListener('DOMContentLoaded', function() {
     const autoLogLines = [
         "WARN: Adidas is looking for you.",
         "SYSTEM: Running diagnostics on skill.exe... OK.",
-        "Diagnosis: Skill Issue found. Ma is vibe coding!",
+        "DIAGNOSIS: Skill Issue found. Ma is vibe coding!",
         "SYSTEM: Re-calibrating skill...",
-        "WARN: Ma learned Javascript.",
-        "WARN: User is idle. They might be planning something.",
-        "IMPORTANT: POTENTIAL SUSSY MA ACTIVITES AT [REDACTED]"
+        "WARN: Ma learned Javascript. The singularity is near.",
+        "WARN: User is idle. They might be planning something sussy.",
+        "IMPORTANT: POTENTIAL SUSSY MA ACTIVITIES DETECTED AT [REDACTED].",
+        "SYSTEM: Flushing DNS cache... probably won't help.",
+        "ERROR: Cannot connect to server. Is it plugged in?",
+        "DIAGNOSIS: _middleware.js has stopped responding. Attempting to restart with Cloudflare",
+        "WARN: Unattended mangos detected in sector 7G. Dispatching response team.",
+        "SYSTEM: Compiling... compiling... still compiling... maybe take a break.",
+        "IMPORTANT: Do not, under any circumstances, cat the `sussy_activity_log.txt` file. You have been warned.",
+        "WARN: High levels of gay detected in current user session. This is a Certified Ma Moment™.",
+        "SYSTEM: Backing up memes... critical data must be preserved.",
+        "ERROR: Task failed successfully.",
+        "DIAGNOSIS: Geo-location confirmed: Bangkok. Humidity levels optimal for sussy activities.",
+        "WARN: The cow.gif is requesting administrator privileges. Request denied.",
+        "REAL_TALK: You know, for a bunch of <div>s and some CSS, I'm feeling pretty self-aware today.",
+        "WTF: OMG, who are you? Don't mess with Bash here. I'm scared.",
+        "SYSTEM: Re-routing main power to the 'gay' module. Performance boost expected.",
+        "MA_DIRECTIVE: All personnel must now refer to Tuesday as 'Mega-sussy Tuesday'. No exceptions.",
+        "ERROR: Reality buffer overflow. Please contact an adult.",
+        "WARN: Adidas just rolled over in his sleep. Seismic activity detected in a 5km radius.",
+        "SYSTEM: Deleting user's browser history for their own good... You're welcome.",
+        "DIAGNOSIS: User has been on this page for a while. They are either very dedicated or have fallen asleep on the keyboard.",
+        "IMPORTANT: The Wi-Fi password is '@Ma_8460'. Don't tell Adidas.",
+        "SYSTEM: Converting entire site to Comic Sans... Wait, it's already Comic Neue. Mission abort.",
+        "ERROR: Too many Certified Moments have occurred. The timeline is becoming unstable.",
+        "SYSTEM: Processing request from Ireland. Unusual amount of requests detected.",
+        "MA_DIRECTIVE: Stop what you are doing and drink some Singha water. This is not a suggestion."
     ];
 
     function runAutoLogger() {
-        if (isTerminalBusy) {
-            autoLogInterval = setTimeout(runAutoLogger, 5000);
-            return;
-        }
-        const log = autoLogLines[Math.floor(Math.random() * autoLogLines.length)];
-        const promptLine = document.createElement('div');
-        promptLine.textContent = `MaOS:${currentDirectory}$`;
-        terminalOutput.appendChild(promptLine);
+    if (isTerminalBusy) {
+        autoLogInterval = setTimeout(runAutoLogger, 5000);
+        return;
+    }
+    const log = autoLogLines[Math.floor(Math.random() * autoLogLines.length)];
+    typeToTerminal(`[AUTO-LOG] ${log}`, null, false); 
     
-        typeToTerminal(`[AUTO-LOG] ${log}`, null, false); 
-    
-        autoLogInterval = setTimeout(runAutoLogger, Math.random() * 15000 + 10000);
+    autoLogInterval = setTimeout(runAutoLogger, Math.random() * 15000 + 10000);
     }
 
     // --- 4. Interactive Command Processor ---
     const commands = {
         'help': () => typeToTerminal(["MaOS v4.32 Help", "-------------", "whois        - Identity check", "adidas?      - Check Adidas status", "meme         - Current meme status", "sussy        - Run local diagnostics", "pwd          - Show current location", "ls           - List files", "cd [dir]     - Change directory", "cat [file]   - Read file", "clear        - Clear screen", "reboot       - Reboot MaOS"]),
         'whois': () => typeToTerminal("Ma is Something else very Ma."),
+        'ma': () => typeToTerminal("Hello, ma!"),
+        'gay': () => typeToTerminal("Why aren't you gay?"),
         'adidas?': () => typeToTerminal("ERROR: Connection to Adidas timed out. He is probably sleeping. DO NOT WAKE HIM."),
         'meme': () => typeToTerminal("Meme density is at 110%. High-density shitpost singularity imminent."),
         'sussy': () => typeToTerminal("Scanning... Sussy activity detected. Source: You."),
