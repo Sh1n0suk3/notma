@@ -676,8 +676,8 @@ document.addEventListener('DOMContentLoaded', function() {
     typeToTerminal("Initializing MaOS... Please wait.", () => {
         typeToTerminal("Welcome. Type 'help' to begin.", () => {
            autoLogInterval = setTimeout(runAutoLogger, 10000);
-        });
-    });
+        },, false);
+    }, false);
 });
 </script>
 </body>
