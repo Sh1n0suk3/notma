@@ -27,6 +27,10 @@
             overflow-x: hidden;
         }
 
+        a:hover, .draggable:hover:not(.dragging) {
+            cursor: var(--cursor-adidas);
+        }
+
         #matrix-bg {
             position: fixed;
             top: 0;
@@ -34,7 +38,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.2;
+            opacity: 0.3;
         }
 
         a {
@@ -100,20 +104,23 @@
         .cool { padding: 2vw 4vw; }
 
         #ma-terminal {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 450px;
-            height: 250px;
+            position: relative;
+            width: 95%;
+            max-width: 800px;
+            height: 350px;
+            margin: 20px 0;
             background-color: rgba(0,0,0,0.8);
             border: 2px solid #0f0;
             padding: 10px;
             font-family: 'Courier New', Courier, monospace;
             color: #0f0;
             font-size: 14px;
-            z-index: 999;
             display: flex;
             flex-direction: column;
+        }
+        #ma-terminal.draggable {
+            cursor: move;
+            cursor: url('img/adidas.cur'), move;
         }
         #ma-terminal::before {
             content: 'MA_SYSTEM_LOGS -- INTERACTIVE FEED';
@@ -186,19 +193,16 @@
             background-color: #F5F5F5;
         }
 
+        @media (min-width: 600px) {
+            .mobile-console {
+                display: none;
+            }
+        }
+
     </style>
 </head>
 <body>
     <canvas id="matrix-bg"></canvas>
-
-    <div id="ma-terminal">
-      <div id="terminal-output"></div>
-        <div id="terminal-input-line">
-            <span id="terminal-prompt">></span>
-            <input type="text" id="terminal-input" autocomplete="off" spellcheck="false">
-            <div class="cursor"></div>
-      </div>
-    </div>
 
     <header>
         <h1 class="title">Hello, Ma!</h1>
@@ -305,6 +309,19 @@
             <h3>Can I get a "Certified Ma Moment™"?</h3>
             <p>Certification is granted only after surviving sussy Ma activities. No further details will be provided.</p>
         </div>
+        <div>
+    <h3>How to be a master hacker?</h3>
+    <p>By studying the <strong><em>MA_SYSTEM_LOGS</em></strong>, obviously:</p>
+    <p class="mobile-console"><strong><em>*Large Screen Required*</em></strong></p>
+    <div id="ma-terminal" class="draggable">
+      <div id="terminal-output"></div>
+        <div id="terminal-input-line">
+            <span id="terminal-prompt">></span>
+            <input type="text" id="terminal-input" autocomplete="off" spellcheck="false">
+            <div class="cursor"></div>
+      </div>
+    </div>
+</div>
     </section>
     <section class="guestbook" style="text-align: center; padding: 20px; background-color: #add8e6;">
         <h2>Sign the Ma Guestbook!</h2>
@@ -593,7 +610,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const childInfo = current.children[item];
                     return childInfo.type === 'dir' ? `${item}/` : item;
                 });
-                typeToTerminal(items.length > 0 ? items.join('   ') : 'Directory is empty.');
+                typeToTerminal(items.length > 0 ? items.join('\n') : 'Directory is empty.');
             }
         },
         'cd': (args) => {
