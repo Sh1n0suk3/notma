@@ -4,7 +4,7 @@
 const HTML_BANNER = `
   <div id="geo-warning-banner">
     <div class="warning-content">
-      <p><strong>GEOLOCATION ALERT:</strong> Sussy Ma activities have been detected in your area. This is a Certified Ma Moment™.</p>
+      <p><strong>GEOLOCATION ALERT:</strong> No Sussy Ma activities have been detected in your area.</p>
       <button onclick="this.parentElement.parentElement.style.display='none'">Acknowledge & Proceed</button>
     </div>
   </div>
