@@ -1,25 +1,43 @@
 /**
- * The HTML for the warning banner.
- * You can customize the message here.
+ * The HTML for the global warning banner, shown to non-Thai visitors.
  */
 const HTML_BANNER = `
   <div id="geo-warning-banner">
     <div class="warning-content">
-      <p><strong>Heads up, visitor from Ireland!</strong> If you were looking for a transport site (like the MTA or NTA), you've taken a wonderfully weird detour. This is not a transportation website.</p>
-      <div class="button-container">
-        <a href="https://www.transportforireland.ie/" target="_blank" rel="noopener noreferrer" class="redirect-button">Go to Transport for Ireland</a>
-        <button onclick="this.parentElement.parentElement.parentElement.style.display='none'">Got it, thanks!</button>
-      </div>
+      <p><strong>GEOLOCATION ALERT:</strong> Sussy Ma activities have been detected in your area. This is a Certified Ma Moment™.</p>
+      <button onclick="this.parentElement.parentElement.style.display='none'">Acknowledge & Proceed</button>
     </div>
   </div>
 `;
 
 /**
- * A class that our HTMLRewriter will use to inject the banner.
+ * The HTML for the exclusive message shown only to Thai visitors.
  */
-class BannerInjector {
+
+/* Save this for later.
+const THAI_MESSAGE = `
+  <p style="color: #6a0dad; font-weight: bold;">ชาวไทยใช่ไหม? ดื่มน้ำสิงห์แล้วไปต่อ</p>
+`;
+*/
+
+/**
+ * Injects content into an element.
+ */
+class ContentInjector {
+  constructor(content) {
+    this.content = content;
+  }
   element(element) {
-    element.prepend(HTML_BANNER, { html: true });
+    element.prepend(this.content, { html: true });
+  }
+}
+
+/**
+ * Hides an element by setting its style to "display: none;".
+ */
+class ElementHider {
+  element(element) {
+    element.setAttribute('style', 'display: none;');
   }
 }
 
@@ -27,20 +45,20 @@ class BannerInjector {
  * The main middleware function that runs on every request.
  */
 export async function onRequest(context) {
-  // Get the country code from the request object.
+  const response = await context.next();
   const country = context.request.cf.country;
-
-  // This log will help with debugging if needed.
   console.log(`Visitor from country: ${country}`);
 
-  // Get the original response by continuing the request chain.
-  const response = await context.next();
+  const rewriter = new HTMLRewriter();
 
-  // If the visitor is not from Ireland (IE), return the original response.
-  if (country !== 'IE') {
-    return response;
+  if (country === 'TH') {
+    // For Thai visitors, inject the exclusive welcome message.
+    rewriter.on('#thai-exclusive', new ContentInjector(THAI_MESSAGE));
+  } else {
+    // For everyone else, inject the global banner and hide the police image.
+    rewriter.on('body', new ContentInjector(HTML_BANNER));
+    rewriter.on('img[src="img/gaypolice.jpg"]', new ElementHider());
   }
 
-  // If the visitor IS from Ireland, use HTMLRewriter to transform the response.
-  return new HTMLRewriter().on('body', new BannerInjector()).transform(response);
+  return rewriter.transform(response);
 }
