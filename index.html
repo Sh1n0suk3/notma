@@ -529,12 +529,12 @@ document.addEventListener('DOMContentLoaded', function() {
     updatePrompt();
 
     // --- 2. Asynchronous "Typing" Output Function ---
-    function typeToTerminal(lines, onComplete) {
+    function typeToTerminal(lines, onComplete, shouldFocus = true) {
         isTerminalBusy = true;
         terminalInput.style.display = 'none';
 
         if (typeof lines === 'string') lines = [lines];
-        
+    
         let lineIndex = 0;
         let charIndex = 0;
         let lineElements = [];
@@ -543,9 +543,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (lineIndex >= lines.length) {
                 isTerminalBusy = false;
                 terminalInput.style.display = 'block';
-                terminalInput.focus();
+            
+                if (shouldFocus) {
+                   terminalInput.focus();
+                }
+
                 if (onComplete) onComplete();
-                return;
+               return;
             }
 
             let currentLine = lines[lineIndex];
@@ -554,17 +558,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (currentLine.startsWith('ERROR:') || currentLine.startsWith('WARN:')) lineEl.classList.add('terminal-error');
                 terminalOutput.appendChild(lineEl);
                 lineElements[lineIndex] = lineEl;
-            }
+           }
 
             if (charIndex < currentLine.length) {
-                lineElements[lineIndex].textContent += currentLine.charAt(charIndex);
-                charIndex++;
-                terminalOutput.scrollTop = terminalOutput.scrollHeight;
-                setTimeout(typeChar, 20);
+               lineElements[lineIndex].textContent += currentLine.charAt(charIndex);
+               charIndex++;
+               terminalOutput.scrollTop = terminalOutput.scrollHeight;
+               setTimeout(typeChar, 20);
             } else {
-                lineIndex++;
-                charIndex = 0;
-                setTimeout(typeChar, 100);
+               lineIndex++;
+               charIndex = 0;
+               setTimeout(typeChar, 100);
             }
         }
         typeChar();
@@ -590,9 +594,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const promptLine = document.createElement('div');
         promptLine.textContent = `MaOS:${currentDirectory}$`;
         terminalOutput.appendChild(promptLine);
-        
-        typeToTerminal(`[AUTO-LOG] ${log}`);
-        autoLogInterval = setTimeout(runAutoLogger, Math.random() * 15000 + 10000); // 10-25 seconds
+    
+        typeToTerminal(`[AUTO-LOG] ${log}`, null, false); 
+    
+        autoLogInterval = setTimeout(runAutoLogger, Math.random() * 15000 + 10000);
     }
 
     // --- 4. Interactive Command Processor ---
