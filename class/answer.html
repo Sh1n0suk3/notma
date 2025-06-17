@@ -7,10 +7,10 @@
     <meta property="og:title" content="Ma's Answers Cheatsheet">
     <meta property="og:description" content="For those who are lazy and want scores. Last year, there were 2 students who didn't join the Canvas for almost a semester and barely received any scores">
     <meta property="og:image" content="https://www.notma.org/img/canvas_embed.jpg">
-    <meta property="og:url" content="https://www.canvas.notma.org/">
+    <meta property="og:url" content="https://www.class.notma.org/">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -479,3 +479,184 @@
 <script src="script.js"></script>
 </body>
 </html>
+
+<style>
+    /* Basic body styling */
+body {
+    font-family: "Lato Extended", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: clamp(18px, 1vw, 64px);
+    margin: 5vw;
+    background-color: #F5F5F5;
+}
+
+/* Main container using Flexbox for the two-column layout */
+.page-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    background-color: #F5F5F5;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.quiz-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.quiz-nav li a {
+    display: block;
+    padding: 12px 15px;
+    color: #0E68B3;
+    text-decoration: none;
+    border-radius: 5px;
+    /* transition: background-color 0.3s; */
+}
+
+/* Style for when you hover over a link */
+.quiz-nav li a:hover {
+    text-decoration: underline;
+}
+
+/* Style for the currently active link (JavaScript will add this class) */
+.quiz-nav li a.active-link {
+    font-weight: bold;
+}
+
+.quiz-description {
+    margin: 0 0 2vw 2vw;
+    opacity: 0.5;
+    font-size: 0.8em;
+}
+
+
+/* Content Area Styling */
+.content-area {
+    flex-grow: 1; /* This makes the content area take up the remaining space */
+    padding: 40px;
+    background-color: white;
+}
+
+/*
+  ** THE KEY CSS RULE **
+  By default, hide all answer content divs.
+*/
+.answer-content {
+    display: none;
+}
+
+/*
+  ** THE OTHER KEY CSS RULE **
+  The .active class will override the display: none and show the content.
+*/
+.answer-content.active {
+    display: block;
+    /* animation: fadeIn 0.5s ease-in-out; /* Optional: Nice fade-in effect */
+}
+
+/* Optional fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.question-box {
+    border: 1px solid #aaa;
+    margin: auto;
+    max-width: 75%;
+}
+
+.question-number {
+    font-size: 1.25em;
+    font-weight: bolder;
+    background-color: #f2f4f4;
+    border-bottom: 1px solid #aaa;
+    padding: 1vw 1.5vw;
+    margin: 0;
+}
+
+.question {
+    padding: 0.5vw 1.5vw;
+}
+
+.answer {
+    padding: 0.5vw 1.5vw;
+}
+
+.answer em {
+    font-weight: bold;
+    margin-right: 1vw;
+}
+
+.answer-comment {
+    padding: 0.5vw 1.5vw;
+    font-style: italic;
+}
+
+.explanation {
+    padding: 0.5vw 1.5vw;
+}
+
+.answer-comment strong {
+    margin-right: 1vw;
+}
+
+hr {
+    margin: 0 2vw;
+    opacity: 0.35;
+}
+</style>
+<script>
+    // Wait until the entire HTML document is loaded and parsed.
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Get all the quiz links from the sidebar.
+    const quizLinks = document.querySelectorAll('.quiz-link');
+
+    // Get all the content sections for the answers.
+    const answerContents = document.querySelectorAll('.answer-content');
+
+    // Get the default message div.
+    const defaultMessage = document.getElementById('default-message');
+
+    // Add a click event listener to each quiz link.
+    quizLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            // Prevent the link from trying to navigate to a new page.
+            event.preventDefault();
+
+            // --- 1. Update the link styles ---
+            // First, remove the 'active-link' class from all links.
+            quizLinks.forEach(l => l.classList.remove('active-link'));
+            // Then, add the 'active-link' class to the one that was just clicked.
+            link.classList.add('active-link');
+
+
+            // --- 2. Update the content visibility ---
+            // Get the target ID from the link's data-target attribute (e.g., "quiz1").
+            const targetId = link.getAttribute('data-target');
+            
+            // Find the specific answer content div that matches the target ID.
+            const targetContent = document.getElementById(targetId);
+
+            // Hide all answer content sections first.
+            answerContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Then, show only the target content by adding the 'active' class.
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+        });
+    });
+});
+</script>
