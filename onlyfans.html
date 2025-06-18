@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to Ma's Onlyfans</title>
+    <meta property="og:title" content="Onlyfans">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://static2.onlyfans.com/static/prod/f/202506171530-7f98e4fc26/images/of-logo-b.jpg">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/x-icon" href="img/onlyfans.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles to ensure full-screen video */
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Styles to replace Tailwind classes */
+        body {
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #loader {
+            color: #fff;
+            font-size: 1.5rem; /* Equivalent to text-2xl */
+            line-height: 2rem;
+            font-weight: 600; /* Equivalent to font-semibold */
+            letter-spacing: 0.05em; /* Equivalent to tracking-wider */
+        }
+
+        #video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #video-container iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        Redirecting to Ma's Onlyfans
+    </div>
+
+    <div id="video-container" class="hidden">
+        <iframe
+            src="https://player.vimeo.com/video/438334658?autoplay=1&loop=1&title=0&byline=0&portrait=0"
+            frameborder="0"
+            allow="autoplay; fullscreen"
+            allowfullscreen
+            title="Onlyfans"
+        ></iframe>
+    </div>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+        // --- DOM Elements ---
+        const loader = document.getElementById('loader');
+        const videoContainer = document.getElementById('video-container');
+        const iframe = videoContainer.querySelector('iframe');
+
+        // --- Vimeo Player Initialization ---
+        const player = new Vimeo.Player(iframe);
+
+        /**
+         * Hides the loader and displays the video container.
+         */
+        const showVideo = () => {
+            loader.classList.add('hidden');
+            videoContainer.classList.remove('hidden');
+        };
+
+        // When the video is loaded and ready, show the player.
+        // The `autoplay=1` parameter in the iframe src will attempt to play the video.
+        player.on('loaded', () => {
+            showVideo();
+        });
+
+        // The 'play' event confirms the video is actually playing.
+        // This is a good place to ensure the video is visible.
+        player.on('play', () => {
+            showVideo();
+        });
+        
+        // Handle cases where the video fails to load.
+        player.on('error', (error) => {
+            console.error('Vimeo Player Error:', error);
+            loader.textContent = 'Failed to load video.';
+        });
+
+        // Attempt to play the video programmatically. This helps in some browsers.
+        // If autoplay is blocked, the user will see the player (from the 'loaded' event)
+        // and can click to play manually.
+        player.play().catch(error => {
+            // Log a warning if autoplay is blocked by the browser's policy.
+            if (error.name === 'NotAllowedError') {
+                console.warn('Autoplay was blocked by the browser.');
+            } else {
+                console.error('An error occurred while trying to play the video:', error);
+            }
+            // Ensure the video is visible even if autoplay fails, so the user can interact.
+            showVideo();
+        });
+
+    </script>
+</body>
+</html>
