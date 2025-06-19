@@ -19,38 +19,25 @@
             font-family: sans-serif;
             background-color: #000;
         }
-
-        /*
-         * MODIFIED: The loader is now a full-screen overlay.
-         * It sits on top of the video player until the video is confirmed to be playing.
-         * The flex properties center the text within the overlay.
-        */
         #loader {
             color: #fff;
             font-size: 1.5rem;
             line-height: 2rem;
             font-weight: 600;
             letter-spacing: 0.05em;
-            
-            /* Overlay styles */
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 10;
-            
-            /* Centering text content */
             display: flex;
             align-items: center;
             justify-content: center;
-
-            /* Set background to hide video until ready */
             background-color: #000;
             cursor: pointer;
             transition: opacity 0.3s ease-in-out;
         }
-
         #video-container {
             position: absolute;
             top: 0;
@@ -58,14 +45,11 @@
             width: 100%;
             height: 100%;
         }
-
         #video-container iframe {
             width: 100%;
             height: 100%;
         }
-
         .hidden {
-            /* Use opacity and pointer-events for a smoother transition */
             opacity: 0;
             pointer-events: none;
         }
@@ -74,71 +58,49 @@
 <body>
 
     <div id="loader">
-        <span>Redirecting to Ma's OnlyFans</span>
+        <span>Redirecting...</span>
     </div>
 
     <div id="video-container" class="hidden">
         <iframe
-            src="https://player.vimeo.com/video/438334658?autoplay=1&loop=1&title=0&byline=0&portrait=0&autopause=0"
+            src="https://player.vimeo.com/video/198511874?autoplay=1&loop=1&title=0&byline=0&portrait=0&autopause=0"
             frameborder="0"
             allow="autoplay; fullscreen"
             allowfullscreen
-            title="Onlyfans"
+            title="Test Video"
         ></iframe>
     </div>
 
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
-        // --- DOM Elements ---
         const loader = document.getElementById('loader');
         const loaderText = loader.querySelector('span');
         const videoContainer = document.getElementById('video-container');
         const iframe = videoContainer.querySelector('iframe');
         const player = new Vimeo.Player(iframe);
 
-        /**
-         * The 'play' event is the single source of truth that the video is active.
-         * When it fires, we hide the loader overlay.
-         */
         player.on('play', () => {
             loader.classList.add('hidden');
         });
 
-        /**
-         * Handle cases where the video fails to load entirely.
-         */
         player.on('error', (error) => {
             console.error('Vimeo Player Error:', error);
             loaderText.textContent = 'Failed to load video.';
         });
 
-        /**
-         * This is the main execution block.
-         * It waits for the player to be ready, then attempts to play it.
-         */
         player.ready().then(() => {
-            // Show the video container (it will be behind the loader)
             videoContainer.classList.remove('hidden');
-            
-            // Attempt to play the video
             return player.play();
         }).catch(error => {
-            // This catch block handles errors from the player.play() promise
             if (error.name === 'NotAllowedError') {
-                // Autoplay was blocked by the browser.
                 console.warn('Autoplay was blocked. Waiting for user interaction.');
-                
-                // Update the loader text to prompt the user to click.
                 loaderText.textContent = 'Click to Play';
-
-                // Add a one-time click listener to the entire page to try playing again.
-                // This makes the whole screen a play button.
                 document.body.addEventListener('click', () => {
                     player.play();
-                }, { once: true }); // '{ once: true }' ensures the listener is removed after one click.
-
+                }, { once: true });
             } else {
-                // Another type of error occurred during playback attempt.
+                // The error you are seeing is being caught here.
+                // Check the console to see the specific 'error' object.
                 console.error('An error occurred while trying to play the video:', error);
                 loaderText.textContent = 'Could not play video.';
             }
