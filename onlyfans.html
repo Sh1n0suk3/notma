@@ -99,10 +99,8 @@
                     player.play();
                 }, { once: true });
             } else {
-                // The error you are seeing is being caught here.
-                // Check the console to see the specific 'error' object.
                 console.error('An error occurred while trying to play the video:', error);
-                loaderText.textContent = 'Could not play video.';
+                loaderText.textContent = 'Redirect failed. OnlyFans not responding.';
             }
         });
     </script>
