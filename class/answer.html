@@ -6,8 +6,8 @@
     <title>Ma's Answers Cheatsheet</title>
     <meta property="og:title" content="Ma's Answers Cheatsheet">
     <meta property="og:description" content="For those who are lazy and want scores. Last year, there were 2 students who didn't join the Canvas for almost a semester and barely received any scores">
-    <meta property="og:image" content="https://www.notma.org/img/canvas_embed.jpg">
-    <meta property="og:url" content="https://www.class.notma.org/">
+    <meta property="og:image" content="https://notma.org/img/canvas_embed.jpg">
+    <meta property="og:url" content="https://canvas.notma.org/">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 
@@ -17,7 +17,9 @@
 
 <div class="page-container">
     <aside class="sidebar">
-        <h2>Quizzes</h2>
+    <a href="#" class="quiz-link default" data-target="default-message">
+    <h2>Quizzes</h2>
+    </a>
         <nav class="quiz-nav">
             <ul>
                 <li>
@@ -571,7 +573,7 @@
             <p class="question-number">Quiz results are protected for this quiz and can be viewed a single time immediately after submission.</p>
                 <p class="question">Correct answers are hidden.</p>
                 <hr>
-                    <p class="answer">Help me Ma. Mr. Andrew knew us too well.</p>
+                    <p class="answer">Help me, Ma. Once you finish this, contact me (me@notma.org) and make sure to save questions and answers.</p>
                     <p class="explanation"></p>
             </div>
             <br>
@@ -585,11 +587,12 @@
 </html>
 
 <style>
+* { border: 0px solid black}
 
 body {
     font-family: "Lato Extended", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: clamp(18px, 1vw, 64px);
-    margin: 2.5vw;
+    margin: 2vw;
     background-color: #F5F5F5;
 }
 
@@ -600,9 +603,8 @@ body {
 }
 
 .sidebar {
-    width: 224px;
-    padding: 0.5vw;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    width: 256px;
+    padding: 14px 0;
     background-color: #F5F5F5;
     display: flex;
     flex-shrink: 0;
@@ -610,20 +612,24 @@ body {
     flex-direction: column;
 }
 
-.sidebar h2 {
-    font-size: 2em;
-    margin-top: 12px;
-    margin-left: 12px;
+.default {
+    font-size: 1.75em;
+    color: #0E68B3;
+    text-decoration: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 .quiz-nav ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 .quiz-nav li a {
     display: inline-block;
-    padding: 3px 24px;
+    padding: 0px 36px;
     color: #0E68B3;
     text-decoration: none;
     border-radius: 5px;
@@ -636,8 +642,8 @@ body {
         padding: 0;
     }
 
-    .intro {
-        padding-left: 4vw;
+    #default-message {
+        margin: 0 2vw;
     }
 
     .page-container, .sidebar, .content-area {
