@@ -9,34 +9,46 @@
     <meta property="og:image" content="https://static2.onlyfans.com/static/prod/f/202506171530-7f98e4fc26/images/of-logo-b.jpg">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/x-icon" href="img/onlyfans.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom styles to ensure full-screen video */
         body, html {
             margin: 0;
             padding: 0;
             overflow: hidden;
             height: 100%;
             width: 100%;
-            font-family: 'Inter', sans-serif;
+            font-family: sans-serif;
+            background-color: #000;
         }
 
-        /* Styles to replace Tailwind classes */
-        body {
-            background-color: #000;
+        /*
+         * MODIFIED: The loader is now a full-screen overlay.
+         * It sits on top of the video player until the video is confirmed to be playing.
+         * The flex properties center the text within the overlay.
+        */
+        #loader {
+            color: #fff;
+            font-size: 1.5rem;
+            line-height: 2rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            
+            /* Overlay styles */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            
+            /* Centering text content */
             display: flex;
             align-items: center;
             justify-content: center;
-        }
 
-        #loader {
-            color: #fff;
-            font-size: 1.5rem; /* Equivalent to text-2xl */
-            line-height: 2rem;
-            font-weight: 600; /* Equivalent to font-semibold */
-            letter-spacing: 0.05em; /* Equivalent to tracking-wider */
+            /* Set background to hide video until ready */
+            background-color: #000;
+            cursor: pointer;
+            transition: opacity 0.3s ease-in-out;
         }
 
         #video-container {
@@ -53,19 +65,21 @@
         }
 
         .hidden {
-            display: none;
+            /* Use opacity and pointer-events for a smoother transition */
+            opacity: 0;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
 
     <div id="loader">
-        Redirecting to Ma's OnlyFans
+        <span>Redirecting to Ma's OnlyFans</span>
     </div>
 
     <div id="video-container" class="hidden">
         <iframe
-            src="https://player.vimeo.com/video/438334658?autoplay=1&loop=1&title=0&byline=0&portrait=0"
+            src="https://player.vimeo.com/video/438334658?autoplay=1&loop=1&title=0&byline=0&portrait=0&autopause=0"
             frameborder="0"
             allow="autoplay; fullscreen"
             allowfullscreen
@@ -77,52 +91,58 @@
     <script>
         // --- DOM Elements ---
         const loader = document.getElementById('loader');
+        const loaderText = loader.querySelector('span');
         const videoContainer = document.getElementById('video-container');
         const iframe = videoContainer.querySelector('iframe');
-
-        // --- Vimeo Player Initialization ---
         const player = new Vimeo.Player(iframe);
 
         /**
-         * Hides the loader and displays the video container.
+         * The 'play' event is the single source of truth that the video is active.
+         * When it fires, we hide the loader overlay.
          */
-        const showVideo = () => {
-            loader.classList.add('hidden');
-            videoContainer.classList.remove('hidden');
-        };
-
-        // When the video is loaded and ready, show the player.
-        // The `autoplay=1` parameter in the iframe src will attempt to play the video.
-        player.on('loaded', () => {
-            showVideo();
-        });
-
-        // The 'play' event confirms the video is actually playing.
-        // This is a good place to ensure the video is visible.
         player.on('play', () => {
-            showVideo();
+            loader.classList.add('hidden');
         });
-        
-        // Handle cases where the video fails to load.
+
+        /**
+         * Handle cases where the video fails to load entirely.
+         */
         player.on('error', (error) => {
             console.error('Vimeo Player Error:', error);
-            loader.textContent = 'Failed to load video.';
+            loaderText.textContent = 'Failed to load video.';
         });
 
-        // Attempt to play the video programmatically. This helps in some browsers.
-        // If autoplay is blocked, the user will see the player (from the 'loaded' event)
-        // and can click to play manually.
-        player.play().catch(error => {
-            // Log a warning if autoplay is blocked by the browser's policy.
+        /**
+         * This is the main execution block.
+         * It waits for the player to be ready, then attempts to play it.
+         */
+        player.ready().then(() => {
+            // Show the video container (it will be behind the loader)
+            videoContainer.classList.remove('hidden');
+            
+            // Attempt to play the video
+            return player.play();
+        }).catch(error => {
+            // This catch block handles errors from the player.play() promise
             if (error.name === 'NotAllowedError') {
-                console.warn('Autoplay was blocked by the browser.');
-            } else {
-                console.error('An error occurred while trying to play the video:', error);
-            }
-            // Ensure the video is visible even if autoplay fails, so the user can interact.
-            showVideo();
-        });
+                // Autoplay was blocked by the browser.
+                console.warn('Autoplay was blocked. Waiting for user interaction.');
+                
+                // Update the loader text to prompt the user to click.
+                loaderText.textContent = 'Click to Play';
 
+                // Add a one-time click listener to the entire page to try playing again.
+                // This makes the whole screen a play button.
+                document.body.addEventListener('click', () => {
+                    player.play();
+                }, { once: true }); // '{ once: true }' ensures the listener is removed after one click.
+
+            } else {
+                // Another type of error occurred during playback attempt.
+                console.error('An error occurred while trying to play the video:', error);
+                loaderText.textContent = 'Could not play video.';
+            }
+        });
     </script>
 </body>
 </html>
