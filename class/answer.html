@@ -5,21 +5,237 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma's Answers Cheatsheet</title>
     <meta property="og:title" content="Ma's Answers Cheatsheet">
-    <meta property="og:description" content="For those who are lazy and want scores. Last year, there were 2 students who didn't join the Canvas for almost a semester and barely received any scores">
+    <meta property="og:description" content="For those who are desperate and want scores. Last year, there were 2 students who didn't join the Canvas for almost a semester and barely received any scores">
     <meta property="og:image" content="https://notma.org/img/canvas_embed.jpg">
     <meta property="og:url" content="https://canvas.notma.org/">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/x-icon" href="https://notma.org/img/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <style>
 
+/*
+<!-- For debugging -->
+* { border: 0px solid black}
+*/
+
+body {
+    font-family: "Lato Extended", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: clamp(18px, 1vw, 64px);
+    margin: 2vw;
+    background-color: #F5F5F5;
+}
+
+.page-container {
+    display: flex;
+    flex-wrap: nowrap;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 256px;
+    padding: 14px 0;
+    background-color: #F5F5F5;
+    display: flex;
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-direction: column;
+}
+
+.default, h2 .quiz-link {
+    font-size: 1.75em;
+    color: #0E68B3;
+    text-decoration: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.quiz-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.quiz-nav li a {
+    display: inline-block;
+    padding: 0px 36px;
+    color: #0E68B3;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+img {
+    width: 256px;
+    margin-left: 6vw;
+}
+
+
+.quiz-nav li a:hover {
+    text-decoration: underline;
+}
+
+
+.quiz-nav li a.active-link {
+    font-weight: bold;
+}
+
+.quiz-description {
+    margin: 0 0 1.5vw 0;
+    opacity: 0.5;
+    font-size: 0.8em;
+}
+
+
+
+.content-area {
+    flex-grow: 1;
+    padding: 40px;
+    background-color: white;
+}
+
+/*
+  ** THE KEY CSS RULE **
+  By default, hide all answer content divs.
+*/
+.answer-content {
+    display: none;
+}
+
+.answer-content.active {
+    display: block;
+}
+
+.question-box {
+    border: 1px solid #aaa;
+    margin: auto;
+    max-width: 100%;
+    margin-bottom: 48px;
+}
+
+.question-number {
+    font-size: 1.25em;
+    font-weight: bolder;
+    background-color: #f2f4f4;
+    border-bottom: 1px solid #aaa;
+    padding: 1vw 1.5vw;
+    margin: 0;
+}
+
+.question {
+    padding: 0.5vw 1.5vw;
+}
+
+.answer {
+    padding: 0.5vw 1.5vw;
+    font-weight: bold;
+}
+
+.answer em {
+    font-weight: bolder;
+    margin-right: 1vw;
+}
+
+.answer-comment {
+    padding: 0.5vw 1.5vw;
+    font-style: italic;
+}
+
+.explanation {
+    padding: 0.5vw 1.5vw;
+}
+
+.answer-comment strong {
+    margin-right: 1vw;
+}
+
+hr {
+    margin: 0 32px;
+    opacity: 0.75 ;
+    border: none;
+    height: 1px;
+    background-color: #cccccc;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: clamp(18px, 4vw, 64px);
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .page-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sidebar, .content-area, .question-box {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .sidebar, .content-area {
+        padding: 4vw;
+        box-sizing: border-box;
+    }
+
+    #default-message {
+        margin: 0;
+    }
+
+    .sidebar {
+        min-width: 100%;
+    }
+
+    .default, h2 .quiz-link {
+        margin-top: 32px;
+    }
+
+    .quiz-nav ul {
+        display: flex; 
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .quiz-description {
+        margin: 0 0 4vw 0;
+    }
+
+    .question, .answer, .explanation, .answer-comment {
+        text-align: left;
+        padding: 0;
+        margin: 4vw;
+    }
+
+    .question-number {
+        text-align: left;
+        padding: 3vw;
+        margin: 0;
+    }
+
+    .question-box img {
+    width: 64vw;
+    margin: 0 8vw;
+    }
+
+    .inline-text {
+    display: inline-block;
+    margin-right: 8vw;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <div class="page-container">
     <aside class="sidebar">
-    <a href="#" class="quiz-link default" data-target="default-message">
-    <h2>Quizzes</h2>
-    </a>
+    <h2>
+        <a href="#" class="quiz-link default" data-target="default-message">
+            Quizzes
+        </a>
+    </h2>
         <nav class="quiz-nav">
             <ul>
                 <li>
@@ -88,17 +304,18 @@
 
     <main class="content-area">
         <div id="default-message" class="answer-content active">
-            <h1>Hello, Ma! Select a quiz from the left to see the answers.</h1>
+            <h1>Hello, Ma! Select a quiz from the navigation bar to see the answers.</h1>
             <p>A place for people who are desperate for scores.</p>
             <p>Check out the main page <a href="https://www.notma.org" target="_blank" rel="noopener noreferrer">here</a> (really cool Ma stuff)</p>
             <p>This is <strong>Certified Ma Moment™</strong></p>
             <p>Last year, there were 2 students who didn't join the Canvas for almost a semester and barely received any scores. So here's your chance.</p>
+            <p>And remember, \( F = ma \)</p>
         </div>
             <div id="quiz1" class="answer-content">
 
             <h2>Answers for Quiz#1 Voltage</h2>
-            <p><strong>Science/Lab</strong></p>
-            <p><strong>Questions</strong> 10</p>
+            <p class="inline-text"><strong>Science/Lab</strong></p>
+            <p class="inline-text"><strong>Questions</strong> 10</p>
 
             <div class="question-box">
             <p class="question-number">Question 1</p>
@@ -107,7 +324,7 @@
                     <p class="answer"><em>Answer:</em>voltage</p>
                     <p class="explanation">Think of it like the height difference of a waterfall. This potential gives the water the ability to flow. Voltage is the "electrical height difference."</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 2</p>
@@ -116,7 +333,7 @@
                     <p class="answer"><em>Answer:</em>Electrons</p>
                     <p class="explanation">In metal conductors like wires, the electric current is the organized movement of negatively charged electrons.</p>
             </div>
-            <br>
+            
 
             <div class="question-box"> 
             <p class="question-number">Question 3</p>
@@ -125,7 +342,7 @@
                     <p class="answer"><em>Answer:</em>What pushes the free electrons around a circuit</p>
                     <p class="explanation">If you imagine electrons as water in a pipe, voltage is the "pressure" from a pump that pushes the water along. Without voltage, the electrons would not move.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 4</p>
@@ -134,16 +351,16 @@
                     <p class="answer"><em>Answer:</em>How much work can potentially be done by a circuit</p>
                     <p class="explanation">A higher voltage means that each bit of charge can do more work, like lighting up a brighter bulb or spinning a faster motor.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 5</p>
                 <p class="question">How do aligned batteries affect voltage?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>More volts means more power</p>
-                    <p class="explanation">Aligning batteries in series (positive to negative) makes their voltages add up. This higher total voltage can deliver more power, as described by the formula P = V²/R.</p>
+                    <p class="explanation">Aligning batteries in series (positive to negative) makes their voltages add up. This higher total voltage can deliver more power, as described by the formula \( P = \frac{V^2}{R} \).</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 6</p>
@@ -152,7 +369,7 @@
                     <p class="answer"><em>Answer:</em>Lengthen the possible usage without increasing voltage.</p>
                     <p class="explanation">Placing batteries in parallel (positive to positive) increases the total capacity (Amp-hours). The voltage "push" does not get stronger, but it can last much longer.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 7</p>
@@ -161,7 +378,7 @@
                     <p class="answer"><em>Answer:</em>Alessandro Volta</p>
                     <p class="explanation">The unit "Volt" is named in honor of Alessandro Volta, the Italian physicist who invented the first electrical battery.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 8</p>
@@ -170,7 +387,7 @@
                     <p class="answer"><em>Answer:</em>Voltage is the pressure and Volts are the units to measure that pressure</p>
                     <p class="explanation">"Voltage" is the concept, like "length." "Volts" are the units you measure it in, like "meters."</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 9</p>
@@ -179,22 +396,22 @@
                     <p class="answer"><em>Answer:</em>220V</p>
                     <p class="explanation">This is the standard residential voltage set by the electrical grid in Thailand and many other parts of the world.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 10</p>
                 <p class="question">What is the voltage of US wall sockets?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>110V</p>
-                    <p class="explanation">While the modern standard is technically 120V, it is commonly referred to as 110V in the United States.</p>
+                    <p class="explanation">While the modern standard is technically \( 120 \, \mathrm{V} \), it is commonly referred to as \( 110 \, \mathrm{V} \) in the United States.</p>
             </div>
         </div>
 
         <div id="quiz2" class="answer-content">
 
             <h2>Answers for CW#1 Current</h2>
-            <p><strong>Science/Lab</strong></p>
-            <p><strong>Questions</strong> 10</p>
+            <p class="inline-text"><strong>Science/Lab</strong></p>
+            <p class="inline-text"><strong>Questions</strong> 10</p>
 
             <div class="question-box">
             <p class="question-number">Question 1</p>
@@ -203,7 +420,7 @@
                     <p class="answer"><em>Answer:</em>a circuit</p>
                     <p class="explanation">For electricity to flow continuously, it needs a complete, unbroken loop from the power source and back again. This closed path is called a circuit.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 2</p>
@@ -212,16 +429,16 @@
                     <p class="answer"><em>Answer:</em>current</p>
                     <p class="explanation">It is a measurement of how much electric charge is flowing past a point per second.</p>
             </div>
-            <br>
+            
 
             <div class="question-box"> 
             <p class="question-number">Question 3</p>
                 <p class="question">Current is measured in ___.</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>amps</p>
-                    <p class="explanation">The standard unit for measuring electric current is the Ampere, usually shortened to "Amps" (A).</p>
+                    <p class="explanation">The standard unit for measuring electric current is the Ampere, usually shortened to "Amps" ( \( \mathrm{A} \) ).</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 4</p>
@@ -230,25 +447,25 @@
                     <p class="answer"><em>Answer:</em>higher, lower</p>
                     <p class="explanation">Like a ball rolling downhill, electrons naturally move from a state of high energy (the negative terminal) to a state of low energy (the positive terminal).</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 5</p>
                 <p class="question">If the Voltage is increased and the resistance stays the same, Current will?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>increase</p>
-                    <p class="explanation">According to Ohm's Law (I = V/R), if you increase the "push" (Voltage), the flow (Current) increases.</p>
+                    <p class="explanation">According to Ohm's Law ( \( I = \frac{V}{R} \) ), if you increase the "push" (Voltage), the flow (Current) increases.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 6</p>
                 <p class="question">If the Voltage stays the same and Resistance is increased, Current will?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>decrease</p>
-                    <p class="explanation">According to Ohm's Law (I = V/R), if you increase the "obstacle" (Resistance), the flow (Current) decreases.</p>
+                    <p class="explanation">According to Ohm's Law ( \( I = \frac{V}{R} \) ), if you increase the "obstacle" (Resistance), the flow (Current) decreases.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 7</p>
@@ -257,25 +474,25 @@
                     <p class="answer"><em>Answer:</em>Current</p>
                     <p class="explanation">A series circuit is like a single-lane road. The number of cars passing any point per minute must be the same everywhere. The current is constant.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 8</p>
                 <p class="question">What is current measured in?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>A (Amps)</p>
-                    <p class="explanation">The unit is the Ampere, and its official symbol in formulas and measurements is "A".</p>
+                    <p class="explanation">The unit is the Ampere, and its official symbol in formulas and measurements is "\( \mathrm{A} \)".</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 9</p>
                 <p class="question">What is the unit of power?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>Watts</p>
-                    <p class="explanation">Electrical power, which is the rate at which energy is used, is measured in Watts (W).</p>
+                    <p class="explanation">Electrical power, which is the rate at which energy is used, is measured in Watts (\( \mathrm{W} \)).</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 10</p>
@@ -284,31 +501,30 @@
                     <p class="answer"><em>Answer:</em>switch</p>
                     <p class="explanation">A switch works by creating a deliberate break (opening) in the circuit to stop the flow or completing the path (closing) to allow it to flow.</p>
             </div>
-
         </div>
 
         <div id="quiz3" class="answer-content">
             <h2>Answers for HW#1 Resistance</h2>
-            <p><strong>Science/Lab</strong></p>
-            <p><strong>Questions</strong> 10</p>
+            <p class="inline-text"><strong>Science/Lab</strong></p>
+            <p class="inline-text"><strong>Questions</strong> 10</p>
 
             <div class="question-box">
             <p class="question-number">Question 1</p>
                 <p class="question">If a circuit has two resistors in series both are 4Ω, what is the total resistance of the circuit?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>8Ω</p>
-                    <p class="explanation">In series, resistances add up. The total opposition is the sum of all individual oppositions. So, 4Ω + 4Ω = 8Ω.</p>
+                    <p class="explanation">In series, resistances add up. The total opposition is the sum of all individual oppositions. So, \( 4 \, \Omega + 4 \, \Omega = 8 \, \Omega \)</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 2</p>
                 <p class="question">If a circuit has two resistors in parallel both are 4Ω, what is the total resistance of the circuit?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>2Ω</p>
-                    <p class="explanation">In parallel, you provide more paths for the current, so total resistance is always less than the smallest resistor. For two identical resistors, the total is exactly half. So, half of 4Ω is 2Ω.</p>
+                    <p class="explanation">In parallel, you provide more paths for the current, so total resistance is always less than the smallest resistor. For two identical resistors, the total is exactly half. So, half of \( 4 \, \Omega \) is \( 2 \, \Omega \).</p>
             </div>
-            <br>
+            
 
             <div class="question-box"> 
             <p class="question-number">Question 3</p>
@@ -317,7 +533,7 @@
                     <p class="answer"><em>Answer:</em>heat it up</p>
                     <p class="explanation">The "friction" of electrons pushing through a resistive material converts electrical energy into heat. This is how toasters and electric heaters work.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 4</p>
@@ -326,7 +542,7 @@
                     <p class="answer"><em>Answer:</em>increase</p>
                     <p class="explanation">The longer the path, the more opposition the electrons face. Resistance is directly proportional to length.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 5</p>
@@ -335,16 +551,16 @@
                     <p class="answer"><em>Answer:</em>decrease</p>
                     <p class="explanation">A thicker wire is like a wider highway; it allows more current to flow easily. Resistance decreases as the wire's area increases.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 6</p>
                 <p class="question">What is resistance measured in?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>Ω (Ohms)</p>
-                    <p class="explanation">The standard unit for electrical resistance is the Ohm, represented by the Greek letter Omega (Ω).</p>
+                    <p class="explanation">The standard unit for electrical resistance is the Ohm, represented by the Greek letter Omega ( \(\Omega \) ).</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 7</p>
@@ -353,25 +569,25 @@
                     <p class="answer"><em>Answer:</em>The ability to reduce the flow of electrons</p>
                     <p class="explanation">This is a great functional definition. Resistance is the measure of a material's opposition to the flow of electric current.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 8</p>
                 <p class="question">The mathematical relationship among Voltage, Current, and Resistance?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>Ohm's Law</p>
-                    <p class="explanation">Ohm's Law (V = I × R) is the fundamental formula that connects these three key concepts in most simple circuits.</p>
+                    <p class="explanation">Ohm's Law ( \( V = I \times R \) ) is the fundamental formula that connects these three key concepts in most simple circuits.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 9</p>
                 <p class="question">Voltage divided by Current?   (V / I )</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>Resistance</p>
-                    <p class="explanation">This is a direct rearrangement of Ohm's Law. If V = I × R, then R = V / I.</p>
+                    <p class="explanation">This is a direct rearrangement of Ohm's Law. If \( V = I \times R \), then \( R = \frac{V}{I} \).</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 10</p>
@@ -385,26 +601,26 @@
 
         <div id="quiz4" class="answer-content">
             <h2>Answers for HW#2 Watts & Power</h2>
-            <p><strong>Science/Lab</strong></p>
-            <p><strong>Questions</strong> 10</p>
+            <p class="inline-text"><strong>Science/Lab</strong></p>
+            <p class="inline-text"><strong>Questions</strong> 10</p>
 
             <div class="question-box">
             <p class="question-number">Question 1</p>
                 <p class="question">What is a watt?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>A unit of power</p>
-                    <p class="explanation">A watt (W) is the standard unit of power in the International System of Units (SI). It is defined as one joule of energy per second, representing the rate at which energy is transferred or converted.</p>
+                    <p class="explanation">A watt ( \( \mathrm{W} \) ) is the standard unit of power in the International System of Units (SI). It is defined as one joule of energy per second, representing the rate at which energy is transferred or converted.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 2</p>
                 <p class="question">How is power in watts calculated using voltage and current?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>Power (W) = Voltage (V) × Current (A) </p>
-                    <p class="explanation">This fundamental equation in electrical circuits, often called Watt's Law, states that the power (P) in watts is the product of the voltage (V) in volts and the current (I) in amperes.</p>
+                    <p class="explanation">This fundamental equation in electrical circuits, often called Watt's Law, states that the power ( \( \mathrm{P} \) ) in watts is the product of the voltage ( \( \mathrm{V} \) ) in volts and the current ( \( \mathrm{I} \) ) in amperes.</p>
             </div>
-            <br>
+            
 
             <div class="question-box"> 
             <p class="question-number">Question 3</p>
@@ -413,16 +629,16 @@
                     <p class="answer"><em>Answer:</em>Calculating the energy needed to power a lightbulb</p>
                     <p class="explanation">Power, measured in watts, quantifies the rate at which an electrical device, such as a lightbulb, consumes energy.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 4</p>
                 <p class="question">If a device operates at 10 volts and 2 amperes, what is its power consumption in watts?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>20 watts</p>
-                    <p class="explanation">Using the formula Power = Voltage × Current: P = 10 V × 2 A = 20W</p>
+                    <p class="explanation">Using the formula Power = Voltage × Current: \( P = 10 \, \mathrm{V} \times 2 \, \mathrm{A} = 20 \, \mathrm{W} \)</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 5</p>
@@ -431,16 +647,16 @@
                     <p class="answer"><em>Answer:</em>To understand the energy use of the appliance</p>
                     <p class="explanation">The wattage of an appliance indicates its rate of electricity consumption. This information is crucial for estimating how much energy it will use over time, which directly affects electricity costs.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 6</p>
                 <p class="question">If a light bulb uses 60 watts of power and operates for 2 hours, how much energy does it consume?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>120 watt-hours</p>
-                    <p class="explanation">Energy consumption is calculated by multiplying power by time. Energy = Power × Time. Energy = 60W × 2h = 120Wh</p>
+                    <p class="explanation">Energy consumption is calculated by multiplying power by time. Energy = Power × Time. \( E = 60 \, \mathrm{W} \times 2 \, \mathrm{h} = 120 \, \mathrm{Wh} \)</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 7</p>
@@ -449,16 +665,16 @@
                     <p class="answer"><em>Answer:</em>By choosing appliances that require lower power to use</p>
                     <p class="explanation">Since electricity bills are based on total energy consumption (often in kilowatt-hours), selecting appliances with lower wattage ratings for the same task means they use less energy over time, leading to lower bills.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 8</p>
                 <p class="question">If a device operates at 5 volts and 3 amperes, what is its power consumption in watts?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>15 watts</p>
-                    <p class="explanation">Using the formula Power = Voltage × Current: P = 5V × 3A = 15W</p>
+                    <p class="explanation">Using the formula Power = Voltage × Current: \( P = 5 \, \mathrm{V} \times 3 \, \mathrm{A} = 15 \, \mathrm{W} \)</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 9</p>
@@ -467,21 +683,21 @@
                     <p class="answer"><em>Answer:</em>It uses more energy</p>
                     <p class="explanation">A higher wattage rating signifies that a device consumes energy at a faster rate. Over the same period, a high-wattage device will use more total energy than a low-wattage device.</p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 10</p>
                 <p class="question">If a heater uses 1500 watts of power and operates for 3 hours, how much energy does it consume?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>4500 watt-hours</p>
-                    <p class="explanation">Energy consumption is the product of power and time. Energy = Power × Time. Energy = 1500W × 3h = 4500Wh</p>
+                    <p class="explanation">Energy consumption is the product of power and time. Energy = Power × Time. \( E = 1500 \, \mathrm{W} \times 3 \, \mathrm{h} = 4500 \, \mathrm{Wh} \)</p>
             </div>
         </div>
 
         <div id="quiz5" class="answer-content">
             <h2>Answers for Quiz#1 Pancreas</h2>
-            <p><strong>Supplemental Science</strong></p>
-            <p><strong>Questions</strong> 5</p>
+            <p class="inline-text"><strong>Supplemental Science</strong></p>
+            <p class="inline-text"><strong>Questions</strong> 5</p>
 
             <div class="question-box">
             <p class="question-number">Question 1</p>
@@ -490,7 +706,7 @@
                     <p class="answer"><em>Answer:</em>Insulin is not produced</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 2</p>
@@ -499,7 +715,7 @@
                     <p class="answer"><em>Answer:</em>Insulin</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box"> 
             <p class="question-number">Question 3</p>
@@ -508,7 +724,7 @@
                     <p class="answer"><em>Answer:</em>Glucagon</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 4</p>
@@ -517,7 +733,7 @@
                     <p class="answer"><em>Answer:</em>Glucose</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 5</p>
@@ -526,50 +742,48 @@
                     <p class="answer"><em>Answer:</em>Pancreas</p>
                     <p class="explanation"></p>
             </div>
-            <br>
-
         </div>
 
         <div id="quiz6" class="answer-content">
             <h2>Answers for CW#1 Adrenal</h2>
-            <p><strong>Supplemental Science</strong></p>
-            <p><strong>Questions</strong> 5</p>
+            <p class="inline-text"><strong>Supplemental Science</strong></p>
+            <p class="inline-text"><strong>Questions</strong> 5</p>
 
             <div class="question-box">
             <p class="question-number">Question 1</p>
                 <p class="question">What does the adrenal gland look like?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>Small, triangular gland, divided into regions. </p>
-                    <p class="explanation"></p>
+                    <p class="answer-comment"><strong>Ma note:</strong><em>Questions 1 and 3 are identical.</em></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 2</p>
                 <p class="question">Differences between Epinephrine and Norepinephrine?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>Epinephrine leads to greater cardiac output. </p>
-                    <p class="explanation"></p>
+                    <p class="answer-comment"><strong>Ma note:</strong><em>Questions 2 and 4 are identical.</em></p>
             </div>
-            <br>
+            
 
             <div class="question-box"> 
             <p class="question-number">Question 3</p>
                 <p class="question">Which of the following about cortisol is not true?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>secretion is elevated during sleep</p>
-                    <p class="explanation"></p>
+                    <p class="answer-comment"><strong>Ma note:</strong><em>Questions 1 and 3 are identical.</em></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 4</p>
                 <p class="question">The medulla releases which of the two hormones when stimulated by the sympathetic nervous system?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>Noradrenaline, Adrenaline</p>
-                    <p class="explanation"></p>
+                    <p class="answer-comment"><strong>Ma note:</strong><em>Questions 2 and 4 are identical.</em></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 5</p>
@@ -578,30 +792,108 @@
                     <p class="answer"><em>Answer:</em>above the kidneys</p>
                     <p class="explanation"></p>
             </div>
-            <br>
-
         </div>
 
         <div id="quiz7" class="answer-content">
             <h2>Answers for HW#1 Melatonin</h2>
-            <p><strong>Supplemental Science</strong></p>
-            <p><strong>Questions</strong> 10</p>
+            <p class="inline-text"><strong>Supplemental Science</strong></p>
+            <p class="inline-text"><strong>Questions</strong> 10</p>
 
             <div class="question-box">
-            <p class="question-number">Quiz results are protected for this quiz and can be viewed a single time immediately after submission.</p>
-                <p class="question">Correct answers are hidden.</p>
+            <p class="question-number">Question 1</p>
+                <p class="question">What is the primary role of melatonin in animals?</p>
                 <hr>
-                    <p class="answer">Help me, Ma. Once you finish this, contact me (me@notma.org) and make sure to save questions and answers.</p>
+                    <p class="answer"><em>Answer:</em>Regulate sleep-wake cycles</p>
+                    <p class="answer-comment"><strong>Ma note:</strong><em>Questions 1 and 3 are identical.</em></p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 2</p>
+                <p class="question">Melatonin production is inhibited when___.</p>
+                <hr>
+                    <p class="answer"><em>Answer:</em>Light is received through the eyes</p>
+                    <p class="answer-comment"><strong>Ma note:</strong><em>Questions 2 and 4 are identical.</em></p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 3</p>
+                <p class="question">What is the primary role of melatonin in animals?</p>
+                <hr>
+                    <p class="answer"><em>Answer:</em>Regulate sleep-wake cycles</p>
+                    <p class="answer-comment"><strong>Ma note:</strong><em>Questions 1 and 3 are identical.</em></p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 4</p>
+                <p class="question">Melatonin production is inhibited when___.</p>
+                <hr>
+                    <p class="answer"><em>Answer:</em>Light is received through the eyes</p>
+                    <p class="answer-comment"><strong>Ma note:</strong><em>Questions 2 and 4 are identical.</em></p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 5</p>
+                <p class="question">Which type of light has the most powerful effect on the sleep-wake internal body clock?</p>
+                <hr>
+                    <p class="answer"><em>Answer:</em>Blue light</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 6</p>
+                <p class="question">Circadian rhythms are natural processes that regulate ___.</p>
+                <hr>
+                    <p class="answer"><em>Answer:</em>Sleep wake cycles</p>
+                    <p class="explanation"></p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 7</p>
+                <p class="question">What happens to melatonin levels during the day?</p>
+                <hr>
+                    <p class="answer"><em>Answer:</em>They decrease</p>
+                    <p class="explanation"></p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 8</p>
+                <p class="question">How does darkness affect melatonin production?</p>
+                <hr>
+                    <p class="answer"><em>Answer:</em>It increases melatonin production</p>
+                    <p class="explanation"></p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 9</p>
+                <p class="question">What is a malfunction of the pineal gland? How would this affect you?</p>
+                <hr>
+                    <p class="answer"><em>Answer:</em>Less melatonin secretion. It would affect your sleeping patterns and may cause you to suffer from insomnia.</p>
+                    <p class="explanation"></p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 10</p>
+                <p class="question">What is the possible side effect of taking too much melatonin?</p>
+                <hr>
+                    <p class="answer"><em>Answer:</em>Drowsiness</p>
+                    <p class="explanation"></p>
+            </div>
         </div>
         
 
         <div id="quiz8" class="answer-content">
             <h2>Answers for Quiz#1 Female Reproductive System</h2>
-            <p><strong>Health</strong></p>
-            <p><strong>Questions</strong> 10</p>
+            <p class="inline-text"><strong>Health</strong></p>
+            <p class="inline-text"><strong>Questions</strong> 10</p>
 
             <div class="question-box">
             <p class="question-number">Question 1</p>
@@ -610,7 +902,7 @@
                     <p class="answer"><em>Answer:</em>FSH</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 2</p>
@@ -619,7 +911,7 @@
                     <p class="answer"><em>Answer:</em>LH</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box"> 
             <p class="question-number">Question 3</p>
@@ -628,7 +920,7 @@
                     <p class="answer"><em>Answer:</em>FSH & LH</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 4</p>
@@ -637,7 +929,7 @@
                     <p class="answer"><em>Answer:</em>The ovaries</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 5</p>
@@ -646,7 +938,7 @@
                     <p class="answer"><em>Answer:</em>estrogen</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 6</p>
@@ -655,7 +947,7 @@
                     <p class="answer"><em>Answer:</em>A Chemical messenger</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 7</p>
@@ -664,7 +956,7 @@
                     <p class="answer"><em>Answer:</em>mature eggs in the ovaries</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 8</p>
@@ -673,7 +965,7 @@
                     <p class="answer"><em>Answer:</em>release the egg cell</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 9</p>
@@ -682,7 +974,7 @@
                     <p class="answer"><em>Answer:</em>Progesterone and estrogen</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 10</p>
@@ -691,13 +983,12 @@
                     <p class="answer"><em>Answer:</em>Causes an egg to mature in an ovary. Stimulates the ovaries to release estrogen</p>
                     <p class="explanation"></p>
             </div>
-            <br>
         </div>
 
         <div id="quiz9" class="answer-content">
             <h2>Answers for CW#1 Label the Female Reproductive System</h2>
-            <p><strong>Health</strong></p>
-            <p><strong>Questions</strong> 10</p>
+            <p class="inline-text"><strong>Health</strong></p>
+            <p class="inline-text"><strong>Questions</strong> 10</p>
 
             <div class="question-box">
             <p class="question-number">Question 1</p>
@@ -707,7 +998,7 @@
                     <p class="answer"><em>Answer:</em>between day 12 and 16</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 2</p>
@@ -717,7 +1008,7 @@
                     <p class="answer"><em>Answer:</em>the ovary</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box"> 
             <p class="question-number">Question 3</p>
@@ -727,7 +1018,7 @@
                     <p class="answer"><em>Answer:</em>the womb</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 4</p>
@@ -736,7 +1027,7 @@
                     <p class="answer"><em>Answer:</em>Fallopian Tubes</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 5</p>
@@ -746,7 +1037,7 @@
                     <p class="answer"><em>Answer:</em>uterus</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 6</p>
@@ -755,7 +1046,7 @@
                     <p class="answer"><em>Answer:</em>cilia</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 7</p>
@@ -764,7 +1055,7 @@
                     <p class="answer"><em>Answer:</em>guide the egg through the Fallopian tube into the uterus</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 8</p>
@@ -773,7 +1064,7 @@
                     <p class="answer"><em>Answer:</em>Place for a baby to grow</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 9</p>
@@ -783,22 +1074,22 @@
                     <p class="answer"><em>Answer:</em>cervix</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
-                        <div class="question-box">
+            <div class="question-box">
             <p class="question-number">Question 10</p>
                 <p class="question">How frequently do ovaries release an egg?</p>
                 <hr>
                     <p class="answer"><em>Answer:</em>Once a month.</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
         </div>
 
         <div id="quiz10" class="answer-content">
             <h2>Answers for HW#1 Male Reproductive System</h2>
-            <p><strong>Health</strong></p>
-            <p><strong>Questions</strong> 10</p>
+            <p class="inline-text"><strong>Health</strong></p>
+            <p class="inline-text"><strong>Questions</strong> 10</p>
 
             <div class="question-box">
             <p class="question-number">Question 1</p>
@@ -808,7 +1099,7 @@
                     <p class="answer"><em>Answer:</em>used to cool down the temperature in the testes</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 2</p>
@@ -817,7 +1108,7 @@
                     <p class="answer"><em>Answer:</em>Testicles</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box"> 
             <p class="question-number">Question 3</p>
@@ -826,7 +1117,7 @@
                     <p class="answer"><em>Answer:</em>Scrotum</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 4</p>
@@ -836,7 +1127,7 @@
                     <p class="answer"><em>Answer:</em>Epididymis</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 5</p>
@@ -845,7 +1136,7 @@
                     <p class="answer"><em>Answer:</em>Millions</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 6</p>
@@ -854,7 +1145,7 @@
                     <p class="answer"><em>Answer:</em>spermatogenesis</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 7</p>
@@ -863,7 +1154,7 @@
                     <p class="answer"><em>Answer:</em>seminiferous tubules</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 8</p>
@@ -872,7 +1163,7 @@
                     <p class="answer"><em>Answer:</em>Seminal Vesicle & Prostate</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 9</p>
@@ -881,7 +1172,7 @@
                     <p class="answer"><em>Answer:</em>testosterone</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
 
             <div class="question-box">
             <p class="question-number">Question 10</p>
@@ -890,222 +1181,15 @@
                     <p class="answer"><em>Answer:</em>vas deferens</p>
                     <p class="explanation"></p>
             </div>
-            <br>
+            
         </div>
 
-        </div>
     </main>
 </div>
 
-<script src="script.js"></script>
-</body>
-</html>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
 
-<style>
-* { border: 0px solid black}
-
-body {
-    font-family: "Lato Extended", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: clamp(18px, 1vw, 64px);
-    margin: 2vw;
-    background-color: #F5F5F5;
-}
-
-.page-container {
-    display: flex;
-    flex-wrap: nowrap;
-    min-height: 100vh;
-}
-
-.sidebar {
-    width: 256px;
-    padding: 14px 0;
-    background-color: #F5F5F5;
-    display: flex;
-    flex-shrink: 0;
-    flex-grow: 0;
-    flex-direction: column;
-}
-
-.default {
-    font-size: 1.75em;
-    color: #0E68B3;
-    text-decoration: none;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
-
-.quiz-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.quiz-nav li a {
-    display: inline-block;
-    padding: 0px 36px;
-    color: #0E68B3;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-img {
-    width: 256px;
-    margin-left: 6vw;
-}
-
-
-.quiz-nav li a:hover {
-    text-decoration: underline;
-}
-
-
-.quiz-nav li a.active-link {
-    font-weight: bold;
-}
-
-.quiz-description {
-    margin: 0 0 1.5vw 0;
-    opacity: 0.5;
-    font-size: 0.8em;
-}
-
-
-
-.content-area {
-    flex-grow: 1;
-    padding: 40px;
-    background-color: white;
-}
-
-/*
-  ** THE KEY CSS RULE **
-  By default, hide all answer content divs.
-*/
-.answer-content {
-    display: none;
-}
-
-.answer-content.active {
-    display: block;
-}
-
-.question-box {
-    border: 1px solid #aaa;
-    margin: auto;
-    max-width: 100%;
-}
-
-.question-number {
-    font-size: 1.25em;
-    font-weight: bolder;
-    background-color: #f2f4f4;
-    border-bottom: 1px solid #aaa;
-    padding: 1vw 1.5vw;
-    margin: 0;
-}
-
-.question {
-    padding: 0.5vw 1.5vw;
-}
-
-.answer {
-    padding: 0.5vw 1.5vw;
-    font-weight: bold;
-}
-
-.answer em {
-    font-weight: bolder;
-    margin-right: 1vw;
-}
-
-.answer-comment {
-    padding: 0.5vw 1.5vw;
-    font-style: italic;
-}
-
-.explanation {
-    padding: 0.5vw 1.5vw;
-}
-
-.answer-comment strong {
-    margin-right: 1vw;
-}
-
-hr {
-    margin: 0 32px;
-    opacity: 0.75 ;
-    border: none;
-    height: 1px;
-    background-color: #cccccc;
-}
-
-@media (max-width: 768px) {
-    body {
-        font-size: clamp(18px, 4vw, 64px);
-        margin: 0;
-        padding: 0;
-    }
-
-    #default-message {
-        margin: 0;
-    }
-
-    .page-container, .sidebar, .content-area {
-        margin: 0;
-        padding: auto;
-    }
-
-    .page-container, .sidebar, .content-area {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
-    .sidebar {
-        min-width: 100%;
-    }
-
-    .sidebar h2 {
-        margin-top: 32px;
-    }
-
-    .quiz-nav ul {
-        display: flex; 
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
-    .quiz-description {
-        margin: 0 0 4vw 0;
-    }
-
-    .question-box {
-        width: 100%;
-        min-width: 100%;
-        max-width: 100%;
-    }
-
-    .question, .answer, .explanation, .answer-comment {
-        text-align: left;
-        margin: 4vw;
-    }
-
-    .question-number {
-        text-align: left;
-        padding: 3vw;
-    }
-
-    img {
-    width: 224px;
-    margin: 0;
-    }
-}
-</style>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 <script>
     
 document.addEventListener('DOMContentLoaded', () => {
@@ -1150,3 +1234,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
+</body>
+</html>
