@@ -11,18 +11,20 @@
     <meta property="og:type" content="website">
     <link rel="icon" type="image/x-icon" href="https://notma.org/img/favicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <style>
 
 /*
 <!-- For debugging -->
-* { border: 0px solid black}
+* { border: 1px solid black}
 */
 
 body {
-    font-family: "Lato Extended", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: clamp(18px, 1vw, 64px);
-    margin: 2vw;
-    background-color: #F5F5F5;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
     color: #273540;
 }
 
@@ -34,8 +36,8 @@ body {
 
 .sidebar {
     width: 256px;
-    padding: 14px 0;
-    background-color: #F5F5F5;
+    margin: 48px 0 0 96px;
+    background-color: #ffffff;
     display: flex;
     flex-shrink: 0;
     flex-grow: 0;
@@ -47,7 +49,6 @@ body {
     color: #0E68B3;
     text-decoration: none;
     text-align: center;
-    margin: 0;
     padding: 0;
 }
 
@@ -59,7 +60,7 @@ body {
 
 .quiz-nav li a {
     display: inline-block;
-    padding: 0px 36px;
+    padding: 0px 8px;
     color: #0E68B3;
     text-decoration: none;
     border-radius: 5px;
@@ -67,7 +68,7 @@ body {
 
 img {
     width: 256px;
-    margin-left: 6vw;
+    margin-left: 86px;
 }
 
 
@@ -78,87 +79,96 @@ img {
 
 .quiz-nav li a.active-link {
     font-weight: bold;
+    border-left: 2px solid #273540;
+    border-radius: 0;
+    border-spacing: 0;
 }
 
+
 .quiz-description {
-    margin: 0 0 1.5vw 0;
+    margin: 0;
     opacity: 0.5;
     font-size: 0.8em;
+    font-style: italic;
+}
+
+.quiz-nav li {
+    margin: 0 0 3vh 8px;
 }
 
 
 
 .content-area {
     flex-grow: 1;
-    padding: 40px;
     background-color: white;
 }
 
-/*
-  ** THE KEY CSS RULE **
-  By default, hide all answer content divs.
-*/
 .answer-content {
     display: none;
 }
 
 .answer-content.active {
     display: block;
+    margin-top: 94px
 }
 
 .question-box {
     border: 1px solid #aaa;
-    margin: auto;
-    max-width: 100%;
+    margin: 0 0 0 4vw;
+    max-width: 70%;
+    min-width: 361px;
     margin-bottom: 48px;
 }
 
 .question-number {
     font-size: 1.25em;
-    font-weight: bolder;
+    font-weight: bold;
     background-color: #f2f4f4;
     border-bottom: 1px solid #aaa;
-    padding: 1vw 1.5vw;
+    padding: 16px 22px;
     margin: 0;
 }
 
 .question {
-    padding: 0.5vw 1.5vw;
+    margin: 32px 28px 32px;
     font-weight: bold;
 }
 
 .answer {
-    padding: 0.5vw 1.5vw;
-    font-weight: 525;
-    font-style: italic;
-}
-
-.answer em {
-    display: none;
-    font-weight: bold;
-    margin-right: 1vw;
+    margin: 32px 28px 32px;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
 }
 
 .answer-comment {
-    padding: 0.5vw 1.5vw;
-    font-style: italic;
+    margin: 32px 28px 32px;
 }
 
 .explanation {
-    padding: 0.5vw 1.5vw;
-    opacity: 0.75;
+    margin: 32px 28px 32px;
+    font-style: italic;
+    opacity: 0.90;
 }
 
 .answer-comment strong {
-    margin-right: 1vw;
+    margin-right: 8px;
 }
 
-hr {
-    margin: 0 32px;
-    opacity: 0.85 ;
-    border: none;
-    height: 1px;
-    background-color: #cccccc;
+.inline-text {
+    display: inline-block;
+    margin-right: 4vw;
+}
+
+input {
+    margin-right: 10px;
+}
+
+.quiz-header {
+    font-weight: normal;
+}
+
+.quiz-header span {
+    font-weight: bold;
 }
 
 @media (max-width: 768px) {
@@ -177,23 +187,20 @@ hr {
     .sidebar, .content-area, .question-box {
         width: 100%;
         min-width: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     .sidebar, .content-area {
-        padding: 4vw;
         box-sizing: border-box;
     }
 
     #default-message {
-        margin: 0;
+        margin: 0.25vw;
     }
 
     .sidebar {
         min-width: 100%;
-    }
-
-    .default, h2 .quiz-link {
-        margin-top: 32px;
     }
 
     .quiz-nav ul {
@@ -201,16 +208,29 @@ hr {
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        margin: 0 64px;
     }
 
-    .quiz-description {
-        margin: 0 0 4vw 0;
+    .quiz-nav li a.active-link {
+        border-left: none;
     }
+
+/*
+<!-- doesn't look good -->
+    a.active-link .quiz-description {
+        margin: 0 0 4vw 0;
+        font-style: italic;
+        border-bottom: solid #273540;
+    }
+*/
 
     .question, .answer, .explanation, .answer-comment {
-        text-align: left;
         padding: 0;
-        margin: 4vw;
+        margin: 6vw;
+    }
+
+    .answer {
+        padding-top: 3vh;
     }
 
     .question-number {
@@ -219,14 +239,19 @@ hr {
         margin: 0;
     }
 
+    .question-box {
+        width: 100%;
+        min-width: 90%;
+        margin: auto auto 4vh;
+    }
+
     .question-box img {
-    width: 64vw;
-    margin: 0 8vw;
+        width: 64vw;
+        margin: 0 8vw;
     }
 
     .inline-text {
-    display: inline-block;
-    margin-right: 8vw;
+        margin: 0 2vw 2vh;
     }
 }
 </style>
@@ -245,61 +270,61 @@ hr {
             <ul>
                 <li>
                     <a href="#" class="quiz-link" data-target="quiz1">
-                    Quiz#1 Voltage
+                    <span>Quiz#1 Voltage</span>
                     <p class="quiz-description">Science/Lab</p>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="quiz-link" data-target="quiz2">
-                    CW#1 Current
+                    <span>CW#1 Current</span>
                     <p class="quiz-description">Science/Lab</p>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="quiz-link" data-target="quiz3">
-                    HW#1 Resistance
+                    <span>HW#1 Resistance</span>
                     <p class="quiz-description">Science/Lab</p>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="quiz-link" data-target="quiz4">
-                    HW#2 Watts & Power
+                    <span>HW#2 Watts & Power</span>
                     <p class="quiz-description">Science/Lab</p>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="quiz-link" data-target="quiz5">
-                    Quiz#1 Pancreas
+                    <span>Quiz#1 Pancreas</span>
                     <p class="quiz-description">Supplemental Science</p>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="quiz-link" data-target="quiz6">
-                    CW#1 Adrenal
+                    <span>CW#1 Adrenal</span>
                     <p class="quiz-description">Supplemental Science</p>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="quiz-link" data-target="quiz7">
-                    HW#1 Melatonin
+                    <span>HW#1 Melatonin</span>
                     <p class="quiz-description">Supplemental Science</p>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="quiz-link" data-target="quiz8">
-                    Quiz#1 Female Reproductive System
+                    <span>Quiz#1 Female Reproductive System</span>
                     <p class="quiz-description">Health</p>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="quiz-link" data-target="quiz9">
-                    CW#1 Label the Female Reproductive System
+                    <span>CW#1 Label the Female Reproductive System</span>
                     <p class="quiz-description">Health</p>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="quiz-link" data-target="quiz10">
-                    HW#1 Male Reproductive System
+                    <span>HW#1 Male Reproductive System</span>
                     <p class="quiz-description">Health</p>
                     </a>
                 </li>
@@ -314,19 +339,19 @@ hr {
             <p>Check out the main page <a href="https://www.notma.org" target="_blank" rel="noopener noreferrer">here</a> (really cool Ma stuff)</p>
             <p>This is <strong>Certified Ma Moment™</strong></p>
             <p>Last year, there were 2 students who didn't join the Canvas for almost a semester and barely received any scores. So here's your chance.</p>
-            <p>And remember, \( F = ma \)</p>
+            <p>And remember, \( F = ma \) </p>
         </div>
             <div id="quiz1" class="answer-content">
 
-            <h2>Answers for Quiz#1 Voltage</h2>
+            <h2 class="quiz-header">Answers for <span>Quiz#1 Voltage</span></h2>
             <p class="inline-text"><strong>Science/Lab</strong></p>
             <p class="inline-text"><strong>Questions</strong> 10</p>
 
             <div class="question-box">
             <p class="question-number">Question 1</p>
                 <p class="question">The difference in electrical potential energy between two places is called?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>voltage</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>voltage</p>
                     <p class="explanation">Think of it like the height difference of a waterfall. This potential gives the water the ability to flow. Voltage is the "electrical height difference."</p>
             </div>
             
@@ -334,8 +359,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 2</p>
                 <p class="question">What 'flows' in a wire?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Electrons</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Electrons</p>
                     <p class="explanation">In metal conductors like wires, the electric current is the organized movement of negatively charged electrons.</p>
             </div>
             
@@ -343,8 +368,8 @@ hr {
             <div class="question-box"> 
             <p class="question-number">Question 3</p>
                 <p class="question">What is voltage?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>What pushes the free electrons around a circuit</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>What pushes the free electrons around a circuit</p>
                     <p class="explanation">If you imagine electrons as water in a pipe, voltage is the "pressure" from a pump that pushes the water along. Without voltage, the electrons would not move.</p>
             </div>
             
@@ -352,8 +377,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 4</p>
                 <p class="question">Define the potential difference?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>How much work can potentially be done by a circuit</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>How much work can potentially be done by a circuit</p>
                     <p class="explanation">A greater potential difference (voltage) allows more work to be done per unit of charge, resulting in a higher power output from the circuit. This relationship is described by the power formula \( P = \frac{V^2}{R} \).</p>
             </div>
             
@@ -361,8 +386,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 5</p>
                 <p class="question">How do aligned batteries affect voltage?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>More volts means more power</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>More volts means more power</p>
                     <p class="explanation">Aligning batteries in series (positive to negative) makes their voltages add up. This higher total voltage can deliver more power, as described by the formula \( P = \frac{V^2}{R} \).</p>
             </div>
             
@@ -370,8 +395,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 6</p>
                 <p class="question">Side by side batteries does what?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Lengthen the possible usage without increasing voltage.</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Lengthen the possible usage without increasing voltage.</p>
                     <p class="explanation">Placing batteries in parallel (positive to positive) increases the total capacity (Amp-hours). The voltage "push" does not get stronger, but it can last much longer.</p>
             </div>
             
@@ -379,8 +404,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 7</p>
                 <p class="question">Where does the term Volt come from?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Alessandro Volta</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Alessandro Volta</p>
                     <p class="explanation">The unit "Volt" is named in honor of Alessandro Volta, the Italian physicist who invented the first electrical battery.</p>
             </div>
             
@@ -388,8 +413,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 8</p>
                 <p class="question">What is the difference between volts and voltage?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Voltage is the pressure and Volts are the units to measure that pressure</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Voltage is the pressure and Volts are the units to measure that pressure</p>
                     <p class="explanation">"Voltage" is the concept, like "length." "Volts" are the units you measure it in, like "meters."</p>
             </div>
             
@@ -397,8 +422,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 9</p>
                 <p class="question">What is the socket voltage in Thailand?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>220V</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>220V</p>
                     <p class="explanation">This is the standard residential voltage set by the electrical grid in Thailand and many other parts of the world.</p>
             </div>
             
@@ -406,23 +431,23 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 10</p>
                 <p class="question">What is the voltage of US wall sockets?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>110V</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>110V</p>
                     <p class="explanation">While the modern standard is technically \( 120 \, \mathrm{V} \), it is commonly referred to as \( 110 \, \mathrm{V} \) in the United States.</p>
             </div>
         </div>
 
         <div id="quiz2" class="answer-content">
 
-            <h2>Answers for CW#1 Current</h2>
+            <h2 class="quiz-header">Answers for <span>CW#1 Current</span></h2>
             <p class="inline-text"><strong>Science/Lab</strong></p>
             <p class="inline-text"><strong>Questions</strong> 10</p>
 
             <div class="question-box">
             <p class="question-number">Question 1</p>
                 <p class="question">A closed path through which electrons can flow is ___.</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>a circuit</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>a circuit</p>
                     <p class="explanation">For electricity to flow continuously, it needs a complete, unbroken loop from the power source and back again. This closed path is called a circuit.</p>
             </div>
             
@@ -430,8 +455,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 2</p>
                 <p class="question">The flow of electrons through a wire or any conductor is called___.</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>current</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>current</p>
                     <p class="explanation">It is a measurement of how much electric charge is flowing past a point per second.</p>
             </div>
             
@@ -439,8 +464,8 @@ hr {
             <div class="question-box"> 
             <p class="question-number">Question 3</p>
                 <p class="question">Current is measured in ___.</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>amps</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>amps</p>
                     <p class="explanation">The standard unit for measuring electric current is the Ampere, usually shortened to "Amps" ( \( \mathrm{A} \) ).</p>
             </div>
             
@@ -448,8 +473,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 4</p>
                 <p class="question">Electrons flow from areas of ___ potential energy to areas of ___ potential energy.</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>higher, lower</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>higher, lower</p>
                     <p class="explanation">Like a ball rolling downhill, electrons naturally move from a state of high energy (the negative terminal) to a state of low energy (the positive terminal).</p>
             </div>
             
@@ -457,8 +482,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 5</p>
                 <p class="question">If the Voltage is increased and the resistance stays the same, Current will?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>increase</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>increase</p>
                     <p class="explanation">According to Ohm's Law, \(I = \frac{V}{R}\), current (\( \mathrm{I} \)) is directly proportional to voltage (V). Therefore, increasing the voltage while resistance stays the same will cause the current to increase.</p>
             </div>
             
@@ -466,8 +491,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 6</p>
                 <p class="question">If the Voltage stays the same and Resistance is increased, Current will?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>decrease</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>decrease</p>
                     <p class="explanation">According to Ohm's Law, \(I = \frac{V}{R}\), current (\( \mathrm{I} \)) is inversely proportional to resistance (R). Therefore, increasing the resistance while voltage stays the same will cause the current to decrease.</p>
             </div>
             
@@ -475,8 +500,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 7</p>
                 <p class="question">In a series circuit, which of the following is the same throughout the circuit?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Current</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Current</p>
                     <p class="explanation">A series circuit is like a single-lane road. The number of cars passing any point per minute must be the same everywhere. The current is constant.</p>
             </div>
             
@@ -484,17 +509,17 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 8</p>
                 <p class="question">What is current measured in?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>A (Amps)</p>
-                    <p class="explanation">The unit is the Ampere, and its official symbol in formulas and measurements is "\( \mathrm{A} \)".</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>A (Amps)</p>
+                    <p class="explanation">The unit is the Ampere, and its official symbol in formulas and measurements is \( \mathrm{A} \).</p>
             </div>
             
 
             <div class="question-box">
             <p class="question-number">Question 9</p>
                 <p class="question">What is the unit of power?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Watts</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Watts</p>
                     <p class="explanation">Electrical power, which is the rate at which energy is used, is measured in Watts (\( \mathrm{W} \)).</p>
             </div>
             
@@ -502,22 +527,22 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 10</p>
                 <p class="question">Which part of a circuit starts and stops the flow of electrical current?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>switch</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>switch</p>
                     <p class="explanation">A switch works by creating a deliberate break (opening) in the circuit to stop the flow or completing the path (closing) to allow it to flow.</p>
             </div>
         </div>
 
         <div id="quiz3" class="answer-content">
-            <h2>Answers for HW#1 Resistance</h2>
+            <h2 class="quiz-header">Answers for <span>HW#1 Resistance</span></h2>
             <p class="inline-text"><strong>Science/Lab</strong></p>
             <p class="inline-text"><strong>Questions</strong> 10</p>
 
             <div class="question-box">
             <p class="question-number">Question 1</p>
                 <p class="question">If a circuit has two resistors in series both are 4Ω, what is the total resistance of the circuit?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>8Ω</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>8Ω</p>
                     <p class="explanation">For resistors in series, the total resistance is the sum of the individual resistances. The formula is \(R_{total} = R_1 + R_2\), so the calculation is \(4\Omega + 4\Omega = 8\Omega\).</p>
             </div>
             
@@ -525,8 +550,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 2</p>
                 <p class="question">If a circuit has two resistors in parallel both are 4Ω, what is the total resistance of the circuit?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>2Ω</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>2Ω</p>
                     <p class="explanation">For two identical resistors in parallel, the total resistance is half the individual resistance. The general formula, \(\frac{1}{R_{total}} = \frac{1}{R_1} + \frac{1}{R_2}\), confirms that the total is \(2\Omega\).</p>
             </div>
             
@@ -534,8 +559,8 @@ hr {
             <div class="question-box"> 
             <p class="question-number">Question 3</p>
                 <p class="question">What effect do electrons flowing through a resistor have on the resistor?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>heat it up</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>heat it up</p>
                     <p class="explanation">The "friction" of electrons pushing through a resistive material converts electrical energy into heat. This is how toasters and electric heaters work.</p>
             </div>
             
@@ -543,8 +568,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 4</p>
                 <p class="question">As the length of a wire increases, the resistance of the wire will?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>increase</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>increase</p>
                     <p class="explanation">The longer the path, the more opposition the electrons face. Resistance is directly proportional to length.</p>
             </div>
             
@@ -552,8 +577,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 5</p>
                 <p class="question">As the diameter of a wire increases, the resistance of the wire will?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>decrease</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>decrease</p>
                     <p class="explanation">A thicker wire is like a wider highway; it allows more current to flow easily. Resistance decreases as the wire's area increases.</p>
             </div>
             
@@ -561,8 +586,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 6</p>
                 <p class="question">What is resistance measured in?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Ω (Ohms)</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Ω (Ohms)</p>
                     <p class="explanation">The standard unit for electrical resistance is the Ohm, represented by the Greek letter Omega ( \(\Omega \) ).</p>
             </div>
             
@@ -570,8 +595,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 7</p>
                 <p class="question">What is Resistance?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>The ability to reduce the flow of electrons</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>The ability to reduce the flow of electrons</p>
                     <p class="explanation">This is a great functional definition. Resistance is the measure of a material's opposition to the flow of electric current.</p>
             </div>
             
@@ -579,8 +604,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 8</p>
                 <p class="question">The mathematical relationship among Voltage, Current, and Resistance?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Ohm's Law</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Ohm's Law</p>
                     <p class="explanation">Ohm's Law is the fundamental principle connecting these three quantities, defined by the formula \(V = I \cdot R\).</p>
             </div>
             
@@ -588,8 +613,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 9</p>
                 <p class="question">Voltage divided by Current?   (V / I )</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Resistance</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Resistance</p>
                     <p class="explanation">This is a direct rearrangement of Ohm's Law. From \(V = I \cdot R\), dividing by current (I) gives you the formula for resistance: \(R = \frac{V}{I}\).</p>
             </div>
             
@@ -597,23 +622,23 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 10</p>
                 <p class="question">The resistance of a wires depends on ___.</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>the metal it is made from</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>the metal it is made from</p>
                     <p class="explanation">The resistance of a wire depends on four things: its material, length, thickness, and temperature.</p>
                     <p class="answer-comment"><strong>Ma note:</strong><em>Why isn't the answer "all of above" ??? I don't know.</em></p>
             </div>
         </div>
 
         <div id="quiz4" class="answer-content">
-            <h2>Answers for HW#2 Watts & Power</h2>
+            <h2 class="quiz-header">Answers for <span>HW#2 Watts & Power</span></h2>
             <p class="inline-text"><strong>Science/Lab</strong></p>
             <p class="inline-text"><strong>Questions</strong> 10</p>
 
             <div class="question-box">
             <p class="question-number">Question 1</p>
                 <p class="question">What is a watt?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>A unit of power</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>A unit of power</p>
                     <p class="explanation">A watt (\(W\)) is the standard unit of power, representing the rate at which energy is transferred or used. It is formally defined as one joule of energy per second.</p>
             </div>
             
@@ -621,8 +646,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 2</p>
                 <p class="question">How is power in watts calculated using voltage and current?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Power (W) = Voltage (V) × Current (A) </p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Power (W) = Voltage (V) × Current (A) </p>
                     <p class="explanation">This fundamental relationship is known as Watt's Law. The formula is \(P = V \cdot I\), where power (\(P\)) in watts is the product of voltage (\(V\)) and current (\(I\)).</p>
             </div>
             
@@ -630,8 +655,8 @@ hr {
             <div class="question-box"> 
             <p class="question-number">Question 3</p>
                 <p class="question">In which scenario would you be using watts to measure power?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Calculating the energy needed to power a lightbulb</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Calculating the energy needed to power a lightbulb</p>
                     <p class="explanation">Power, measured in watts, quantifies the rate at which an electrical device, such as a lightbulb, consumes energy.</p>
             </div>
             
@@ -639,8 +664,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 4</p>
                 <p class="question">If a device operates at 10 volts and 2 amperes, what is its power consumption in watts?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>20 watts</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>20 watts</p>
                     <p class="explanation">Using the power formula \(P = V \cdot I\), the calculation is \(10V \cdot 2A = 20W\).</p>
             </div>
             
@@ -648,8 +673,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 5</p>
                 <p class="question">What is the practical application of measuring power in watts for household appliances?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>To understand the energy use of the appliance</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>To understand the energy use of the appliance</p>
                     <p class="explanation">The wattage of an appliance indicates its rate of electricity consumption. This information is crucial for estimating how much energy it will use over time, which directly affects electricity costs.</p>
             </div>
             
@@ -657,8 +682,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 6</p>
                 <p class="question">If a light bulb uses 60 watts of power and operates for 2 hours, how much energy does it consume?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>120 watt-hours</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>120 watt-hours</p>
                     <p class="explanation">Energy consumption is found by multiplying power by time. Using the formula \(E = P \cdot t\), the calculation is \(60W \cdot 2h = 120Wh\).</p>
             </div>
             
@@ -666,8 +691,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 7</p>
                 <p class="question">How does understanding watts help in reducing electricity bills?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>By choosing appliances that require lower power to use</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>By choosing appliances that require lower power to use</p>
                     <p class="explanation">Since electricity bills are based on total energy consumption (often in kilowatt-hours), selecting appliances with lower wattage ratings for the same task means they use less energy over time, leading to lower bills.</p>
             </div>
             
@@ -675,8 +700,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 8</p>
                 <p class="question">If a device operates at 5 volts and 3 amperes, what is its power consumption in watts?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>15 watts</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>15 watts</p>
                     <p class="explanation">Using the power formula \(P = V \cdot I\), the calculation is \(5V \cdot 3A = 15W\).</p>
             </div>
             
@@ -684,8 +709,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 9</p>
                 <p class="question">What is the significance of a device having a high wattage?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>It uses more energy</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>It uses more energy</p>
                     <p class="explanation">A higher wattage rating signifies that a device consumes energy at a faster rate. Over the same period, a high-wattage device will use more total energy than a low-wattage device.</p>
             </div>
             
@@ -693,22 +718,22 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 10</p>
                 <p class="question">If a heater uses 1500 watts of power and operates for 3 hours, how much energy does it consume?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>4500 watt-hours</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>4500 watt-hours</p>
                     <p class="explanation">Energy consumption is the product of power and time (\(E = P \cdot t\)). The calculation is \(1500W \cdot 3h = 4500Wh\), which is also equal to 4.5 kilowatt-hours (kWh).</p>
             </div>
         </div>
 
         <div id="quiz5" class="answer-content">
-            <h2>Answers for Quiz#1 Pancreas</h2>
+            <h2 class="quiz-header">Answers for <span>Quiz#1 Pancreas</span></h2>
             <p class="inline-text"><strong>Supplemental Science</strong></p>
             <p class="inline-text"><strong>Questions</strong> 5</p>
 
             <div class="question-box">
             <p class="question-number">Question 1</p>
                 <p class="question">Diabetes Type I</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Insulin is not produced</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Insulin is not produced</p>
                     <p class="explanation">Type 1 diabetes is an autoimmune disorder where the body's immune system destroys the insulin-producing beta cells in the pancreas, resulting in a complete lack of insulin.</p>
             </div>
             
@@ -716,8 +741,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 2</p>
                 <p class="question">Hormone that causes blood sugar to be lowered?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Insulin</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Insulin</p>
                     <p class="explanation">Insulin acts like a key, signaling cells throughout the body to absorb glucose from the bloodstream to be used for energy, which effectively lowers blood sugar levels.</p>
             </div>
             
@@ -725,8 +750,8 @@ hr {
             <div class="question-box"> 
             <p class="question-number">Question 3</p>
                 <p class="question">Hormone that causes blood sugar to be raised?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Glucagon</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Glucagon</p>
                     <p class="explanation">When blood sugar is low, glucagon is the hormone that signals the liver to break down its stored form of glucose (glycogen) and release it into the bloodstream.</p>
             </div>
             
@@ -734,8 +759,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 4</p>
                 <p class="question">Monosaccharide that is found in blood that cells can use for energy?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Glucose</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Glucose</p>
                     <p class="explanation">Glucose is the body's primary fuel. It is a simple sugar (monosaccharide) that circulates in the blood and is used by cells to produce energy through cellular respiration.</p>
             </div>
             
@@ -743,22 +768,22 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 5</p>
                 <p class="question">Gland that secretes hormones that regulate blood glucose?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Pancreas</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Pancreas</p>
                     <p class="explanation">The pancreas is the primary gland for blood sugar control, as it produces and secretes both insulin (to lower blood sugar) and glucagon (to raise blood sugar) from specialized cells.</p>
             </div>
         </div>
 
         <div id="quiz6" class="answer-content">
-            <h2>Answers for CW#1 Adrenal</h2>
+            <h2 class="quiz-header">Answers for <span>CW#1 Adrenal</span></h2>
             <p class="inline-text"><strong>Supplemental Science</strong></p>
             <p class="inline-text"><strong>Questions</strong> 5</p>
 
             <div class="question-box">
             <p class="question-number">Question 1</p>
                 <p class="question">What does the adrenal gland look like?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Small, triangular gland, divided into regions.</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Small, triangular gland, divided into regions.</p>
                     <p class="explanation">Each adrenal gland is a small, triangular-shaped organ that sits on top of a kidney. It is divided into two distinct parts: the outer adrenal cortex and the inner adrenal medulla, each producing different hormones.</p>
             </div>
             
@@ -766,8 +791,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 2</p>
                 <p class="question">Differences between Epinephrine and Norepinephrine?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Epinephrine leads to greater cardiac output.</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Epinephrine leads to greater cardiac output.</p>
                     <p class="explanation">While both are 'fight-or-flight' hormones, epinephrine (adrenaline) more strongly stimulates the heart's beta receptors, leading to more forceful contractions and a greater increase in cardiac output than norepinephrine.</p>
             </div>
             
@@ -775,8 +800,8 @@ hr {
             <div class="question-box"> 
             <p class="question-number">Question 3</p>
                 <p class="question">Which of the following about cortisol is not true?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>secretion is elevated during sleep</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>secretion is elevated during sleep</p>
                     <p class="explanation">Cortisol levels follow a daily rhythm. They are at their lowest during the first few hours of sleep and peak shortly after waking up to promote alertness. Therefore, the statement that its secretion is elevated during sleep is not true.</p>
             </div>
             
@@ -784,8 +809,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 4</p>
                 <p class="question">The medulla releases which of the two hormones when stimulated by the sympathetic nervous system?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Noradrenaline, Adrenaline</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Noradrenaline, Adrenaline</p>
                     <p class="explanation">The adrenal medulla is directly linked to the sympathetic nervous system. When the 'fight-or-flight' response is triggered, the medulla releases the hormones adrenaline (epinephrine) and noradrenaline (norepinephrine).</p>
             </div>
             
@@ -793,22 +818,22 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 5</p>
                 <p class="question">Where are the adrenal glands located?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>above the kidneys</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>above the kidneys</p>
                     <p class="explanation">The adrenal glands are part of the endocrine system and are located on the top of each kidney in the retroperitoneal space. Their name even means "near the kidney."</p>
             </div>
         </div>
 
         <div id="quiz7" class="answer-content">
-            <h2>Answers for HW#1 Melatonin</h2>
+            <h2 class="quiz-header">Answers for <span>HW#1 Melatonin</span></h2>
             <p class="inline-text"><strong>Supplemental Science</strong></p>
             <p class="inline-text"><strong>Questions</strong> 10</p>
 
             <div class="question-box">
             <p class="question-number">Question 1</p>
                 <p class="question">What is the primary role of melatonin in animals?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Regulate sleep-wake cycles</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Regulate sleep-wake cycles</p>
                     <p class="explanation">Melatonin is best known as the 'hormone of darkness.' Its primary function is to signal to the body that it is nighttime, helping to regulate the timing of sleep and wakefulness (the circadian rhythm).</p>
                     <p class="answer-comment"><strong>Ma note:</strong><em>Questions 1 and 3 are identical.</em></p>
             </div>
@@ -817,8 +842,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 2</p>
                 <p class="question">Melatonin production is inhibited when___.</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Light is received through the eyes</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Light is received through the eyes</p>
                     <p class="explanation">The pineal gland's production of melatonin is directly controlled by light. When light enters the eyes, it signals the brain to suppress melatonin secretion, which helps promote wakefulness during the day.</p>
                     <p class="answer-comment"><strong>Ma note:</strong><em>Questions 2 and 4 are identical.</em></p>
             </div>
@@ -827,8 +852,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 3</p>
                 <p class="question">What is the primary role of melatonin in animals?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Regulate sleep-wake cycles</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Regulate sleep-wake cycles</p>
                     <p class="explanation">Melatonin is best known as the 'hormone of darkness.' Its primary function is to signal to the body that it is nighttime, helping to regulate the timing of sleep and wakefulness (the circadian rhythm).</p>
                     <p class="answer-comment"><strong>Ma note:</strong><em>Questions 1 and 3 are identical.</em></p>
             </div>
@@ -837,8 +862,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 4</p>
                 <p class="question">Melatonin production is inhibited when___.</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Light is received through the eyes</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Light is received through the eyes</p>
                     <p class="explanation">The pineal gland's production of melatonin is directly controlled by light. When light enters the eyes, it signals the brain to suppress melatonin secretion, which helps promote wakefulness during the day.</p>
                     <p class="answer-comment"><strong>Ma note:</strong><em>Questions 2 and 4 are identical.</em></p>
             </div>
@@ -847,8 +872,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 5</p>
                 <p class="question">Which type of light has the most powerful effect on the sleep-wake internal body clock?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Blue light</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Blue light</p>
                     <p class="explanation">Specialized cells in the eye's retina that regulate our internal clock are most sensitive to light in the blue wavelength range. Exposure to this type of light, common from screens, is the most powerful signal for inhibiting melatonin.</p>
             </div>
             
@@ -856,8 +881,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 6</p>
                 <p class="question">Circadian rhythms are natural processes that regulate ___.</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Sleep wake cycles</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Sleep wake cycles</p>
                     <p class="explanation">Circadian rhythms are the 24-hour internal clocks that regulate many of our body's essential functions and processes. The most important and well-known circadian rhythm is the sleep-wake cycle.</p>
             </div>
             
@@ -865,8 +890,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 7</p>
                 <p class="question">What happens to melatonin levels during the day?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>They decrease</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>They decrease</p>
                     <p class="explanation">Due to the strong inhibitory effect of daylight, the body's natural production of melatonin is very low during the daytime. Levels only begin to rise as darkness falls in the evening.</p>
             </div>
             
@@ -874,8 +899,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 8</p>
                 <p class="question">How does darkness affect melatonin production?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>It increases melatonin production</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>It increases melatonin production</p>
                     <p class="explanation">In the absence of light, the brain's internal clock (the SCN) signals the pineal gland to begin producing and secreting melatonin, which helps induce sleepiness and prepare the body for rest.</p>
             </div>
             
@@ -883,8 +908,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 9</p>
                 <p class="question">What is a malfunction of the pineal gland? How would this affect you?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Less melatonin secretion. It would affect your sleeping patterns and may cause you to suffer from insomnia.</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Less melatonin secretion. It would affect your sleeping patterns and may cause you to suffer from insomnia.</p>
                     <p class="explanation">A malfunctioning pineal gland may produce insufficient melatonin. This disrupts the body's internal clock and its ability to time sleep correctly, which can lead to sleep pattern disorders like insomnia.</p>
             </div>
             
@@ -892,23 +917,23 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 10</p>
                 <p class="question">What is the possible side effect of taking too much melatonin?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Drowsiness</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Drowsiness</p>
                     <p class="explanation">The most common side effect of taking too much melatonin is next-day drowsiness or grogginess, as the hormone's sleep-inducing effects have not fully worn off. It can also cause dizziness or headaches.</p>
             </div>
         </div>
         
 
         <div id="quiz8" class="answer-content">
-            <h2>Answers for Quiz#1 Female Reproductive System</h2>
+            <h2 class="quiz-header">Answers for <span>Quiz#1 Female Reproductive System</span></h2>
             <p class="inline-text"><strong>Health</strong></p>
             <p class="inline-text"><strong>Questions</strong> 10</p>
 
             <div class="question-box">
             <p class="question-number">Question 1</p>
                 <p class="question">Which hormone causes the egg to ripen in the ovary?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>FSH</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>FSH</p>
                     <p class="explanation">Follicle-Stimulating Hormone (FSH), released by the pituitary gland, directly stimulates the growth and maturation of follicles within the ovaries. Each follicle contains a developing egg.</p>
             </div>
             
@@ -916,8 +941,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 2</p>
                 <p class="question">Which hormone spikes and consequently causes the release of the egg into the uterus?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>LH</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>LH</p>
                     <p class="explanation">A sharp spike in Luteinizing Hormone (LH) from the pituitary gland is the direct trigger for ovulation—the moment the mature egg is released from the ovary into the fallopian tube.</p>
                     <p class="answer-comment"><strong>Ma note:</strong><em>The egg is technically released into the fallopian tube, not directly into the uterus.</em></p>
             </div>
@@ -926,8 +951,8 @@ hr {
             <div class="question-box"> 
             <p class="question-number">Question 3</p>
                 <p class="question">What two hormones does the pituitary gland produce?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>FSH & LH</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>FSH & LH</p>
                     <p class="explanation">In the context of reproduction, the anterior pituitary gland produces two critical hormones that act on the ovaries: Follicle-Stimulating Hormone (FSH) and Luteinizing Hormone (LH).</p>
             </div>
             
@@ -935,8 +960,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 4</p>
                 <p class="question">What is responsible for creating the hormones estrogen & progesterone?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>The ovaries</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>The ovaries</p>
                     <p class="explanation">The ovaries are the primary production site for female sex hormones. Estrogen is produced by the developing follicle, and after ovulation, the remnant of the follicle (the corpus luteum) produces progesterone.</p>
             </div>
             
@@ -944,8 +969,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 5</p>
                 <p class="question">What hormone(s) is responsible for thickening the lining of the uterus?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>estrogen</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>estrogen</p>
                     <p class="explanation">In the first half of the menstrual cycle, rising levels of estrogen are responsible for rebuilding the uterine lining (endometrium) and causing it to thicken in preparation for a potential pregnancy.</p>
             </div>
             
@@ -953,8 +978,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 6</p>
                 <p class="question">What is a hormone?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>A Chemical messenger</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>A Chemical messenger</p>
                     <p class="explanation">Hormones are chemical messengers produced by endocrine glands. They travel through the bloodstream to target tissues and organs to regulate most of the body's major systems.</p>
             </div>
             
@@ -962,8 +987,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 7</p>
                 <p class="question">Follicle Stimulating Hormones function is to?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>mature eggs in the ovaries</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>mature eggs in the ovaries</p>
                     <p class="explanation">The primary function of Follicle-Stimulating Hormone (FSH) is to stimulate the development of ovarian follicles. Typically, one of these follicles will become dominant and mature fully each cycle.</p>
             </div>
             
@@ -971,8 +996,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 8</p>
                 <p class="question">Luteinizing Hormones main role is to?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>release the egg cell</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>release the egg cell</p>
                     <p class="explanation">The main role of the sharp surge in Luteinizing Hormone (LH) is to cause the mature ovarian follicle to rupture and release its egg, a process known as ovulation.</p>
             </div>
             
@@ -980,8 +1005,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 9</p>
                 <p class="question">The two hormones that maintain the lining of the uterus are?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Progesterone and estrogen</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Progesterone and estrogen</p>
                     <p class="explanation">After ovulation, both estrogen and progesterone work together to maintain the thickened, nutrient-rich uterine lining. Progesterone is especially critical for making the lining stable and receptive to implantation.</p>
             </div>
             
@@ -989,14 +1014,14 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 10</p>
                 <p class="question">What is the role of FSH (follicle-stimulating hormone)?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Causes an egg to mature in an ovary. Stimulates the ovaries to release estrogen</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Causes an egg to mature in an ovary. Stimulates the ovaries to release estrogen</p>
                     <p class="explanation">FSH has two key interconnected roles: it causes an egg to mature within an ovarian follicle, and it simultaneously stimulates that growing follicle to produce and release estrogen.</p>
             </div>
         </div>
 
         <div id="quiz9" class="answer-content">
-            <h2>Answers for CW#1 Label the Female Reproductive System</h2>
+            <h2 class="quiz-header">Answers for <span>CW#1 Label the Female Reproductive System</span></h2>
             <p class="inline-text"><strong>Health</strong></p>
             <p class="inline-text"><strong>Questions</strong> 10</p>
 
@@ -1004,8 +1029,8 @@ hr {
             <p class="question-number">Question 1</p>
                 <p class="question">In the diagram representing the menstrual cycle shown, when does ovulation take place?</p>
                 <img src="https://notma.org/img/canvas/CW.1_Q1.png" alt="">
-                <hr>
-                    <p class="answer"><em>Answer:</em>between day 12 and 16</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>between day 12 and 16</p>
                     <p class="explanation">In a typical 28-day menstrual cycle, a surge of Luteinizing Hormone (LH) triggers ovulation around day 14. Therefore, the period between days 12 and 16 is the most common time for the egg to be released.</p>
             </div>
             
@@ -1014,8 +1039,8 @@ hr {
             <p class="question-number">Question 2</p>
                 <p class="question">The diagram shows the female reproductive system. The part labelled B is called?</p>
                 <img src="https://notma.org/img/canvas/CW.1_Q2.png" alt="">
-                <hr>
-                    <p class="answer"><em>Answer:</em>the ovary</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>the ovary</p>
                     <p class="explanation">The ovaries are the primary female reproductive organs. They are responsible for producing, storing, and releasing eggs (ova) and also secrete the key hormones estrogen and progesterone.</p>
             </div>
             
@@ -1024,8 +1049,8 @@ hr {
             <p class="question-number">Question 3</p>
                 <p class="question">The diagram shows the female reproductive system. The part labelled A is called?</p>
                 <img src="https://notma.org/img/canvas/CW.1_Q3.png" alt="">
-                <hr>
-                    <p class="answer"><em>Answer:</em>the womb</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>the womb</p>
                     <p class="explanation">The womb, more formally known as the uterus, is the muscular organ where a fertilized egg implants. It provides a safe and nourishing environment for a fetus to develop during pregnancy.</p>
             </div>
             
@@ -1033,8 +1058,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 4</p>
                 <p class="question">The part of the female reproductive system where fertilization takes place?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Fallopian Tubes</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Fallopian Tubes</p>
                     <p class="explanation">After an egg is released from the ovary, it travels into the fallopian tube. It is within this tube that fertilization—the fusion of the egg and sperm—most commonly occurs.</p>
             </div>
             
@@ -1043,8 +1068,8 @@ hr {
             <p class="question-number">Question 5</p>
                 <p class="question">Identify part 3</p>
                 <img src="https://notma.org/img/canvas/CW.1_Q5.png" alt="">
-                <hr>
-                    <p class="answer"><em>Answer:</em>uterus</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>uterus</p>
                     <p class="explanation">Assuming part 3 is the uterus, its main function is to accept a fertilized egg and provide the site for the fetus to grow and develop until birth.</p>
             </div>
             
@@ -1052,8 +1077,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 6</p>
                 <p class="question">The small hair-like projection found inside the Fallopian tubes are called what?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>cilia</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>cilia</p>
                     <p class="explanation">The inner surface of the fallopian tubes is lined with cilia, which are microscopic, hair-like structures that move in a coordinated, wave-like motion.</p>
             </div>
             
@@ -1061,8 +1086,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 7</p>
                 <p class="question">What is the purpose of cilia?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>guide the egg through the Fallopian tube into the uterus</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>guide the egg through the Fallopian tube into the uterus</p>
                     <p class="explanation">The constant, gentle sweeping motion of the cilia creates a current that actively guides the egg from the ovary end of the fallopian tube down towards the uterus.</p>
             </div>
             
@@ -1070,8 +1095,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 8</p>
                 <p class="question">What is the function of the uterus?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Place for a baby to grow</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Place for a baby to grow</p>
                     <p class="explanation">The primary function of the uterus is to nurture a developing fetus. It is the place where a fertilized egg implants and a baby grows for nine months.</p>
             </div>
             
@@ -1080,8 +1105,8 @@ hr {
             <p class="question-number">Question 9</p>
                 <p class="question">Structure 2 is the ___?</p>
                 <img src="https://notma.org/img/canvas/CW.1_Q5.png" alt="">
-                <hr>
-                    <p class="answer"><em>Answer:</em>cervix</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>cervix</p>
                     <p class="explanation">Assuming structure 2 is the cervix, it is the lower, narrow part of the uterus that connects to the vagina. It acts as a gateway, opening and closing at different times in the cycle.</p>
             </div>
             
@@ -1089,15 +1114,15 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 10</p>
                 <p class="question">How frequently do ovaries release an egg?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Once a month.</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Once a month.</p>
                     <p class="explanation">On average, the process of the menstrual cycle—including follicular development and ovulation—results in the release of one mature egg from an ovary approximately once every month.</p>
             </div>
             
         </div>
 
         <div id="quiz10" class="answer-content">
-            <h2>Answers for HW#1 Male Reproductive System</h2>
+            <h2 class="quiz-header">Answers for <span>HW#1 Male Reproductive System</span></h2>
             <p class="inline-text"><strong>Health</strong></p>
             <p class="inline-text"><strong>Questions</strong> 10</p>
 
@@ -1105,8 +1130,8 @@ hr {
             <p class="question-number">Question 1</p>
                 <p class="question">What is the function of the organ shown in the picture?</p>
                 <img src="https://notma.org/img/canvas/HW.1_Q1.png" alt="">
-                <hr>
-                    <p class="answer"><em>Answer:</em>used to cool down the temperature in the testes</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>used to cool down the temperature in the testes</p>
                     <p class="explanation">Assuming the organ shown is the scrotum, its primary function is thermoregulation. It holds the testes outside the main body cavity to maintain a temperature slightly lower than core body temperature, which is essential for healthy sperm production.</p>
             </div>
             
@@ -1114,8 +1139,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 2</p>
                 <p class="question">The male reproductive organs that produce sperm and testosterone?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Testicles</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Testicles</p>
                     <p class="explanation">The testicles (or testes) are the primary male gonads. They are responsible for the dual functions of producing sperm cells (spermatogenesis) and secreting testosterone, the principal male sex hormone.</p>
             </div>
             
@@ -1123,8 +1148,8 @@ hr {
             <div class="question-box"> 
             <p class="question-number">Question 3</p>
                 <p class="question">The skin covered sac that surround the testes?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Scrotum</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Scrotum</p>
                     <p class="explanation">The scrotum is the sac of skin and muscle that contains the testicles. In addition to protecting them, its main role is to regulate their temperature, keeping them cool enough for sperm production.</p>
             </div>
             
@@ -1133,8 +1158,8 @@ hr {
             <p class="question-number">Question 4</p>
                 <p class="question">Once sperm are made they move into this coiled tube?</p>
                 <img src="https://notma.org/img/canvas/HW.1_Q4.png" alt="">
-                <hr>
-                    <p class="answer"><em>Answer:</em>Epididymis</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Epididymis</p>
                     <p class="explanation">The epididymis is a long, tightly coiled tube resting on the back of each testicle. Immature sperm, produced in the testes, travel to the epididymis to mature and be stored.</p>
             </div>
             
@@ -1142,8 +1167,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 5</p>
                 <p class="question">About how many sperm are ejaculated under normal circumstances?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Millions</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Millions</p>
                     <p class="explanation">A normal, healthy ejaculate is highly concentrated with sperm, typically containing anywhere from 40 million to over 300 million sperm cells to maximize the chance of fertilization.</p>
             </div>
             
@@ -1151,8 +1176,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 6</p>
                 <p class="question">The process of making new sperm is called?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>spermatogenesis</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>spermatogenesis</p>
                     <p class="explanation">Spermatogenesis is the specific biological term for the complex process of producing mature sperm from precursor cells within the testes.</p>
             </div>
             
@@ -1160,8 +1185,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 7</p>
                 <p class="question">Sperm are formed in the ___?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>seminiferous tubules</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>seminiferous tubules</p>
                     <p class="explanation">The seminiferous tubules are the network of tiny tubes located within the testes. They are the precise anatomical location where the process of spermatogenesis occurs.</p>
             </div>
             
@@ -1169,8 +1194,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 8</p>
                 <p class="question">The two male reproductive organs that produce most of the fluids that make up semen are called?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>Seminal Vesicle & Prostate</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Seminal Vesicle & Prostate</p>
                     <p class="explanation">While the testes produce the sperm, the fluid portion of semen is largely produced by two accessory glands: the seminal vesicles (providing fructose for energy) and the prostate gland (providing a protective, enzymatic fluid).</p>
             </div>
             
@@ -1178,8 +1203,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 9</p>
                 <p class="question">The primary male hormone is ___?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>testosterone</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>testosterone</p>
                     <p class="explanation">Testosterone is the primary male sex hormone. It is essential for the development of male reproductive tissues and secondary sexual characteristics like increased muscle mass, bone density, and body hair growth.</p>
             </div>
             
@@ -1187,8 +1212,8 @@ hr {
             <div class="question-box">
             <p class="question-number">Question 10</p>
                 <p class="question">The duct that propels live sperm toward ejaculation is the ___?</p>
-                <hr>
-                    <p class="answer"><em>Answer:</em>vas deferens</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>vas deferens</p>
                     <p class="explanation">The vas deferens is the long, muscular duct that carries mature sperm from the epididymis up into the body cavity, where it eventually meets the ejaculatory duct in preparation for ejaculation.</p>
             </div>
             
