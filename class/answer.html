@@ -36,7 +36,7 @@ body {
 
 .sidebar {
     width: 256px;
-    margin: 48px 0 0 4vw;
+    margin: 48px 0 0 96px;
     background-color: #ffffff;
     display: flex;
     flex-shrink: 0;
@@ -68,7 +68,7 @@ body {
 
 img {
     width: 256px;
-    margin-left: 86px;
+    margin-left: 8vw;
 }
 
 
@@ -115,7 +115,7 @@ img {
 .question-box {
     border: 1px solid #aaa;
     margin: 0 0 0 4vw;
-    max-width: 70%;
+    max-width: 80%;
     min-width: 361px;
     margin-bottom: 48px;
 }
@@ -147,7 +147,8 @@ img {
 .explanation {
     margin: 32px 28px 32px;
     font-style: italic;
-    opacity: 0.90;
+    line-height: 150%;
+    opacity: 0.75;
 }
 
 .answer-comment strong {
@@ -156,7 +157,7 @@ img {
 
 .inline-text {
     display: inline-block;
-    margin-right: 4vw;
+    margin-left: 4vw;
 }
 
 input {
@@ -169,10 +170,6 @@ input {
 
 .quiz-header span {
     font-weight: bold;
-}
-
-#default-message {
-    margin-right: 4vw;
 }
 
 @media (max-width: 768px) {
@@ -200,7 +197,7 @@ input {
     }
 
     #default-message {
-        margin: 2vw;
+        margin: 0 2vw;
     }
 
     .sidebar {
@@ -231,6 +228,7 @@ input {
     .question, .answer, .explanation, .answer-comment {
         padding: 0;
         margin: 6vw;
+        line-height: 125%;
     }
 
     .answer {
@@ -273,61 +271,61 @@ input {
         <nav class="quiz-nav">
             <ul>
                 <li>
-                    <a href="#" class="quiz-link" data-target="quiz1">
+                    <a href="#quiz1" class="quiz-link" data-target="quiz1">
                     <span>Quiz#1 Voltage</span>
                     <p class="quiz-description">Science/Lab</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="quiz-link" data-target="quiz2">
+                    <a href="#quiz2" class="quiz-link" data-target="quiz2">
                     <span>CW#1 Current</span>
                     <p class="quiz-description">Science/Lab</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="quiz-link" data-target="quiz3">
+                    <a href="#quiz3" class="quiz-link" data-target="quiz3">
                     <span>HW#1 Resistance</span>
                     <p class="quiz-description">Science/Lab</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="quiz-link" data-target="quiz4">
+                    <a href="#quiz4" class="quiz-link" data-target="quiz4">
                     <span>HW#2 Watts & Power</span>
                     <p class="quiz-description">Science/Lab</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="quiz-link" data-target="quiz5">
+                    <a href="#quiz5" class="quiz-link" data-target="quiz5">
                     <span>Quiz#1 Pancreas</span>
                     <p class="quiz-description">Supplemental Science</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="quiz-link" data-target="quiz6">
+                    <a href="#quiz6" class="quiz-link" data-target="quiz6">
                     <span>CW#1 Adrenal</span>
                     <p class="quiz-description">Supplemental Science</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="quiz-link" data-target="quiz7">
+                    <a href="#quiz7" class="quiz-link" data-target="quiz7">
                     <span>HW#1 Melatonin</span>
                     <p class="quiz-description">Supplemental Science</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="quiz-link" data-target="quiz8">
+                    <a href="#quiz8" class="quiz-link" data-target="quiz8">
                     <span>Quiz#1 Female Reproductive System</span>
                     <p class="quiz-description">Health</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="quiz-link" data-target="quiz9">
+                    <a href="#quiz9" class="quiz-link" data-target="quiz9">
                     <span>CW#1 Label the Female Reproductive System</span>
                     <p class="quiz-description">Health</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="quiz-link" data-target="quiz10">
+                    <a href="#quiz10" class="quiz-link" data-target="quiz10">
                     <span>HW#1 Male Reproductive System</span>
                     <p class="quiz-description">Health</p>
                     </a>
@@ -470,7 +468,7 @@ input {
                 <p class="question">Current is measured in ___.</p>
                 
                     <p class="answer"><input type="radio" disabled checked/>amps</p>
-                    <p class="explanation">The standard unit for measuring electric current is the Ampere, usually shortened to "Amps" ( \( \mathrm{A} \) ).</p>
+                    <p class="explanation">The standard unit for measuring electric current is the Ampere, usually shortened to "Amps" (\( \mathrm{A} \)).</p>
             </div>
             
 
@@ -488,7 +486,7 @@ input {
                 <p class="question">If the Voltage is increased and the resistance stays the same, Current will?</p>
                 
                     <p class="answer"><input type="radio" disabled checked/>increase</p>
-                    <p class="explanation">According to Ohm's Law, \(I = \frac{V}{R}\), current (\( \mathrm{I} \)) is directly proportional to voltage (V). Therefore, increasing the voltage while resistance stays the same will cause the current to increase.</p>
+                    <p class="explanation">According to Ohm's Law, \(I = \frac{V}{R}\), current (\( \mathrm{I} \)) is directly proportional to voltage (\( \mathrm{V} \)). Therefore, increasing the voltage while resistance stays the same will cause the current to increase.</p>
             </div>
             
 
@@ -497,7 +495,7 @@ input {
                 <p class="question">If the Voltage stays the same and Resistance is increased, Current will?</p>
                 
                     <p class="answer"><input type="radio" disabled checked/>decrease</p>
-                    <p class="explanation">According to Ohm's Law, \(I = \frac{V}{R}\), current (\( \mathrm{I} \)) is inversely proportional to resistance (R). Therefore, increasing the resistance while voltage stays the same will cause the current to decrease.</p>
+                    <p class="explanation">According to Ohm's Law, \(I = \frac{V}{R}\), current (\( \mathrm{I} \)) is inversely proportional to resistance (\( \mathrm{R} \)). Therefore, increasing the resistance while voltage stays the same will cause the current to decrease.</p>
             </div>
             
 
@@ -592,7 +590,7 @@ input {
                 <p class="question">What is resistance measured in?</p>
                 
                     <p class="answer"><input type="radio" disabled checked/>Ω (Ohms)</p>
-                    <p class="explanation">The standard unit for electrical resistance is the Ohm, represented by the Greek letter Omega ( \(\Omega \) ).</p>
+                    <p class="explanation">The standard unit for electrical resistance is the Ohm, represented by the Greek letter Omega (\(\Omega \)).</p>
             </div>
             
 
@@ -610,7 +608,7 @@ input {
                 <p class="question">The mathematical relationship among Voltage, Current, and Resistance?</p>
                 
                     <p class="answer"><input type="radio" disabled checked/>Ohm's Law</p>
-                    <p class="explanation">Ohm's Law is the fundamental principle connecting these three quantities, defined by the formula \(V = I \cdot R\).</p>
+                    <p class="explanation">Ohm's Law is the fundamental principle connecting these three quantities, defined by the formula: \(V = I \cdot R\).</p>
             </div>
             
 
@@ -643,7 +641,7 @@ input {
                 <p class="question">What is a watt?</p>
                 
                     <p class="answer"><input type="radio" disabled checked/>A unit of power</p>
-                    <p class="explanation">A watt (\(W\)) is the standard unit of power, representing the rate at which energy is transferred or used. It is formally defined as one joule of energy per second.</p>
+                    <p class="explanation">A watt \( \mathrm{W} \) is the standard unit of power, representing the rate at which energy is transferred or used. It is formally defined as one joule of energy per second.</p>
             </div>
             
 
@@ -652,7 +650,7 @@ input {
                 <p class="question">How is power in watts calculated using voltage and current?</p>
                 
                     <p class="answer"><input type="radio" disabled checked/>Power (W) = Voltage (V) × Current (A) </p>
-                    <p class="explanation">This fundamental relationship is known as Watt's Law. The formula is \(P = V \cdot I\), where power (\(P\)) in watts is the product of voltage (\(V\)) and current (\(I\)).</p>
+                    <p class="explanation">This fundamental relationship is known as Watt's Law. The formula is \(P = V \cdot I\), where power \( \mathrm{P} \) in watts is the product of voltage \( \mathrm{V} \) and current \( \mathrm{I} \).</p>
             </div>
             
 
@@ -1230,44 +1228,47 @@ input {
 
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 <script>
-    
 document.addEventListener('DOMContentLoaded', () => {
 
-    
     const quizLinks = document.querySelectorAll('.quiz-link');
-
-    
     const answerContents = document.querySelectorAll('.answer-content');
 
-   
-    const defaultMessage = document.getElementById('default-message');
-
-    
     quizLinks.forEach(link => {
         link.addEventListener('click', (event) => {
-            
             event.preventDefault();
 
-            
+            // --- This is your existing code for switching content ---
             quizLinks.forEach(l => l.classList.remove('active-link'));
-            
             link.classList.add('active-link');
 
-
-            
             const targetId = link.getAttribute('data-target');
-            
-            
             const targetContent = document.getElementById(targetId);
 
-            
             answerContents.forEach(content => {
                 content.classList.remove('active');
             });
             
-            
             if (targetContent) {
                 targetContent.classList.add('active');
+            }
+            // --- End of existing code ---
+
+
+            // ===================================================================
+            // NEW: Automatically scroll for mobile users
+            // ===================================================================
+
+            // First, check if the browser window matches your mobile breakpoint.
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+            // If it's a mobile screen AND a valid quiz content div was found...
+            if (isMobile && targetContent) {
+                
+                // ...scroll that div into view.
+                targetContent.scrollIntoView({
+                    behavior: 'smooth', // Use a smooth scrolling animation
+                    block: 'start'      // Align the top of the div with the top of the screen
+                });
             }
         });
     });
