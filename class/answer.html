@@ -68,7 +68,7 @@ body {
 
 img {
     width: 256px;
-    margin-left: 8vw;
+    margin-right: 8vw;
 }
 
 
@@ -157,7 +157,7 @@ img {
 
 .inline-text {
     display: inline-block;
-    margin-left: 4vw;
+    margin-right: 4vw;
 }
 
 input {
@@ -170,6 +170,10 @@ input {
 
 .quiz-header span {
     font-weight: bold;
+}
+
+#default-message {
+    margin-right: 6vw;
 }
 
 @media (max-width: 768px) {
@@ -1237,7 +1241,6 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (event) => {
             event.preventDefault();
 
-            // --- This is your existing code for switching content ---
             quizLinks.forEach(l => l.classList.remove('active-link'));
             link.classList.add('active-link');
 
@@ -1251,23 +1254,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (targetContent) {
                 targetContent.classList.add('active');
             }
-            // --- End of existing code ---
 
-
-            // ===================================================================
-            // NEW: Automatically scroll for mobile users
-            // ===================================================================
-
-            // First, check if the browser window matches your mobile breakpoint.
             const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-            // If it's a mobile screen AND a valid quiz content div was found...
             if (isMobile && targetContent) {
                 
                 // ...scroll that div into view.
                 targetContent.scrollIntoView({
-                    behavior: 'smooth', // Use a smooth scrolling animation
-                    block: 'start'      // Align the top of the div with the top of the screen
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         });
