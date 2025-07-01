@@ -42,6 +42,10 @@ body {
     flex-shrink: 0;
     flex-grow: 0;
     flex-direction: column;
+    /* Better without scrollbar
+    height: 100dvh;
+    overflow-y: auto;
+    */
 }
 
 .default, h2 .quiz-link {
@@ -84,16 +88,19 @@ img {
     border-spacing: 0;
 }
 
+.quiz-nav li a {
+    margin: 0.5dvh 0 0;
+}
 
 .quiz-description {
-    margin: 0;
+    margin: 0 0 0.5dvh 0;
     opacity: 0.5;
     font-size: 0.8em;
     font-style: italic;
 }
 
 .quiz-nav li {
-    margin: 0 0 3dvh 8px;
+    margin: 0 0 0 8px;
 }
 
 
@@ -174,6 +181,24 @@ input {
 
 #default-message {
     margin-right: 6vw;
+}
+
+li a span span {
+    opacity: 0.75;
+}
+
+.answer input[type="text"] {
+    font: inherit;
+    color: inherit;
+    opacity: 1;
+}
+
+.separator {
+    display: none;
+    /* Keep this for later
+    padding: 0.5dvh 0;
+    border-bottom: 1px solid #ccc;
+    */
 }
 
 @media (max-width: 768px) {
@@ -275,68 +300,82 @@ input {
         <nav class="quiz-nav">
             <ul>
                 <li>
-                    <a href="#quiz1" class="quiz-link" data-target="quiz1">
-                    <span>Quiz#1 Voltage</span>
+                    <a href="#s-1" class="quiz-link" data-target="s-1">
+                    <span><span>Quiz#1</span> Voltage</span>
                     <p class="quiz-description">Science/Lab</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#quiz2" class="quiz-link" data-target="quiz2">
-                    <span>CW#1 Current</span>
+                    <a href="#s-2" class="quiz-link" data-target="s-2">
+                    <span><span>CW#1</span> Current</span>
                     <p class="quiz-description">Science/Lab</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#quiz3" class="quiz-link" data-target="quiz3">
-                    <span>HW#1 Resistance</span>
+                    <a href="#s-3" class="quiz-link" data-target="s-3">
+                    <span><span>HW#1</span> Resistance</span>
                     <p class="quiz-description">Science/Lab</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#quiz4" class="quiz-link" data-target="quiz4">
-                    <span>HW#2 Watts & Power</span>
+                    <a href="#s-4" class="quiz-link" data-target="s-4">
+                    <span><span>HW#2</span> Watts & Power</span>
                     <p class="quiz-description">Science/Lab</p>
                     </a>
                 </li>
+                <li class="separator"></li>
                 <li>
-                    <a href="#quiz5" class="quiz-link" data-target="quiz5">
-                    <span>Quiz#1 Pancreas</span>
+                    <a href="#ss-1" class="quiz-link" data-target="ss-1">
+                    <span><span>Quiz#1</span> Pancreas</span>
                     <p class="quiz-description">Supplemental Science</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#quiz6" class="quiz-link" data-target="quiz6">
-                    <span>CW#1 Adrenal</span>
+                    <a href="#ss-2" class="quiz-link" data-target="ss-2">
+                    <span><span>CW#1</span> Adrenal</span>
                     <p class="quiz-description">Supplemental Science</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#quiz7" class="quiz-link" data-target="quiz7">
-                    <span>HW#1 Melatonin</span>
+                    <a href="#ss-3" class="quiz-link" data-target="ss-3">
+                    <span><span>HW#1</span> Melatonin</span>
                     <p class="quiz-description">Supplemental Science</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#quiz8" class="quiz-link" data-target="quiz8">
-                    <span>Quiz#2 Growth Hormone</span>
+                    <a href="#ss-4" class="quiz-link" data-target="ss-4">
+                    <span><span>HW#2</span> Thyroid Hormones</span>
                     <p class="quiz-description">Supplemental Science</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#quiz9" class="quiz-link" data-target="quiz9">
-                    <span>Quiz#1 Female Reproductive System</span>
+                    <a href="#ss-5" class="quiz-link" data-target="ss-5">
+                    <span><span>Quiz#2</span> Growth Hormone</span>
+                    <p class="quiz-description">Supplemental Science</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#ss-6" class="quiz-link" data-target="ss-6">
+                    <span><span>CW#2</span> Three Types of Hormones</span>
+                    <p class="quiz-description">Supplemental Science</p>
+                    </a>
+                </li>
+                <li class="separator"></li>
+                <li>
+                    <a href="#h-1" class="quiz-link" data-target="h-1">
+                    <span><span>Quiz#1</span> Female Reproductive System</span>
                     <p class="quiz-description">Health</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#quiz10" class="quiz-link" data-target="quiz10">
-                    <span>CW#1 Label the Female Reproductive System</span>
+                    <a href="#h-2" class="quiz-link" data-target="h-2">
+                    <span><span>CW#1</span> Label the Female Reproductive System</span>
                     <p class="quiz-description">Health</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#quiz11" class="quiz-link" data-target="quiz11">
-                    <span>HW#1 Male Reproductive System</span>
+                    <a href="#h-3" class="quiz-link" data-target="h-3">
+                    <span><span>HW#1</span> Male Reproductive System</span>
                     <p class="quiz-description">Health</p>
                     </a>
                 </li>
@@ -353,7 +392,7 @@ input {
             <p>Last year, there were 2 students who didn't join the Canvas for almost a semester and barely received any scores. So here's your chance.</p>
             <p>And remember, \( F = ma \) </p>
         </div>
-            <div id="quiz1" class="answer-content">
+            <div id="s-1" class="answer-content">
 
             <h2 class="quiz-header">Answers for <span>Quiz#1 Voltage</span></h2>
             <p class="inline-text"><strong>Science/Lab</strong></p>
@@ -449,7 +488,7 @@ input {
             </div>
         </div>
 
-        <div id="quiz2" class="answer-content">
+        <div id="s-2" class="answer-content">
 
             <h2 class="quiz-header">Answers for <span>CW#1 Current</span></h2>
             <p class="inline-text"><strong>Science/Lab</strong></p>
@@ -545,7 +584,7 @@ input {
             </div>
         </div>
 
-        <div id="quiz3" class="answer-content">
+        <div id="s-3" class="answer-content">
             <h2 class="quiz-header">Answers for <span>HW#1 Resistance</span></h2>
             <p class="inline-text"><strong>Science/Lab</strong></p>
             <p class="inline-text"><strong>Questions</strong> 10</p>
@@ -641,7 +680,7 @@ input {
             </div>
         </div>
 
-        <div id="quiz4" class="answer-content">
+        <div id="s-4" class="answer-content">
             <h2 class="quiz-header">Answers for <span>HW#2 Watts & Power</span></h2>
             <p class="inline-text"><strong>Science/Lab</strong></p>
             <p class="inline-text"><strong>Questions</strong> 10</p>
@@ -736,7 +775,7 @@ input {
             </div>
         </div>
 
-        <div id="quiz5" class="answer-content">
+        <div id="ss-1" class="answer-content">
             <h2 class="quiz-header">Answers for <span>Quiz#1 Pancreas</span></h2>
             <p class="inline-text"><strong>Supplemental Science</strong></p>
             <p class="inline-text"><strong>Questions</strong> 5</p>
@@ -786,7 +825,7 @@ input {
             </div>
         </div>
 
-        <div id="quiz6" class="answer-content">
+        <div id="ss-2" class="answer-content">
             <h2 class="quiz-header">Answers for <span>CW#1 Adrenal</span></h2>
             <p class="inline-text"><strong>Supplemental Science</strong></p>
             <p class="inline-text"><strong>Questions</strong> 5</p>
@@ -836,7 +875,7 @@ input {
             </div>
         </div>
 
-        <div id="quiz7" class="answer-content">
+        <div id="ss-3" class="answer-content">
             <h2 class="quiz-header">Answers for <span>HW#1 Melatonin</span></h2>
             <p class="inline-text"><strong>Supplemental Science</strong></p>
             <p class="inline-text"><strong>Questions</strong> 10</p>
@@ -935,7 +974,104 @@ input {
             </div>
         </div>
 
-        <div id="quiz8" class="answer-content">
+        <div id="ss-4" class="answer-content">
+            <h2 class="quiz-header">Answers for <span>HW#2 Thyroid Hormones</span></h2>
+            <p class="inline-text"><strong>Supplemental Science</strong></p>
+            <p class="inline-text"><strong>Questions</strong> 10</p>
+
+            <div class="question-box">
+            <p class="question-number">Question 1</p>
+                <p class="question">The thyroid gland is located in the ___.</p>
+                
+                    <p class="answer"><input type="text" value="neck" disabled/></p>
+                    <p class="explanation">The thyroid is a butterfly-shaped gland located in the front of the neck, wrapped around the windpipe (trachea) just below the Adam's apple.</p>
+                    <p class="answer-comment"><strong>Ma note:</strong><em>Use lower-case characters (potentially case sensitive).</em></p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 2</p>
+                <p class="question">The two main thyroid hormones are T3 and ___.</p>
+                
+                    <p class="answer"><input type="text" value="T4" disabled checked/></p>
+                    <p class="explanation">The thyroid produces two primary hormones that regulate metabolism: Triiodothyronine (T3) and Thyroxine (T4). T4 is produced in much larger quantities, but T3 is the more active form of the hormone.</p>
+                    <p class="answer-comment"><strong>Ma note:</strong><em>Not case sensitive. Both "t4" and "T4" are valid answers.</em></p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 3</p>
+                <p class="question">The thyroid hormones help control the body’s ___.</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>metabolism</p>
+                    <p class="explanation">Metabolism—the process by which your body converts food into energy—is the primary function controlled by thyroid hormones. They act as the body's 'gas pedal,' speeding up or slowing down metabolic processes.</p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 4</p>
+                <p class="question">The thyroid gland needs ___ to make its hormones.</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>iodine</p>
+                    <p class="explanation">Iodine, an element found in foods like seafood and dairy, is an essential building block for thyroid hormones. The "3" and "4" in T3 and T4 refer to the number of iodine atoms attached to each hormone molecule.</p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 5</p>
+                <p class="question">If the thyroid makes too much hormone, the condition is called ___.</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>hyperthyroidism</p>
+                    <p class="explanation">Hyperthyroidism ('hyper' meaning 'over') is the medical term for an overactive thyroid. This condition speeds up the body's metabolism, which can cause symptoms like unintentional weight loss and a rapid or irregular heartbeat.</p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 6</p>
+                <p class="question">If the thyroid doesn’t make enough hormone, the condition is called ___.</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>hypothyroidism</p>
+                    <p class="explanation">Hypothyroidism ('hypo' meaning 'under') is the term for an underactive thyroid. This condition slows down the body's metabolism, leading to symptoms such as fatigue, weight gain, and sensitivity to cold.</p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 7</p>
+                <p class="question">A swollen thyroid gland in the neck is called a ___.</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>goiter</p>
+                    <p class="explanation">A goiter is a visible enlargement of the thyroid gland, resulting in a swelling in the neck. It can be caused by various conditions, including iodine deficiency, hyperthyroidism, or hypothyroidism.</p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 8</p>
+                <p class="question">The thyroid works as part of the body’s ___ system.</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>endocrine</p>
+                    <p class="explanation">The thyroid is a key gland in the endocrine system. This system is a network of glands and organs that use hormones to control and coordinate many of the body's functions, including metabolism, energy level, and growth.</p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 9</p>
+                <p class="question">Thyroid hormones affect how fast your ___ beats.</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>heart</p>
+                    <p class="explanation">Thyroid hormones have a direct effect on the cardiovascular system. An excess of these hormones (hyperthyroidism) can cause a rapid heart rate (tachycardia), while a deficiency (hypothyroidism) can lead to a slow heart rate (bradycardia).</p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 10</p>
+                <p class="question">The ___ gland in the brain tells the thyroid what to do.</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>pituitary</p>
+                    <p class="explanation">The pituitary gland acts as a thermostat. It constantly monitors thyroid hormone levels in the blood and releases Thyroid-Stimulating Hormone (TSH) to tell the thyroid when to produce more hormones.</p>
+            </div>
+        </div>
+
+        <div id="ss-5" class="answer-content">
             <h2 class="quiz-header">Answers for <span>Quiz#2 Growth Hormone</span></h2>
             <p class="inline-text"><strong>Supplemental Science</strong></p>
             <p class="inline-text"><strong>Questions</strong> 10</p>
@@ -1029,9 +1165,104 @@ input {
                     <p class="explanation">The cell receptor protein acts as a specific 'docking station' for the hormone. When the hormone binds, the receptor changes shape, an action that triggers the first step in the chain reaction of the internal signaling pathway.</p>
             </div>
         </div>
+
+        <div id="ss-6" class="answer-content">
+            <h2 class="quiz-header">Answers for <span>CW#2 Three Types of Hormones</span></h2>
+            <p class="inline-text"><strong>Supplemental Science</strong></p>
+            <p class="inline-text"><strong>Questions</strong> 10</p>
+
+            <div class="question-box">
+            <p class="question-number">Question 1</p>
+                <p class="question">Water soluble hormones?</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Peptide hormones</p>
+                    <p class="explanation">Peptide hormones are chains of amino acids, which makes them hydrophilic or 'water-loving.' This property allows them to dissolve and travel easily in the bloodstream, but it also means they cannot pass through a cell's oily membrane.</p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 2</p>
+                <p class="question">Lipid soluble hormones?</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>steroid hormones</p>
+                    <p class="explanation">Steroid hormones are synthesized from cholesterol, which is a lipid. This makes them lipid-soluble or 'fat-loving,' allowing them to easily pass through a cell's lipid membrane and bind to receptors inside the cell.</p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 3</p>
+                <p class="question">Signal transduction is best defined as?</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>carrying a signal from outside a cell to the inside the nucleus</p>
+                    <p class="explanation">Signal transduction is the process of converting an external signal into an internal cellular response. This multi-step pathway relays the message from a receptor (often on the cell surface) to the cellular machinery that carries out the final action.</p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 4</p>
+                <p class="question">Membrane receptors are needed for?</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>peptide hormones</p>
+                    <p class="explanation">Because water-soluble peptide hormones cannot diffuse through a cell's lipid bilayer, they must bind to specific receptor proteins located on the cell's outer membrane to transmit their signal inside.</p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 5</p>
+                <p class="question">Steroid hormones do not travel through the blood without a transport protein. This is because steroid hormones are?</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>hydrophobic and blood contains a lot of water</p>
+                    <p class="explanation">Steroid hormones are hydrophobic ('water-fearing'), while blood plasma is about 92% water. Like oil in water, they do not dissolve well and therefore require 'chaperone' transport proteins to move through the bloodstream.</p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 6</p>
+                <p class="question">What is the main structural difference between steroid and nonsteroidal hormones?</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Steroid hormones are derived from cholesterol and are lipid-soluble, while nonsteroid hormones are derived from amino acids and are water-soluble.</p>
+                    <p class="explanation">This is the fundamental chemical and functional distinction between hormone types. Steroids are built from a cholesterol (lipid) base, making them lipid-soluble. Nonsteroidal hormones, such as peptides and amines, are built from amino acids, making them water-soluble.</p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 7</p>
+                <p class="question">Which of the following is a characteristic of steroid hormones?</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>They are derived from cholesterol</p>
+                    <p class="explanation">The defining characteristic of all steroid hormones is that their molecular structure is derived from cholesterol. This shared chemical backbone gives them their lipid-soluble properties.</p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 8</p>
+                <p class="question">Which of the following hormones is a peptide hormone?</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Insulin</p>
+                    <p class="explanation">Insulin is a classic example of a peptide hormone, composed of a chain of 51 amino acids. In contrast, testosterone and cortisol are steroids, and epinephrine is an amine hormone.</p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 9</p>
+                <p class="question">Which hormone is an example of a steroid hormone?</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Aldosterone</p>
+                    <p class="explanation">Aldosterone, a hormone from the adrenal gland that regulates blood pressure, is a steroid hormone. Glucagon and oxytocin are peptides, while epinephrine is an amine.</p>
+            </div>
+            
+
+            <div class="question-box">
+            <p class="question-number">Question 10</p>
+                <p class="question">Which hormone group includes epinephrine and norepinephrine?</p>
+                
+                    <p class="answer"><input type="radio" disabled checked/>Amine hormones</p>
+                    <p class="explanation">Amine hormones are a special class derived from a single modified amino acid. Epinephrine and norepinephrine (the catecholamines) are both derived from the amino acid tyrosine.</p>
+            </div>
+        </div>
         
 
-        <div id="quiz9" class="answer-content">
+        <div id="h-1" class="answer-content">
             <h2 class="quiz-header">Answers for <span>Quiz#1 Female Reproductive System</span></h2>
             <p class="inline-text"><strong>Health</strong></p>
             <p class="inline-text"><strong>Questions</strong> 10</p>
@@ -1127,7 +1358,7 @@ input {
             </div>
         </div>
 
-        <div id="quiz10" class="answer-content">
+        <div id="h-2" class="answer-content">
             <h2 class="quiz-header">Answers for <span>CW#1 Label the Female Reproductive System</span></h2>
             <p class="inline-text"><strong>Health</strong></p>
             <p class="inline-text"><strong>Questions</strong> 10</p>
@@ -1228,7 +1459,7 @@ input {
             
         </div>
 
-        <div id="quiz11" class="answer-content">
+        <div id="h-3" class="answer-content">
             <h2 class="quiz-header">Answers for <span>HW#1 Male Reproductive System</span></h2>
             <p class="inline-text"><strong>Health</strong></p>
             <p class="inline-text"><strong>Questions</strong> 10</p>
