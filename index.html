@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Hello, Ma!">
     <meta property="og:description" content="This is not really not Ma website BUT it's Certified Ma Moment™. Pretty cool huh? Perhaps, are you interested in sussy Ma activites? And remember, they are going to be ABSOLUTELY Wild.">
-    <meta property="og:image" content="https://www.notma.org/img/ma-meme-embed.jpg">
+    <meta property="og:image" content="https://www.notma.org/img/ma-meme-embed.webp">
     <meta property="og:url" content="https://www.notma.org/">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
@@ -14,7 +14,7 @@
     <style>
         * {
             box-sizing: border-box;
-            margin: 0 0.5vw 0.5vw;
+            margin: 0 0.75dvw 0.5dvh;
         }
         
         body {
@@ -32,13 +32,14 @@
         }
 
         #matrix-bg {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
             z-index: -1;
             opacity: 0.3;
+            margin: 0;
+            padding: 0;
         }
 
         a {
@@ -86,9 +87,9 @@
 
         footer { opacity: 0.75; text-align: center; }
         .images { width: 100%; min-width: 144px; }
-        .ma-stuff-grid { column-gap: 1.5vw; margin: 0; column-count: 4; }
-        .ma-stuff-item { background-color: whitesmoke; font-size: clamp(16px, 2vw, 24px); text-align: center; padding: 1vw; display: inline-block; width: 100%; margin-bottom: 1.5vw; break-inside: avoid; padding: 0; }
-        .ma-stuff-item .caption { margin-top: 10px; padding: 0 10px 10px;}
+        .ma-stuff-grid { column-gap: 6.0vw; margin: 0 4vw; column-count: 3; }
+        .ma-stuff-item { font-size: clamp(16px, 2vw, 24px); text-align: center; padding: 1vw; display: inline-block; width: 100%; margin-bottom: 3vw; break-inside: avoid; padding: 0; }
+        .ma-stuff-item .caption { margin-top: 10px; padding: 0 10px 10px; font-size: x-large;}
         .ma-stuff-item.full-width { column-span: all; }
         @media (max-width: 1200px) { .ma-stuff-grid { column-count: 3; } }
         @media (max-width: 900px) { .ma-stuff-grid { column-count: 2; } }
@@ -215,13 +216,13 @@
     <canvas id="matrix-bg"></canvas>
 
     <header>
-        <h1 class="title">Hello, Ma!</h1>
+        <h1 contenteditable="true" class="title">Hello, Ma!</h1>
         <div id="images">
             <a href="https://www.youtube.com/watch?v=izGwDsrQ1eQ&pp=ygUQY2FyZWxlc3Mgd2hpc3Blcg%3D%3D" target="_blank" rel="noopener noreferrer">
-                <img class="images draggable" src="img/ma.jpg" alt="Ma sleeping." style="width: 14%;">
+                <img class="images draggable" src="img/ma.webp" alt="Ma sleeping." style="width: 14%;">
             </a>
             <a href="https://www.youtube.com/watch?v=92ydUdqWE1g&pp=ygUPdHVuYWsgdHVuYWsgdHVu" target="_blank" rel="noopener noreferrer">
-                <img class="images draggable" src="img/ma-meme.jpg" alt="Ma and Adidas." style="width: 16%;">
+                <img class="images draggable" src="img/ma-meme.webp" alt="Ma and Adidas." style="width: 16%;">
             </a>
             <div class="intro">
                 <p><em>This is not really not Ma website BUT it's <strong>Certified Ma Moment™</strong>. Pretty cool huh? Perhaps, are you interested in sussy Ma activites? And remember, they are going to be <span style="font-weight: 125;">ABSOLUTELY</span> wild.</em></p>
@@ -232,8 +233,8 @@
         </div>
     </header>
 
-    <marquee scrollamount="10" style="font-size: medium; color: red; font-weight: bold; background-color: yellow; border: 2px solid orange;">
-        !!! WARNING: THIS IS A CERTIFIED MA MOMENT™ -- REPORT ALL SUSSY MA ACTIVITIES TO me@notma.org -- DON'T CALL ADIDAS AT 3AM !!!
+    <marquee contenteditable="true" scrollamount="10" style="font-size: medium; color: red; font-weight: bold; background-color: yellow; border: 2px solid orange;">
+        !!! WARNING: THIS IS A CERTIFIED MA MOMENT™ -- REPORT ALL SUSSY MA ACTIVITIES TO <strong><a href="mailto:me@notma.org">me@notma.org</a></strong> -- DON'T CALL ADIDAS AT 3AM !!!
     </marquee>
 
     <section class="cool">
@@ -245,45 +246,63 @@
             </video>
             <a class="caption" href="./vid/brightfuture.mp4" target="_blank" rel="noopener noreferrer"><em>"Bright Future"</em></a>
         </div>
-        <div class="ma-stuff-item draggable">
-            <img class="responsive-media" src="./img/duck.jpg" alt="What's your SILLY duck name?">
-            <a class="caption" href="./img/duck.jpg" target="_blank" rel="noopener noreferrer"><em>"That's an interesting duck name."</em></a>
+        <div class="ma-stuff-item full-width draggable">
+            <video class="responsive-media" controls>
+                <source src="./vid/accident.mp4">Your browser can't play this video.
+            </video>
+            <a class="caption" href="./vid/accident.mp4" target="_blank" rel="noopener noreferrer"><em>"Drive Recklessly"</em></a>
         </div>
         <div class="ma-stuff-item draggable">
-            <img class="responsive-media" src="./img/happynewyear.jpg" alt='Happy New Year'>
-            <a class="caption" href="./img/happynewyear.jpg" target="_blank" rel="noopener noreferrer">Happy New Year!</a>
+            <img loading="lazy" class="responsive-media" src="./img/duck.webp" alt="What's your SILLY duck name?">
+            <a class="caption" href="./img/duck.webp" target="_blank" rel="noopener noreferrer"><em>"That's an interesting duck name"</em></a>
         </div>
         <div class="ma-stuff-item draggable">
-            <img class="responsive-media" src="./img/cock.jpg" alt="How to Eat Cock: Mouth-Watering Chicken Recipes">
-            <a class="caption" href="./img/cock.jpg" target="_blank" rel="noopener noreferrer"><em>"Mouth-watering experience"</em></a>
+            <img loading="lazy" class="responsive-media" src="./img/happynewyear.webp" alt='Happy New Year'>
+            <a class="caption" href="./img/happynewyear.webp" target="_blank" rel="noopener noreferrer">Happy New Year!</a>
         </div>
         <div class="ma-stuff-item draggable">
-            <img class="responsive-media" src="./img/study.jpg" alt="When you have to study.">
-            <a class="caption" href="./img/study.jpg" target="_blank" rel="noopener noreferrer">Time management skill issue.</a>
+            <img loading="lazy" class="responsive-media" src="./img/cock.webp" alt="How to Eat Cock: Mouth-Watering Chicken Recipes">
+            <a class="caption" href="./img/cock.webp" target="_blank" rel="noopener noreferrer"><em>"Mouth-watering experience"</em></a>
         </div>
         <div class="ma-stuff-item draggable">
-            <img class="responsive-media" src="./img/screenshot.jpg" alt="A man taking a photo of a screen.">
-            <a class="caption" href="./img/screenshot.jpg" target="_blank" rel="noopener noreferrer">Dunno that PrintScreen exists.</a>
+            <img loading="lazy" class="responsive-media" src="./img/study.webp" alt="When you have to study.">
+            <a class="caption" href="./img/study.webp" target="_blank" rel="noopener noreferrer">Time management skill issue.</a>
+        </div>
+        <div class="ma-stuff-item draggable">
+            <img loading="lazy" class="responsive-media" src="./img/screenshot.webp" alt="A man taking a photo of a screen.">
+            <a class="caption" href="./img/screenshot.webp" target="_blank" rel="noopener noreferrer">Dunno that PrintScreen exists.</a>
         </div>
         <div id="soviet-spinner" class="ma-stuff-item">
-            <img class="responsive-media spin-on-hover" src="./img/soviet.jpg" alt="UNO Reverse card but it's soviet flag instead.">
-            <a class="caption" href="./img/soviet.jpg" target="_blank" rel="noopener noreferrer">Self-explanation.</a>
+            <img class="responsive-media spin-on-hover" src="./img/soviet.webp" alt="UNO Reverse card but it's soviet flag instead.">
+            <a class="caption" href="./img/soviet.webp" target="_blank" rel="noopener noreferrer">Self-explanation.</a>
         </div>
         <div class="ma-stuff-item draggable">
-            <img class="responsive-media" src="./img/mango.jpg" alt="Woman stand, woman go. Man stand, mango!">
-            <a class="caption" href="./img/mango.jpg" target="_blank" rel="noopener noreferrer">Mango.</a>
+            <img loading="lazy" class="responsive-media" src="./img/mango.webp" alt="Woman stand, woman go. Man stand, mango!">
+            <a class="caption" href="./img/mango.webp" target="_blank" rel="noopener noreferrer">Mango.</a>
         </div>
         <div class="ma-stuff-item draggable">
-            <img class="responsive-media" src="./img/colgate.jpg" alt="A shark using Colgate Herbal toothpaste">
-            <a class="caption" href="./img/colgate.jpg" target="_blank" rel="noopener noreferrer">Maybe Colgate is better.</a>
+            <img loading="lazy" class="responsive-media" src="./img/colgate.webp" alt="A shark using Colgate Herbal toothpaste">
+            <a class="caption" href="./img/colgate.webp" target="_blank" rel="noopener noreferrer">Maybe Colgate is better.</a>
         </div>
         <div class="ma-stuff-item draggable">
-            <img class="responsive-media" src="./img/destroy.jpg" alt="Give a man nothing, and he will create a paradise. Give a man everything, and he will turn it to ruin.">
-            <a class="caption" href="./img/destroy.jpg" target="_blank" rel="noopener noreferrer">Never give a person everything.</a>
+            <img loading="lazy" class="responsive-media" src="./img/destroy.webp" alt="Give a man nothing, and he will create a paradise. Give a man everything, and he will turn it to ruin.">
+            <a class="caption" href="./img/destroy.webp" target="_blank" rel="noopener noreferrer">Never give a person everything.</a>
         </div>
         <div class="ma-stuff-item draggable">
-            <img class="responsive-media" src="./img/water.jpg" alt="Don't drink water... fishes have sex in it.">
-            <a class="caption" href="./img/water.jpg" target="_blank" rel="noopener noreferrer">Never drink water.</a>
+            <img loading="lazy" class="responsive-media" src="./img/water.webp" alt="Don't drink water... fishes have sex in it.">
+            <a class="caption" href="./img/water.webp" target="_blank" rel="noopener noreferrer">Never drink water.</a>
+        </div>
+        <div class="ma-stuff-item draggable">
+            <img loading="lazy" class="responsive-media" src="./img/art.webp" alt="How to draw an owl. 1. Draw some circles. 2. Draw the rest of the fucking owl.">
+            <a class="caption" href="./img/art.webp" target="_blank" rel="noopener noreferrer">School art class be like:</a>
+        </div>
+        <div class="ma-stuff-item draggable">
+            <img loading="lazy" class="responsive-media" src="./img/pi.webp" alt="In a receipt, tip amount: $π.">
+            <a class="caption" href="./img/pi.webp" target="_blank" rel="noopener noreferrer">"Here's a tip"</a>
+        </div>
+        <div class="ma-stuff-item draggable">
+            <img loading="lazy" class="responsive-media" src="./img/icecream.webp" alt="A boy eating Hitler branded ice cream.">
+            <a class="caption" href="./img/icecream.webp" target="_blank" rel="noopener noreferrer">"Cursed ice cream"</a>
         </div>
         <div class="ma-stuff-item full-width draggable">
             <blockquote>
@@ -302,18 +321,18 @@
             <h3>Why are you <em>gay</em>? </h3>
             <p>What? hmmm, yes and no... mostly yesn't. It's a complex Ma thing.</p>
             <a href="https://www.youtube.com/watch?v=HEXWRTEbj1I" target="_blank" rel="noopener noreferrer">
-                <img class="faq-img" src="img/gay.jpg" alt="Why aren't you gay?" style="width: 20%;">
+                <img loading="lazy" class="faq-img draggable" src="img/gay.webp" alt="Why aren't you gay?" style="width: 20%;">
             </a>
         </div>
         <div>
             <h3>Why Singha Drinking Water?</h3>
-            <div id="thai-exclusive"></div>
+            <div></div>
             <p>Because it tastes nice. And now, Purra with minerals.</p>
         </div>
         <div>
             <h3>What should I do if I found someone doing sussy gay Ma activities?</h3>
-            <p>You should report them to meme police and Ma at <strong>me@notma.org</strong>.</p>
-            <!-- <img class="faq-img draggable" src="img/gaypolice.jpg" alt="Please call meme police if you found someone doing sussy Ma activities." style="width: 15%;"> -->
+            <p>You should report them to meme police and Ma at <strong><a href="mailto:me@notma.org">me@notma.org</a></strong>.</p>
+            <img loading="lazy" class="faq-img draggable" src="img/pride.webp" alt="Please call meme police if you found someone doing sussy Ma activities." style="width: 15%;">
         </div>
         <div>
             <h3>What is the meaning of Ma?</h3>
@@ -322,6 +341,11 @@
         <div>
             <h3>Can I get a "Certified Ma Moment™"?</h3>
             <p>Certification is granted only after surviving sussy Ma activities. No further details will be provided.</p>
+        </div>
+        <div>
+            <h3>Why there's a meme gallery?</h3>
+            <p>Because why not...</p>
+            <img loading="lazy" class="faq-img draggable" src="img/publicproperty.webp" alt="Meme are public property." style="width: 20%;">
         </div>
         <div>
             <h3>How to be a master hacker?</h3>
@@ -339,28 +363,28 @@
     <section class="guestbook" style="text-align: center; padding: 20px; background-color: #add8e6;">
         <h2>Sign the Ma Guestbook!</h2>
         <p>Leave a sussy Ma message for all to see.</p>
-        <div style="border: 2px dashed red; padding: 20px; margin: 10px auto; max-width: 80%; background-color: #fafad2;">
+        <div style="border: 2px dashed red; padding: 30px 2.2dvw 30px 0px; margin: 30px auto; max-width: 80%; background-color: #fafad2;">
             <script src="https://giscus.app/client.js"
-        data-repo="Sh1n0suk3/notma"
-        data-repo-id="R_kgDOOrta5g"
-        data-category="General"
-        data-category-id="DIC_kwDOOrta5s4CrhG6"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="noborder_light"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
+                data-repo="Sh1n0suk3/notma"
+                data-repo-id="R_kgDOOrta5g"
+                data-category="General"
+                data-category-id="DIC_kwDOOrta5s4CrhG6"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="noborder_light"
+                data-lang="en"
+                crossorigin="anonymous"
+                async>
+            </script>
         </div>
     </section>
-    <footer>
-        <h6>
-            <em>Copyright Ma 2025. Unauthorized use of the two images found <a href="#images">HERE</a> will result in sussy Ma activities. </em>
-        </h6>
+    <footer contenteditable="true">
+        <p>
+            <strong><em>Copyright Ma 2025. Unauthorized use of the two images found <a href="#images">HERE</a> will result in sussy Ma activities. </em></strong>
+        </p>
     </footer>
 
     <script>
@@ -370,36 +394,58 @@ document.addEventListener('DOMContentLoaded', function() {
       alert("CRITICAL ALERT: You are about to have a Certified Ma Moment™. There is no escape.");
     }, 30000);
 
-    // --- Matrix Background Script ---
-    const canvas = document.getElementById('matrix-bg');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    let text = "Ma ".split("");
-    let fontSize = 32;
-    let columns = canvas.width / fontSize;
-    let drops = [];
-    for(let x = 0; x < columns; x++) drops[x] = 1;
+    // --- DYNAMIC Matrix Background Script ---
+const canvas = document.getElementById('matrix-bg');
+const ctx = canvas.getContext('2d');
+let drops = [];
+let text = "Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma Ma ".split("");
+let fontSize = 32;
 
-    function drawMatrix() {
-        ctx.fillStyle = "rgba(245, 245, 245, 0.05)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "yellowgreen";
-        ctx.font = fontSize + "px 'Comic Neue'";
-        for(let i = 0; i < drops.length; i++) {
-            let char = text[Math.floor(Math.random() * text.length)];
-            ctx.fillText(char, i * fontSize, drops[i] * fontSize);
-            if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-            drops[i]++;
-        }
+function resizeMatrixCanvas() {
+    const fullPageHeight = document.documentElement.scrollHeight;
+    const fullPageWidth = document.documentElement.scrollWidth;
+
+    canvas.height = fullPageHeight;
+    canvas.width = fullPageWidth;
+
+    canvas.style.height = `${fullPageHeight}px`;
+
+    let columns = canvas.width / fontSize;
+    drops = [];
+    for(let x = 0; x < columns; x++) {
+        drops[x] = 1;
     }
-    setInterval(drawMatrix, 50);
+}
+
+resizeMatrixCanvas();
+window.addEventListener('resize', resizeMatrixCanvas);
+
+
+function drawMatrix() {
+    ctx.fillStyle = "rgba(245, 245, 245, 0.025)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "yellowgreen";
+    ctx.font = fontSize + "px 'Comic Neue'";
+    
+    for(let i = 0; i < drops.length; i++) {
+        let char = text[Math.floor(Math.random() * text.length)];
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+        
+        // Use the canvas height for the check
+        if(drops[i] * fontSize > canvas.height && Math.random() > 0.999) {
+            drops[i] = 2;
+        }
+        drops[i]++;
+    }
+}
+setInterval(drawMatrix, 35);
 
     // --- Draggable Elements Script ---
     const draggableElements = document.querySelectorAll('.draggable');
     let activeElement = null;
     let initialMouseX, initialMouseY;
     let startTranslateX = 0, startTranslateY = 0;
+    let currentZIndex = 1000;
     
     draggableElements.forEach(el => {
         el.addEventListener('mousedown', dragStart);
@@ -459,6 +505,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const newTranslateY = startTranslateY + deltaY;
             
             activeElement.style.transform = `translate3d(${newTranslateX}px, ${newTranslateY}px, 0)`;
+            currentZIndex += 1;
+            activeElement.style.zIndex = currentZIndex.toString();
         }
     }
 
@@ -634,7 +682,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const log = autoLogLines[Math.floor(Math.random() * autoLogLines.length)];
     typeToTerminal(`[AUTO-LOG] ${log}`, null, false); 
     
-    autoLogInterval = setTimeout(runAutoLogger, Math.random() * 15000 + 10000);
+    autoLogInterval = setTimeout(runAutoLogger, Math.random() * 10000 + 20000);
     }
 
     // --- 4. Interactive Command Processor ---
