@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <title>Ma's House</title>
+    <style>
+
+        body {
+            font-family: 'Google Sans Code', cursive, sans-serif;
+            font-size: 16px;
+            padding: 0 3dvw 0;
+            margin: 0;
+            color: white;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            /* gap: 24px; */
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(h_1.webp);
+            background-size: cover;
+            background-repeat: no-repeat;
+            opacity: 0;
+            animation: fadeAndZoom 3s ease-out forwards;
+            z-index: -1;
+        }
+
+        @keyframes fadeAndZoom {
+            from {
+                opacity: 0;
+                transform: scale(1.1);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        header, section, footer {
+            opacity: 0;
+            transform: translateY(-25px);
+            animation: slideDown 0.8s ease-out forwards;
+        }
+
+        header {
+            animation-delay: 0.6s;
+        }
+
+        section {
+            animation-delay: 0.8s;
+        }
+
+        footer {
+            animation-delay: 1s;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-height: 512px) {
+            body {
+            overflow-y: hidden;
+            }
+        }
+
+        header, footer {
+            padding: 20px;
+            text-align: center;
+            color: inherit;
+        }
+
+        header {
+            margin-top: 8dvh;
+        }
+
+        h1 {
+            line-height: 75%;
+        }
+
+        .dark-background {
+            background-color: hsla(0, 0%, 0%, 0.3);
+            backdrop-filter: blur(6px);
+            padding: 12px 4dvw;
+            margin-bottom: 24px;
+            border: 4px solid hsla(0, 0%, 100%, 0.35);
+        }
+
+        nav a, nav {
+            margin: 0 15px;
+            text-decoration: none;
+            color: inherit;
+            font-style: italic;
+        }
+
+        content div {
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            color: inherit;
+        }
+
+        content h3 {
+            margin: 64px;
+            color: inherit;
+        }
+
+        footer {
+            font-style: bold;
+            color: inherit;
+        }
+
+        .rounded {
+            border-radius: 16px;
+        }
+
+        .semi-rounded {
+            border-radius: 8px;
+        }
+
+        a {
+            color: rgb(160, 198, 255);
+        }
+
+        .inline-img {
+            width: 30%;
+            height: 30%;
+            padding: 0 2dvw;
+            object-fit: cover;
+            display: inline-block;
+            border-radius: 17.5%;
+            transition: transform 0.35s ease;
+            z-index: 1000;
+        }
+
+        .inline-img:hover {
+            transform: scale(1.1);
+            top: 50%;
+            left: 50%;
+        }
+
+    </style>
+    <!-- <link href="css/bootstrap-4.4.1.css" rel="stylesheet" type="text/css"> -->
+</head>
+<body>
+    <!-- mamm ma -->
+    <header class="rounded dark-background">
+        <h1 style="color: greenyellow">Ma House,</h1>
+        <h1 style="color: greenyellow">Mamm House.</h1>
+        <nav>
+            <a href="https://www.notma.org/vid/rr.mp4">Home</a>
+            <a href="https://www.notma.org/vid/rr.mp4">Details</a>
+            <a href="https://www.notma.org/vid/rr.mp4">Mortgage</a>
+            <a href="https://www.notma.org/vid/rr.mp4">Contact</a>
+        </nav>
+    </header>
+    <section class="rounded dark-background">
+        <h2>Secure your very own Ma Estate</h2>
+        <div>
+            <div>
+                <img src="h_2.webp" alt="Placeholder image" class="inline-img semi-rounded">
+                <img src="h_3.webp" alt="Placeholder image" class="inline-img semi-rounded">
+            </div>
+            <h3>Get Exclusive privilages</h3>
+            <p><em>Like Ma + featured in <strong><a href="https://notma.org">notma.org</a></strong></em></p>
+        </div>
+    </section>
+    <footer class="rounded dark-background">
+    Phone Number: 432-556-999-168 | Email: <strong><a href="mailto:me@notma.org">me@notma.org</a></strong>
+    </footer>
+</body>
+</html>
