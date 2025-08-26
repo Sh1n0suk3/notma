@@ -11,6 +11,8 @@
     <meta property="og:type" content="website">
     <link rel="icon" type="image/x-icon" href="https://notma.org/img/favicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <style>
 
@@ -32,7 +34,7 @@ body {
     display: flex;
     flex-wrap: nowrap;
     min-height: 100dvh;
-    max-width: 90%;
+    max-width: 95%;
     margin: 0 auto;
 }
 
@@ -62,11 +64,12 @@ body {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    margin-bottom: 24px;
 }
 
 .quiz-nav li a {
     display: inline-block;
-    padding: 0px 12px;
+    padding: 0px 24px 0 12px;
     color: #0E68B3;
     text-decoration: none;
     border-radius: 5px;
@@ -85,7 +88,7 @@ img {
 
 .quiz-nav li a.active-link {
     font-weight: bold;
-    border-left: 3px solid #273540;
+    border-left: 2px solid #273540;
     border-radius: 0;
     border-spacing: 0;
 }
@@ -259,7 +262,8 @@ li a span span {
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        margin: 0 64px;
+        margin: 24px 0;
+        column-gap: 128px;
     }
 
     .quiz-nav li:has(.quiz-subject) {
@@ -335,6 +339,40 @@ li a span span {
                 <li>
                     <a href="#s-1" class="quiz-link" data-target="s-1">
                     <span><span class="quiz-type">Quiz#1</span> Lux, Lumens & Candela</span>
+                    <!-- <p class="quiz-description">Science/Lab</p> -->
+                    </a>
+                </li>
+                <li>
+                    <a href="#s-2" class="quiz-link" data-target="s-2">
+                    <span><span class="quiz-type">Quiz#2</span> Waves</span>
+                    <!-- <p class="quiz-description">Science/Lab</p> -->
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <p class="quiz-subject">Health</p>
+                </li>
+                <li>
+                    <a href="#h-1" class="quiz-link" data-target="h-1">
+                    <span><span class="quiz-type">CW#2</span> Germinal Stage</span>
+                    <!-- <p class="quiz-description">Science/Lab</p> -->
+                    </a>
+                </li>
+                <li>
+                    <a href="#h-2" class="quiz-link" data-target="h-2">
+                    <span><span class="quiz-type">HW#2</span> Embryo</span>
+                    <!-- <p class="quiz-description">Science/Lab</p> -->
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <p class="quiz-subject">Supplemental Science</p>
+                </li>
+                <li>
+                    <a href="#ss-1" class="quiz-link" data-target="ss-1">
+                    <span><span class="quiz-type">CW#3</span> Biotic & Abiotic</span>
                     <!-- <p class="quiz-description">Science/Lab</p> -->
                     </a>
                 </li>
@@ -456,6 +494,406 @@ li a span span {
                     <p class="explanation">LED bulbs are significantly more energy-efficient, producing more light (lumens) with far less electrical power (watts) than old incandescent bulbs.</p>
             </div>
         </div>
+
+<div id="s-2" class="answer-content">
+   <h2 class="quiz-header">Answers for <span>Quiz#2</span></h2>
+   <p class="inline-text"><strong>Science</strong></p>
+   <p class="inline-text"><strong>Questions</strong> 10</p>
+
+   <div class="question-box">
+   <p class="question-number">Question 1</p>
+    <p class="question">What property of this wave is represented by the letter "A"?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/Q.2/1.webp">
+    
+     <p class="answer"><input type="radio" disabled checked/>wavelength</p>
+     <p class="explanation">The letter "A" measures the horizontal distance from one point on the wave (like a trough) to the identical point on the next wave. This specific distance is defined as the <strong>wavelength</strong>, often represented by the Greek letter lambda (\(\lambda\)).</p>
+   </div>
+   
+
+   <div class="question-box">
+   <p class="question-number">Question 2</p>
+    <p class="question">What property of the wave is represented by the letter "B"?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/Q.2/1.webp">
+
+     <p class="answer"><input type="radio" disabled checked/>amplitude</p>
+     <p class="explanation">The letter "B" indicates the maximum displacement, or vertical distance, from the wave's equilibrium position (the midpoint) to its crest. This is the definition of <strong>amplitude</strong>, which relates to the wave's energy.</p>
+   </div>
+   
+
+   <div class="question-box">
+   <p class="question-number">Question 3</p>
+    <p class="question">What kind of wave is pictured below?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/Q.2/3.webp">
+    
+     <p class="answer"><input type="radio" disabled checked/>transverse wave</p>
+     <p class="explanation">Assuming the image shows a standard wave shape, the particles of the medium would be moving up and down while the wave's energy moves horizontally. When particle motion is perpendicular to the direction of wave propagation, it is a <strong>transverse wave</strong>.</p>
+   </div>
+   
+
+   <div class="question-box">
+   <p class="question-number">Question 4</p>
+    <p class="question">Which letter(s) represent the trough of the wave?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/Q.2/4.webp">
+    
+     <p class="answer"><input type="radio" disabled checked/>D</p>
+     <p class="explanation">The <strong>trough</strong> is the lowest point on a wave. In the given diagram, the letter "D" is clearly pointing to the bottom-most part of the wave cycle.</p>
+   </div>
+   
+
+   <div class="question-box">
+   <p class="question-number">Question 5</p>
+    <p class="question">Which letter(s) represent the crest of the wave?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/Q.2/4.webp">
+    
+     <p class="answer"><input type="radio" disabled checked/>B & F</p>
+     <p class="explanation">The <strong>crest</strong> is the highest point on a wave. The letters "B" and "F" both indicate the peaks, or highest points, of their respective wave cycles in the diagram.</p>
+   </div>
+   
+
+   <div class="question-box">
+   <p class="question-number">Question 6</p>
+    <p class="question">Which wave in the diagram has the greatest frequency?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/Q.2/6.webp">
+
+     <p class="answer"><input type="radio" disabled checked/>4</p>
+     <p class="explanation"><strong>Frequency</strong> is the number of waves that pass a point in a given amount of time. Wave #4 has the most waves compressed into the same space, meaning it has the highest frequency.</p>
+   </div>
+   
+
+   <div class="question-box">
+   <p class="question-number">Question 7</p>
+    <p class="question">Which wave in the diagram has the greatest wavelength?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/Q.2/6.webp">
+    
+     <p class="answer"><input type="radio" disabled checked/>3</p>
+     <p class="explanation"><strong>Wavelength</strong> is the distance between two consecutive crests or troughs. Wave #3 is the most spread out, showing the longest distance for a single wave cycle, and therefore has the greatest wavelength.</p>
+   </div>
+   
+
+   <div class="question-box">
+  _  <p class="question-number">Question 8</p>
+    <p class="question">Identify the correct statement that correctly describes the following picture.</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/Q.2/8.webp">
+    
+     <p class="answer"><input type="radio" disabled checked/>The top picture represents longitudinal wave and the bottom picture represents transverse wave</p>
+     <p class="explanation">The top image shows compressions and rarefactions, where particle motion is parallel to the wave's direction; this is a <strong>longitudinal wave</strong> (like sound). The bottom image shows particle motion perpendicular to the wave's direction; this is a <strong>transverse wave</strong> (like light).</p>
+   </div>
+   
+
+   <div class="question-box">
+   <p class="question-number">Question 9</p>
+    <p class="question">Which wave has the largest amplitude?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/Q.2/9.webp">
+    
+     <p class="answer"><input type="radio" disabled checked/>B</p>
+     <p class="explanation"><strong>Amplitude</strong> is the measure of a wave's height from its resting position (the middle line). Wave B reaches the highest and lowest points compared to waves A and C, giving it the largest amplitude.</p>
+   </div>
+   
+
+   <div class="question-box">
+   <p class="question-number">Question 10</p>
+    <p class="question">As frequency increases, the wavelength ___?</p>
+
+     <p class="answer"><input type="radio" disabled checked/>decreases</p>
+     <p class="explanation">Frequency and wavelength have an <strong>inverse relationship</strong> for a wave traveling at a constant speed (\(v = f\lambda\)). This means that if you fit more waves into a given time (higher frequency), the length of each individual wave must get shorter (smaller wavelength).</p>
+   </div>
+  </div>
+
+<div id="h-1" class="answer-content">
+      <h2 class="quiz-header">Answers for <span>CW#2</span> Germinal Stage</h2>
+      <p class="inline-text"><strong>Health</strong></p>
+      <p class="inline-text"><strong>Questions</strong> 10</p>
+
+      <div class="question-box">
+      <p class="question-number">Question 1</p>
+        <p class="question">Repeated cell divisions during embryonic cell development is known as?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>Cleavage</p>
+          <p class="explanation"><strong>Cleavage</strong> is the specific term for the rapid, successive mitotic cell divisions of a zygote that occur without an increase in the overall size of the embryo.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 2</p>
+        <p class="question">The joining of a sperm cell and an egg cell is called?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>Fertilization</p>
+          <p class="explanation"><strong>Fertilization</strong> is the biological process of fusing a male gamete (sperm) with a female gamete (egg) to initiate the development of a new organism.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 3</p>
+        <p class="question">Which of the following sequences represents the correct order of events in the formation of a human fetus?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>Fertilization → Zygote → Blastocyst → Embryo</p>
+          <p class="explanation">Development begins with <strong>Fertilization</strong>, creating a single-celled <strong>Zygote</strong>. This cell divides to form a <strong>Blastocyst</strong>, which then implants and develops into the <strong>Embryo</strong>.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 4</p>
+        <p class="question">What is the name of this process?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/H_CW.2/4.webp">
+        
+          <p class="answer"><input type="radio" disabled checked/>meiosis</p>
+          <p class="explanation">The diagram shows a single parent cell dividing twice to produce four unique daughter cells with half the original number of chromosomes. This process is <strong>meiosis</strong>, which creates gametes (sperm and egg cells).</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 5</p>
+        <p class="question">In which of the following structures of the female human reproductive system is the blastocyst implanted during normal human development?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>uterus</p>
+          <p class="explanation">After traveling down the fallopian tube, the blastocyst attaches to and embeds itself into the nutrient-rich lining of the <strong>uterus</strong>, a process called implantation.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 6</p>
+        <p class="question">The diagram below represents some stages of early embryonic development. Which process is represented by the arrows in the diagram?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>Mitosis</p>
+          <p class="answer-comment"><strong>Ma note:</strong><em>The diagram is not provided.</em></p>
+          <!-- <p class="explanation">The arrows show a single cell dividing into two, then four, and so on, with each daughter cell being identical to the parent. This is cell division for growth, known as <strong>mitosis</strong>.</p> -->
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 7</p>
+        <p class="question">A fertilized egg undergoes several stages before it is implanted. In which of the following structure of the female reproductive system is the egg fertilized?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>Fallopian Tubes</p>
+          <p class="explanation">Fertilization typically occurs in the <strong>fallopian tubes</strong> (oviducts), where the egg travels after being released from the ovary and meets the sperm.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 8</p>
+        <p class="question">What happens to the zygote immediately after fertilization?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>It divides by mitosis to form a blastocyst.</p>
+          <p class="explanation">The single-celled zygote immediately begins a series of rapid cell divisions (cleavage) via <strong>mitosis</strong>. This process eventually forms a hollow ball of cells called a <strong>blastocyst</strong>.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 9</p>
+        <p class="question">What is the germinal stage of pregnancy?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>The first two weeks after conception</p>
+          <p class="explanation">The <strong>germinal stage</strong> is the earliest phase of prenatal development, covering the period from fertilization until the blastocyst completes implantation in the uterus, which is approximately the <strong>first two weeks</strong>.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 10</p>
+        <p class="question">What is the term for the fertilized egg?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>Zygote</p>
+          <p class="explanation">A <strong>Zygote</strong> is the specific scientific term for the single diploid cell that results from the fusion of an egg and a sperm during fertilization.</p>
+      </div>
+    </div>
+
+<div id="h-2" class="answer-content">
+      <h2 class="quiz-header">Answers for <span>HW#2</span> Embryo</h2>
+      <p class="inline-text"><strong>Health</strong></p>
+      <p class="inline-text"><strong>Questions</strong> 10</p>
+
+      <div class="question-box">
+      <p class="question-number">Question 1</p>
+        <p class="question">Which layer gives rise to the nervous system?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/H_HW.2/1.webp">
+        
+          <p class="answer"><input type="radio" disabled checked/>Ectoderm</p>
+          <p class="explanation">The <strong>ectoderm</strong> is the outermost of the three primary germ layers. It is responsible for developing into the skin, nails, hair, and the entire nervous system, including the brain and spinal cord.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 2</p>
+        <p class="question">What is this process called during week 3?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/H_HW.2/2.webp">
+
+          <p class="answer"><input type="radio" disabled checked/>Neurulation</p>
+          <p class="explanation">The image depicts the formation of the neural tube from the ectoderm. This crucial process, which establishes the central nervous system, is called <strong>neurulation</strong> and is a key event of the third week.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 3</p>
+        <p class="question">The heart begins to beat around?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>Week 3</p>
+          <p class="explanation">One of the earliest major milestones, the primitive heart tube forms and begins to beat and pump blood during the <strong>third week</strong> of gestation, often before the pregnancy is even confirmed.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 4</p>
+        <p class="question">Limb buds first become visible during?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>Week 6</p>
+          <p class="explanation">By <strong>week 6</strong>, the small paddle-like limb buds that will develop into arms and legs become visible. This marks the beginning of limb formation.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 5</p>
+        <p class="question">Around what size is the human embryo by week 3?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>Poppy seed</p>
+          <p class="explanation">At the end of the third week, the embryo is incredibly small, measuring about 1.5 to 2.5 millimeters, which is comparable to the size of a <strong>poppy seed</strong>.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 6</p>
+        <p class="question">The embryo reaches the size of a blueberry at approximately?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>Week 7</p>
+          <p class="explanation">By <strong>week 7</strong>, the embryo has grown significantly and measures about 1/2 inch (1.25 cm), roughly the size of a <strong>blueberry</strong>.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 7</p>
+        <p class="question">Which of the following is the main event of neurulation?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>Formation of the spinal cord</p>
+          <p class="explanation">Neurulation is the process where the neural plate folds inward to form the neural tube. This tube is the precursor to the entire central nervous system, which includes the brain and, crucially, the <strong>spinal cord</strong>.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 8</p>
+        <p class="question">The presence of a tail in human embryos provides evidence that humans share ancestry with?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>Fish and other vertebrates</p>
+          <p class="explanation">Human embryos temporarily have a tail, which later recedes. This feature, known as an evolutionary vestige, reflects a shared genetic history with <strong>fish and other vertebrates</strong> that retain a tail into adulthood.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 9</p>
+        <p class="question">What embryonic feature do fish and humans share early in development?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>gill slits</p>
+          <p class="explanation">Both fish and human embryos possess pharyngeal arches, often called <strong>gill slits</strong>. In fish, they develop into gills, while in humans, they develop into structures of the head, neck, and ear, indicating a common evolutionary origin.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 10</p>
+        <p class="question">Why do early embryos of vertebrates look alike?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>They inherited genes from a common ancestor</p>
+          <p class="explanation">The striking similarities between early vertebrate embryos (like humans, fish, and chickens) are due to them sharing ancient developmental genes. They <strong>inherited these genes from a common ancestor</strong>, and these genes guide the foundational stages of body plan formation.</p>
+      </div>
+    </div>
+
+<div id="ss-1" class="answer-content">
+      <h2 class="quiz-header">Answers for <span>CW#3</span></h2>
+      <p class="inline-text"><strong>Supplemental Science</strong></p>
+      <p class="inline-text"><strong>Questions</strong> 10</p>
+
+      <div class="question-box">
+      <p class="question-number">Question 1</p>
+        <p class="question">Biotic or abiotic factor?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/SS_CW.3/1.webp">
+
+        <p class="answer"><input type="radio" disabled checked/>abiotic</p>
+          <p class="explanation">The image shows soil, which is composed of non-living materials like minerals, water, and air. Therefore, soil is a foundational <strong>abiotic</strong> factor in most terrestrial ecosystems.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 2</p>
+        <p class="question">Biotic or abiotic factor?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/SS_CW.3/2.webp">
+
+        <p class="answer"><input type="radio" disabled checked/>abiotic</p>
+          <p class="explanation">The image depicts wind. Wind is the movement of air in the atmosphere; it is a non-living climatic condition, making it a key <strong>abiotic</strong> factor that affects organisms.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 3</p>
+        <p class="question">What is the organism shown in the picture?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/SS_CW.3/3.webp">
+
+        <p class="answer"><input type="radio" disabled checked/>producer</p>
+          <p class="explanation">The image shows a green leaf, which belongs to a plant. Plants create their own food through photosynthesis. In an ecosystem, organisms that produce their own food are called <strong>producers</strong>.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 4</p>
+        <p class="question">What is the organism shown in the picture?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/SS_CW.3/4.webp">
+
+        <p class="answer"><input type="radio" disabled checked/>decomposer</p>
+          <p class="explanation">The image shows mushrooms, which are a type of fungus. Fungi get their nutrients by breaking down dead organic matter, recycling it back into the ecosystem. This role makes them essential <strong>decomposers</strong>.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 5</p>
+        <p class="question">What process is shown in the picture?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/SS_CW.3/5.webp">
+
+        <p class="answer"><input type="radio" disabled checked/>decomposition</p>
+          <p class="explanation">The image shows a dead animal being broken down and returning to the earth. This natural process of decay is called <strong>decomposition</strong>.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 6</p>
+        <p class="question">What is the organism shown in the picture?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/SS_CW.3/6.webp">
+
+        <p class="answer"><input type="radio" disabled checked/>autotroph</p>
+          <p class="explanation">The image shows a flower, which is part of a plant. An <strong>autotroph</strong> is any organism that can produce its own food, typically using light energy. Plants are the most common examples of autotrophs.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 7</p>
+        <p class="question">What are two biotic factors interacting with each other?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>a rabbit eating grass</p>
+          <p class="explanation">Biotic factors are living or once-living. Both a rabbit (living animal) and grass (living plant) are biotic. Eating is a direct interaction between these two <strong>biotic</strong> factors. The other options involve an abiotic factor (soil, water, sand).</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 8</p>
+        <p class="question">Which one represents an biotic factor interacting with an abiotic factor?</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>a tree uses sunlight for photosynthesis</p>
+          <p class="explanation">A tree is a living organism (biotic factor). Sunlight is a non-living energy source (abiotic factor). Photosynthesis is the process where the tree uses sunlight to create food, representing a direct interaction between a <strong>biotic</strong> and an <strong>abiotic</strong> factor.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 9</p>
+        <p class="question">Biotic or abiotic factor?</p>
+        <img loading="lazy" src="https://www.notma.org/img/canvas/SS_CW.3/9.webp">
+
+        <p class="answer"><input type="radio" disabled checked/>biotic</p>
+        <p class="explanation">The image shows a log. Because the log was once part of a living tree, it is considered a <strong>biotic</strong> factor. Biotic factors include all living and once-living components of an ecosystem.</p>
+      </div>
+      
+
+      <div class="question-box">
+      <p class="question-number">Question 10</p>
+        <p class="question">Abiotic factors can affect biotic factors and biotic factors can affect abiotic factors.</p>
+        
+          <p class="answer"><input type="radio" disabled checked/>true</p>
+          <p class="explanation">This statement is <strong>true</strong>. For example, the amount of rainfall (abiotic) affects plant growth (biotic), and the decomposition of dead plants (biotic) can change the nutrient composition of the soil (abiotic). Ecosystems are defined by these complex interactions.</p>
+      </div>
+    </div>
 
     </main>
 </div>
